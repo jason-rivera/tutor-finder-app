@@ -7,6 +7,7 @@
 ## General Info
 This browser based web application to ...
 Connor Young
+Stirling Anderson
 	
 ## Technologies
 Technologies used for this project:
@@ -23,6 +24,7 @@ Content of the project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
 ├── searchHome.html
+├── reviewTutor.html
 └── README.md
 
 It has the following subfolders and files:

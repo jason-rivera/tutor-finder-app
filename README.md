@@ -8,6 +8,10 @@
 This browser based web application to ...
 Connor Young
 Stirling Anderson
+Jason Rivera
+searchHome.html
+live_message.html
+reviewTutor.html
 	
 ## Technologies
 Technologies used for this project:
@@ -23,8 +27,9 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
-├── searchHome.html
-├── reviewTutor.html
+├── reviewTutor.html         # review tutor
+├── searchHome.html          # search home
+├── live_message.html        # live message
 └── README.md
 
 It has the following subfolders and files:

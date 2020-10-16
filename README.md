@@ -8,6 +8,7 @@ live_message.html
 
 ## General Info
 This browser based web application to ...
+Connor Young
 	
 ## Technologies
 Technologies used for this project:
@@ -23,6 +24,7 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
+├── searchHome.html
 └── README.md
 
 It has the following subfolders and files:

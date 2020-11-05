@@ -18,6 +18,11 @@
             margin: 5px;
             width: 100px;
         }
+
+        #find-button {
+            position: relative;
+            width: 100%;
+        }
     </style>
 </head>
 <body>
@@ -48,9 +53,11 @@
       <p class="lead">What subject are you seeking lessons for?</p>
     </div>
 
+
+
     <form class="form-inline my-2 my-lg-0">
-      <input class="form-control mr-sm-2" type="search" placeholder="Enter subject here">
-      <a class="btn btn-outline-success my-2 my-sm-0" href="results.html" role="button">Find Tutor</a>
+        <input class="form-control form-control-lg" type="search" placeholder="Enter a subject">
+      <a class="btn btn-outline-success my-2 my-sm-0" href="results.html" role="button" id="find-button">Find Tutor</a>
     </form>
 
     <div class="button-container">
@@ -72,6 +79,24 @@
           <input type="range" class="form-control-range" id="formControlRange">
         </div>
       </form>
+
+      <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+      </select>
+      <br/>
+      <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+      </select>
+      <br/>
+      <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+      </select>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->

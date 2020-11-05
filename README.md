@@ -5,20 +5,14 @@
 * [Contents](#content)
 
 ## General Info
-This browser based web application to ...
-Connor Young
-Stirling Anderson
-Jason Rivera
-searchHome.html
-live_message.html
-reviewTutor.html
+This browser based web application to find tutoring services.
+Authors: Connor Young, Stirling Anderson, Jason Rivera
 	
 ## Technologies
 Technologies used for this project:
 * HTML, CSS
 * JavaScript
 * Bootstrap 
-* ...
 	
 ## Content
 Content of the project folder:
@@ -27,19 +21,21 @@ Content of the project folder:
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing HTML file, this is what users see when you come to url
-├── reviewTutor.html         # review tutor
-├── searchHome.html          # search home
-├── live_message.html        # live message
+├── review-tutor.html        # review tutor
+├── search.html              # search home
+├── results.html             # tutor search results
 └── README.md
 
 It has the following subfolders and files:
 ├── .git                     # Folder for git repo
 ├── images                   # Folder for images
-    /blah.jpg                # 
+    /blah.jpg                #
+    /test.png                # test profile image
 ├── scripts                  # Folder for scripts
     /blah.js                 # 
+    /firebase_api_team24.js  # firebase api script
 ├── styles                   # Folder for styles
-    /blah.css                # 
+    /results.css             # css for results.html
 
 Firebase hosting files: 
 ├── .firebaserc...

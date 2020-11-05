@@ -8,12 +8,13 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
     <style>
+
         body {
             background-color: rgb(255, 255, 255);
         }
         .button-container {
             position: relative;
-            width: 350px;
+            width: 250px;
             left: 50%;
             transform: translate(-45%, 0);
         }
@@ -22,10 +23,6 @@
             width: 100px;
         }
 
-        #find-button {
-            position: relative;
-            width: 100%;
-        }
         .form-group {
             padding-top: 20px;
             text-align: center;
@@ -34,13 +31,21 @@
         .jumbotron {
             background-color: rgb(255, 255, 255);
             border-radius: 0px;
-            margin-bottom: 0px;
-            padding-bottom: 0px;
+            padding: 20px 0 0 0;
+            margin: 0px;
+            text-align: center;
         }
-        #find-button {
+        .find-button {
             border-radius: 0px;
+            position: relative;
+            width: 100%;
         }
         
+        @media screen and (min-width: 400px) {
+            body {
+                width: 800px;
+            }
+        }
     </style>
 </head>
 <body>
@@ -67,7 +72,7 @@
     </nav>
 
     <div class="jumbotron">
-      <h3>By Keyword</h1>
+      <h4>Keyword Search</h4>
       <p class="lead"></p>
     </div>
 
@@ -75,17 +80,18 @@
 
     <form class="form-inline my-2 my-lg-0">
         <input class="form-control form-control-lg" type="search" placeholder="Enter a subject">
-      <a class="btn btn-primary my-2 my-sm-0" href="results.html" role="button" id="find-button">Find Tutor</a>
+      <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Find Tutor</a>
     </form>
 
-
+    <br/>
+    
 
     <div class="jumbotron">
-        <h3>By Category</h1>
+        <h4>Category Search</h4>
         <p class="lead"></p>
       </div>
 
-
+    
 
     <div class="button-container">
         <button type="button" class="btn btn-secondary">Math</button>
@@ -98,16 +104,12 @@
         <button type="button" class="btn btn-secondary">French</button>
         <button type="button" class="btn btn-secondary">Subject</button>
         <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
     </div>
 
-
+    <br/>
+    
     <div class="jumbotron">
-        <h3>By Filter (Advanced)</h1>
+        <h4>Advanced Search</h4>
         <p class="lead"></p>
       </div>
 
@@ -126,27 +128,38 @@
         </div>
       </form>
 
+      <div class="filter-text">Subject:</div>
       <select class="form-control">
         <option>Default select</option>
         <option>Default select</option>
         <option>Default select</option>
       </select>
       <br/>
+
+      <div class="filter-text">Location:</div>
       <select class="form-control">
         <option>Default select</option>
         <option>Default select</option>
         <option>Default select</option>
       </select>
       <br/>
+
+      <div class="filter-text">Highest level of Education:</div>
       <select class="form-control">
         <option>Default select</option>
         <option>Default select</option>
         <option>Default select</option>
       </select>
 
-    
-        
-      <a class="btn btn-primary my-2 my-sm-0" href="results.html" role="button" id="find-button">Advanced Search</a>
+      <div class="filter-text">Highest level of Education:</div>
+      <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+      </select>
+
+
+      <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Advanced Search</a>
     
 
     <!----------------------------------------------->

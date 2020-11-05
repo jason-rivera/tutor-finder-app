@@ -1,6 +1,9 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\images",
+    "\\scripts",
+    "\\styles"
   ],
   "SelectedNode": "\\search.html",
   "PreviewInSolutionExplorer": false

@@ -1,183 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="utf-8" />
-    <title>Tutor Search</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-    <style>
-
-        body {
-            background-color: rgb(255, 255, 255);
-        }
-        .button-container {
-            position: relative;
-            width: 250px;
-            left: 50%;
-            transform: translate(-45%, 0);
-        }
-        .btn-secondary {
-            margin: 5px;
-            width: 100px;
-        }
-
-        .form-group {
-            padding-top: 20px;
-            text-align: center;
-            font-weight: bold;
-        }
-        .jumbotron {
-            background-color: rgb(255, 255, 255);
-            border-radius: 0px;
-            padding: 20px 0 0 0;
-            margin: 0px;
-            text-align: center;
-        }
-        .find-button {
-            border-radius: 0px;
-            position: relative;
-            width: 100%;
-        }
-        
-        @media screen and (min-width: 400px) {
+    <head>
+        <meta charset="utf-8" />
+        <title>Search for a Tutor</title>
+        <meta name="comp1800 boilerplate code" content="my bcit project">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <style>
             body {
-                width: 800px;
+                background-color: rgb(255, 255, 255);
             }
-        }
-    </style>
-</head>
-<body>
+            .button-container {
+                position: relative;
+                width: 250px;
+                left: 50%;
+                transform: translate(-45%, 0);
+            }
+            .btn-secondary {
+                margin: 5px;
+                width: 100px;
+            }
+            .form-group {
+                padding-top: 20px;
+                text-align: center;
+                font-weight: bold;
+            }
+            .jumbotron {
+                background-color: rgb(255, 255, 255);
+                border-radius: 0px;
+                padding: 20px 0 0 0;
+                margin: 0px;
+                text-align: center;
+            }
+            .find-button {
+                border-radius: 0px;
+                position: relative;
+                width: 100%;
+            }
+            @media screen and (min-width: 800px) {
+                body {
+                    position: relative;
+                    width: 1000px;
+                    left: 50%;
+                    transform: translate(-50%, 0);
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a class="navbar-brand" href="">Search for Tutor</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="search.html" style="color: white">Search</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="review-tutor.html">Reviews</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="index.html">Index</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
 
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Search</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="search.html" style="color: white">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="review-tutor.html">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Index</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-    <div class="jumbotron">
-      <h4>Keyword Search</h4>
-      <p class="lead"></p>
-    </div>
-
-
-
-    <form class="form-inline my-2 my-lg-0">
-        <input class="form-control form-control-lg" type="search" placeholder="Enter a subject">
-      <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Find Tutor</a>
-    </form>
-
-    <br/>
-    
-
-    <div class="jumbotron">
-        <h4>Category Search</h4>
+        <div class="jumbotron">
+        <h4>Keyword Search</h4>
         <p class="lead"></p>
-      </div>
-
-    
-
-    <div class="button-container">
-        <button type="button" class="btn btn-secondary">Math</button>
-        <button type="button" class="btn btn-secondary">English</button>
-        <button type="button" class="btn btn-secondary">Spanish</button>
-        <button type="button" class="btn btn-secondary">Biology</button>
-        <button type="button" class="btn btn-secondary">Science</button>
-        <button type="button" class="btn btn-secondary">Physics</button>
-        <button type="button" class="btn btn-secondary">Geography</button>
-        <button type="button" class="btn btn-secondary">French</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-        <button type="button" class="btn btn-secondary">Subject</button>
-    </div>
-
-    <br/>
-    
-    <div class="jumbotron">
-        <h4>Advanced Search</h4>
-        <p class="lead"></p>
-      </div>
-
-    <div class="progress">
-    <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Your search progress</div>
-    </div>
-
-
-
-
-
-    <form>
-        <div class="form-group">
-            <label for="customRange3" id="current-level">Your Current Level</label>
-            <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
         </div>
-      </form>
 
-      <div class="filter-text">Subject:</div>
-      <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-      </select>
-      <br/>
+        <form class="form-inline my-2 my-lg-0">
+            <input class="form-control form-control-lg" type="search" placeholder="Enter a subject/name" style="width: 100%">
+        <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Find Tutor</a>
+        </form>
 
-      <div class="filter-text">Location:</div>
-      <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-      </select>
-      <br/>
+        <br/>
+        <div class="jumbotron">
+            <h4>Category Search</h4>
+            <p class="lead"></p>
+        </div>
 
-      <div class="filter-text">Highest level of Education:</div>
-      <select class="form-control">
+        <div class="button-container">
+            <button type="button" class="btn btn-secondary">Math</button>
+            <button type="button" class="btn btn-secondary">English</button>
+            <button type="button" class="btn btn-secondary">Spanish</button>
+            <button type="button" class="btn btn-secondary">Biology</button>
+            <button type="button" class="btn btn-secondary">Science</button>
+            <button type="button" class="btn btn-secondary">Physics</button>
+            <button type="button" class="btn btn-secondary">Geography</button>
+            <button type="button" class="btn btn-secondary">French</button>
+            <button type="button" class="btn btn-secondary">Subject</button>
+            <button type="button" class="btn btn-secondary">Subject</button>
+        </div>
+
+        <br/>
+        <div class="jumbotron">
+            <h4>Advanced Search</h4>
+            <p class="lead"></p>
+        </div>
+
+        <form>
+            <div class="form-group">
+                <label for="customRange3" id="current-level">Your Current Level</label>
+                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+            </div>
+        </form>
+
+        <div class="filter-text">Subject:</div>
+        <select class="form-control">
         <option>Default select</option>
         <option>Default select</option>
         <option>Default select</option>
-      </select>
+        </select>
+        <br/>
 
-      <div class="filter-text">Highest level of Education:</div>
-      <select class="form-control">
+        <div class="filter-text">Location:</div>
+        <select class="form-control">
         <option>Default select</option>
         <option>Default select</option>
         <option>Default select</option>
-      </select>
+        </select>
+        <br/>
 
+        <div class="filter-text">Highest level of Education:</div>
+        <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+        </select>
+        <br/>
 
-      <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Advanced Search</a>
-    
+        <div class="filter-text">Years of experience:</div>
+        <select class="form-control">
+        <option>Default select</option>
+        <option>Default select</option>
+        <option>Default select</option>
+        </select>
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
-    <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+        <br/>
+        <div class="progress">
+        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Search Optimized 75%</div>
+        </div>
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
+        <br/>
+        <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Advanced Search</a>
 
-</body>
+        <br/>
+        <br/>
+        <br/>
+        <!----------------------------------------------->
+        <!-- JS: Boostrap, Firebase, API related    -->
+        <!----------------------------------------------->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+        <!--------------------------------------------------------------------->
+        <!-- JS files: Your own JavaScript functions included here    -->
+        <!--------------------------------------------------------------------->
+    </body>
 </html>

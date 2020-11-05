@@ -6,6 +6,19 @@
     <meta name="comp1800 boilerplate code" content="my bcit project">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+    <style>
+        .button-container {
+            position: relative;
+            width: 250px;
+            left: 50%;
+            transform: translate(-50%, 0);
+        }
+        .btn-secondary {
+            margin: 5px;
+            width: 100px;
+        }
+    </style>
 </head>
 <body>
 
@@ -18,7 +31,7 @@
         <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
-                    <a class="nav-link" href="search.html">Search</a>
+                    <a class="nav-link" href="search.html" style="color: white">Search</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="review-tutor.html">Reviews</a>
@@ -31,7 +44,7 @@
     </nav>
 
     <div class="jumbotron">
-      <h1 class="display-6">Tutor Search</h1>
+      <h1 class="display-6">Search by keyword</h1>
       <p class="lead">What subject are you seeking lessons for?</p>
     </div>
 
@@ -40,6 +53,25 @@
       <a class="btn btn-outline-success my-2 my-sm-0" href="results.html" role="button">Find Tutor</a>
     </form>
 
+    <div class="button-container">
+        <button type="button" class="btn btn-secondary">Math</button>
+        <button type="button" class="btn btn-secondary">English</button>
+        <button type="button" class="btn btn-secondary">Spanish</button>
+        <button type="button" class="btn btn-secondary">Biology</button>
+        <button type="button" class="btn btn-secondary">Science</button>
+        <button type="button" class="btn btn-secondary">Physics</button>
+        <button type="button" class="btn btn-secondary">Geography</button>
+        <button type="button" class="btn btn-secondary">French</button>
+        <button type="button" class="btn btn-secondary">Subject</button>
+        <button type="button" class="btn btn-secondary">Subject</button>
+    </div>
+
+    <form>
+        <div class="form-group">
+          <label for="formControlRange">Your level</label>
+          <input type="range" class="form-control-range" id="formControlRange">
+        </div>
+      </form>
     <!----------------------------------------------->
     <!-- JS: Boostrap, Firebase, API related    -->
     <!----------------------------------------------->

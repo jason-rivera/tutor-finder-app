@@ -37,6 +37,9 @@ body {
 .homepage-text {
   font-size: 1.6em;
 }
+h4 {
+  background-color: rgb(235, 235, 235);
+}
 @media screen and (min-width: 800px) {
   body {
       position: relative;

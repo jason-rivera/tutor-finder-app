@@ -1,0 +1,38 @@
+body {
+  background-color: rgb(255, 255, 255);
+}
+.button-container {
+  position: relative;
+  width: 250px;
+  left: 50%;
+  transform: translate(-45%, 0);
+}
+.btn-secondary {
+  margin: 5px;
+  width: 100px;
+}
+.form-group {
+  padding-top: 20px;
+  text-align: center;
+  font-weight: bold;
+}
+.jumbotron {
+  background-color: rgb(255, 255, 255);
+  border-radius: 0px;
+  padding: 20px 0 0 0;
+  margin: 0px;
+  text-align: center;
+}
+.find-button {
+  border-radius: 0px;
+  position: relative;
+  width: 100%;
+}
+@media screen and (min-width: 800px) {
+  body {
+      position: relative;
+      width: 1000px;
+      left: 50%;
+      transform: translate(-50%, 0);
+  }
+}

@@ -34,7 +34,7 @@ var uiConfig = {
         uiShown: function () {
             // The widget is rendered.
             // Hide the loader.
-            document.getElementById('loader').style.display = 'none';
+            //document.getElementById('loader').style.display = 'none';
         }
     },
     // Will use popup for IDP Providers sign-in flow instead of the default, redirect.
@@ -53,8 +53,10 @@ var uiConfig = {
     tosUrl: 'index.html',
     // Privacy policy url.
     privacyPolicyUrl: 'index.html',
-    accountChooserEnabled: false
+    //accountChooserEnabled: false
 };
 // The start method will wait until the DOM is loaded.
 // Inject the login interface into the HTML
+	
+
 ui.start('#firebaseui-auth-container', uiConfig);

@@ -18,7 +18,7 @@ function welcomeMsg() {
             .then(function(doc){
                 var n = doc.data().name;
                 console.log(n);
-                //$("#username").text(n);
+                //$("#username").text(n);	
 				document.getElementById("welcome-msg").innerText = "Welcome " + n;
             })
         }

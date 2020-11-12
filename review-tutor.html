@@ -1,138 +1,129 @@
 <!DOCTYPE html>
 <html>
 
-<head>
-    <meta charset="utf-8">
-    <title>Review Page</title>
-    <meta name="comp1800 boilerplate code" content="my bcit project">
-    <meta name="author" content="BCIT">
+  <head>
+      <meta charset="utf-8">
+      <title>Review Page</title>
+      <meta name="comp1800 boilerplate code" content="my bcit project">
+      <meta name="author" content="BCIT">
 
-    <!-- Bootstrap for Mobile-first, and JQuery -->
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+      <!-- Bootstrap for Mobile-first, and JQuery -->
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-    <!-- Optional styles and scripts of your own -->
+      <!-- Firebase CSS for Authentication UI -->
+      <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
 
+      <!-- Optional CSS of your own -->
+      <link type="text/css" rel="stylesheet" href="styles/review-tutor.css" />
+  </head>
 
-</head>
+  <body>
 
-<body>
+      <!-------------------------------------->
+      <!-- The following is HTML for layout -->
+      <!-------------------------------------->
 
-    <!-------------------------------------->
-    <!-- The following is HTML for layout -->
-    <!-------------------------------------->
-    <!-- Header Navigation Bar -->
-
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <a class="navbar-brand" href="">Reviews of Tutors</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="search.html">Search</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="review-tutor.html" style="color: white">Reviews</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="index.html">Home</a>
-                </li>
-            </ul>
-        </div>
-    </nav>
-
-
-    <div class="jumbotron">
-        <h1 class="display-6">Leave a review</h1>
-        <p class="lead">Leaving a review gives tutors helpful feedback and helps other students pick the tutor best for them. </p>
-        
-    </div>
-    
+      <div class="jumbotron">
+          <h1 class="display-6">Leave a review</h1>
+          <p class="lead">Leaving a review gives tutors helpful feedback and helps other students pick the tutor best for them. </p>
+      </div>
       
-    <div class="jumbotron" style="width: 90%; margin: auto;">
-      <form>
-        <div class="media" >
-          <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
-          <div class="media-body">
-            <h5 class="mt-0">$Tutor Name</h5>
-            Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+        
+      <div class="jumbotron" id="reviewJumbotron" >
+        <form>
+          <div class="media" >
+            <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
+            <div class="media-body">
+              <h5 class="mt-0">$Tutor Name</h5>
+              Cras sit amet nibh libero, in gravida nulla. Nulla vel metus scelerisque ante sollicitudin. Cras purus odio, vestibulum in vulputate at, tempus viverra turpis. Fusce condimentum nunc ac nisi vulputate fringilla. Donec lacinia congue felis in faucibus.
+              
+            </div>
+          </div>
+          <hr class="my-4">
+          <div class="form-group row" id="rate_button_bar" >
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">example text</span>
+            </div>
             
+            <div class="btn-group" role="group" aria-label="Basic example" >
+              
+              <button type="button" class="btn btn-secondary">1</button>
+              <button type="button" class="btn btn-secondary">2</button>
+              <button type="button" class="btn btn-secondary">3</button>
+              <button type="button" class="btn btn-secondary">4</button>
+              <button type="button" class="btn btn-secondary">5</button>
+            </div>
           </div>
-        </div>
-        <hr class="my-4">
-        <div class="form-group row" id="rate_button_bar" style="display: flex; justify-content: center;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">example text</span>
-          </div>
-          
-          <div class="btn-group" role="group" aria-label="Basic example" >
+          <div class="form-group row" id="rate_button_bar" >
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">example text</span>
+            </div>
             
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-            <button type="button" class="btn btn-secondary">5</button>
+            <div class="btn-group" role="group" aria-label="Basic example" >
+              
+              <button type="button" class="btn btn-secondary">1</button>
+              <button type="button" class="btn btn-secondary">2</button>
+              <button type="button" class="btn btn-secondary">3</button>
+              <button type="button" class="btn btn-secondary">4</button>
+              <button type="button" class="btn btn-secondary">5</button>
+            </div>
           </div>
-        </div>
-        <div class="form-group row" id="rate_button_bar" style="display: flex; justify-content: center;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">example text</span>
-          </div>
-          
-          <div class="btn-group" role="group" aria-label="Basic example" >
+          <div class="form-group row" id="rate_button_bar">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon3">example text</span>
+            </div>
             
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-            <button type="button" class="btn btn-secondary">5</button>
+            <div class="btn-group" role="group" aria-label="Basic example" >
+              
+              <button type="button" class="btn btn-secondary">1</button>
+              <button type="button" class="btn btn-secondary">2</button>
+              <button type="button" class="btn btn-secondary">3</button>
+              <button type="button" class="btn btn-secondary">4</button>
+              <button type="button" class="btn btn-secondary">5</button>
+            </div>
           </div>
-        </div>
-        <div class="form-group row" id="rate_button_bar" style="display: flex; justify-content: center;">
-          <div class="input-group-prepend">
-            <span class="input-group-text" id="basic-addon3">example text</span>
+          <div class="form-group row">
+            <div class="form-group" id="textAreaDiv" style="width: 80%">
+              <label for="exampleFormControlTextarea1">Write your feedback here</label>
+              <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+              <hr class="my-4">
+              <input class="btn btn-primary" type="submit" id="submit" value="Submit" style="float: right">
+            </div>
           </div>
-          
-          <div class="btn-group" role="group" aria-label="Basic example" >
-            
-            <button type="button" class="btn btn-secondary">1</button>
-            <button type="button" class="btn btn-secondary">2</button>
-            <button type="button" class="btn btn-secondary">3</button>
-            <button type="button" class="btn btn-secondary">4</button>
-            <button type="button" class="btn btn-secondary">5</button>
-          </div>
-        </div>
-        <div class="form-group row" style="display: flex; justify-content: center;">
-          <div class="form-group" style="width: 80%">
-            <label for="exampleFormControlTextarea1">Write your feedback here</label>
-            <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-            <hr class="my-4">
-            <input class="btn btn-primary" type="submit" value="Submit" style="float: right">
-          </div>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
 
-    
+      
 
-    <!----------------------------------------------->
-    <!-- JS: Boostrap, Firebase, API related    -->
-    <!----------------------------------------------->
-    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-        integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-    </script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-    </script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-    </script>
+      <!----------------------------------------------->
+      <!--    JS: Boostrap, Firebase, API related    -->
+      <!----------------------------------------------->
+      <!-- Bootstrap libraries from CDN -->
+      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+      </script>
+      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+      </script>
+      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+      </script>
 
-    <!--------------------------------------------------------------------->
-    <!-- JS files: Your own JavaScript functions included here    -->
-    <!--------------------------------------------------------------------->
+      <!-- Firebase libraries from CDN -->
+      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+      <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
 
-</body>
+      <!-- Your own Firebase API key information -->
+      <script src="scripts/firebase_api_team24.js"> </script>
+
+      <!--------------------------------------------------------------------->
+      <!--      JS files: Your own JavaScript functions included here      -->
+      <!--------------------------------------------------------------------->
+      <!-- Header Navigation Bar -->
+      <script> var navBarCommonName={name: "Reviews" }; </script>
+      <script src="scripts/navbar-common.js"> ;</script>
+  </body>
 </html>

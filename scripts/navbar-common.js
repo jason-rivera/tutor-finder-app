@@ -1,9 +1,8 @@
-
-function navbarCommonAdd() {
-    /* this code is badly formatted however it makes the textblock a little clearer */
-    
+/* this code is badly formatted however it makes the textblock a little clearer */
+function navbarCommonAdd() {    
     $("body").prepend('<navbar class="navbar navbar-expand-lg navbar-dark bg-dark">');
-    $("navbar").append('<a class="navbar-brand" href="">Home</a>');
+    $("navbar").append('<a class="navbar-brand" href=""></a>');
+        $("navbar a").text(navBarCommonName.name);
     $("navbar").append('<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">');
         $("button").append('<span class="navbar-toggler-icon">');
     $("navbar").append('<div class="collapse navbar-collapse" id="navbarToggler">');
@@ -18,7 +17,7 @@ function navbarCommonAdd() {
                 $("#loginNavButton").append('<a class="nav-link" href="login.html">Login</a>');
 }
 
-navbarCommonAdd();
+navbarCommonAdd()
 
 /* Old Code
 <nav class="navbar navbar-expand-lg navbar-dark bg-dark">

@@ -14,7 +14,7 @@ function navbarCommonAdd() {
                 $("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
                 $("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
                 $("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
-                $("#loginNavButton").append('<a class="nav-link" href="login.html">Login</a>');
+                $("#loginNavButton").append('<a class="nav-link" href="login.html">Log in</a>');
 }
 
 navbarCommonAdd()

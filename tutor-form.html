@@ -1,31 +1,27 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>Team24 App Login</title>
-        <meta name="comp1800 boilerplate code" content="my bcit project">
+        <title>Team24 Tutor Info Submission</title>
         <meta name="author" content="BCIT">
 
         <!-- Bootstrap for Mobile-first, and JQuery -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
-        <!-- Firebase CSS for Authentication UI -->
-        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+        <!-- Optional styles and scripts of your own -->
 
-        <!-- Optional CSS of your own -->
-        <!-- <link type="text/css" rel="stylesheet" href="styles/app.css" /> -->
     </head>
-
+    
     <body>
 
         <!-------------------------------------->
         <!-- The following is HTML for layout -->
         <!-------------------------------------->
         <!-- Header Navigation Bar -->
+
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="navbar-brand" href="">myApp</a>
+            <a class="navbar-brand" href="">Home</a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02">
                 <span class="navbar-toggler-icon"></span>
             </button>
@@ -38,14 +34,47 @@
                         <a class="nav-link" href="review-tutor.html">Reviews</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="index.html">Home</a>
+                        <a class="nav-link" href="index.html">Home  </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Login</a>
                     </li>
                 </ul>
             </div>
         </nav>
+    
+    
+    <form id="tutor-form">   
+        <div class="form-group">
+        <label for="tutor-description">Tell us about yourself:</label>
+        <textarea class="form-control" id="tutor-description" rows="3"></textarea>
+        </div>
 
-        <!-- This is where the Login Widget will go -->
-        <h1 id="firebaseui-auth-container"></h1>
+        <div class="form-group">
+            <label for="rate">Rate:</label>
+            <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
+        </div> 
+        <div class="form-group" id="subjects">
+        <div>Subjects you teach:</div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="mathCheckbox" value="option1">
+            <label class="form-check-label" for="mathCheckbox">Math</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="englishCheckbox" value="option2">
+            <label class="form-check-label" for="englishCheckbox">English</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="historyCheckbox" value="option2">
+            <label class="form-check-label" for="historyCheckbox">History</label>
+        </div>
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="checkbox" id="programmingCheckbox" value="option2">
+            <label class="form-check-label" for="programmingCheckbox">Programming</label>
+        </div>
+        </div>
+        <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+    </form>
 
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->
@@ -73,8 +102,8 @@
         <!--------------------------------------------------------------------->
         <!--      JS files: Your own JavaScript functions included here      -->
         <!--------------------------------------------------------------------->
-        <script src="scripts/login.js"></script>
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="scripts/write-tutor.js"> </script>
 
     </body>
-
 </html>

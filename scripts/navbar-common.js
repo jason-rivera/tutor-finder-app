@@ -1,11 +1,11 @@
 /* this code is badly formatted however it makes the textblock a little clearer */
 function navbarCommonAdd() {    
-    $("body").prepend('<navbar class="navbar navbar-expand-lg navbar-dark bg-dark">');
-    $("navbar").append('<a class="navbar-brand" href=""></a>');
-        $("navbar a").text(navBarCommonName.name);
-    $("navbar").append('<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarToggler">');
-        $("button").append('<span class="navbar-toggler-icon">');
-    $("navbar").append('<div class="collapse navbar-collapse" id="navbarToggler">');
+    $("body").prepend('<navbar id="navBarCommonBar" class="navbar navbar-expand-lg navbar-dark bg-dark">');
+    $("#navBarCommonBar").append('<a class="navbar-brand" href=""></a>');
+        $("#navBarCommonBar a").text(navBarCommonName.name);
+    $("#navBarCommonBar").append('<button class="navbar-toggler" id="navBarButton" type="button" data-toggle="collapse" data-target="#navbarToggler">');
+        $("#navBarButton").append('<span class="navbar-toggler-icon">');
+    $("#navBarCommonBar").append('<div class="collapse navbar-collapse" id="navbarToggler">');
         $("#navbarToggler").append('<ul id="burgerMenu" class="navbar-nav ml-auto">');
             $("#burgerMenu").append('<li class="nav-item" id="searchNavButton">');
             $("#burgerMenu").append('<li class="nav-item" id="reviewsNavButton">');

@@ -6,12 +6,7 @@
  */
 
 
-  /* need this */
 
-  h4 {
-    background-color: rgb(235, 235, 235);
-  }
-  
 :root {
   --blue: #007bff;
   --indigo: #6610f2;
@@ -66,15 +61,23 @@ article, aside, dialog, figcaption, figure, footer, header, hgroup, main, nav, s
   display: block;
 }
 
+/** need this */
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 1rem;
   font-weight: 400;
   line-height: 1.5;
-  color: #212529;
+  color: white;
   text-align: left;
-  background-color: #fff;
+  background-color: #1B1C1D;
+}
+
+ /* need this */
+
+ h4 {
+  background-color: #1B1C1D;
 }
 
 [tabindex="-1"]:focus {
@@ -1962,16 +1965,18 @@ pre code {
   border: 0;
 }
 
+/* need this */
+
 .form-control {
   display: block;
   width: 100%;
   padding: 0.375rem 0.75rem;
   font-size: 1rem;
   line-height: 1.5;
-  color: #495057;
-  background-color: #fff;
+  color: #ececec;
+  background-color: #343a40;
   background-clip: padding-box;
-  border: 1px solid #ced4da;
+  border: 1px solid #535353;
   border-radius: 0.25rem;
   transition: border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
 }
@@ -1981,9 +1986,11 @@ pre code {
   border: 0;
 }
 
+/** need this */
+
 .form-control:focus {
   color: #495057;
-  background-color: #fff;
+  background-color: rgb(255, 255, 255);
   border-color: #80bdff;
   outline: 0;
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.25);
@@ -2509,18 +2516,16 @@ fieldset:disabled a.btn {
   pointer-events: none;
 }
 
-/* need this */
-.btn-primary { 
+.btn-primary {
   color: #fff;
-  background-color: #00A9E2;
-  border-color: #00A9E2;
+  background-color: #2E479E;
+  border-color: #2E479E;
 }
 
-/* need this */
 .btn-primary:hover {
   color: #fff;
-  background-color:#0091c2;
-  border-color: #0091c2;
+  background-color:#2a3f8f;
+  border-color: #2a3f8f;
 }
 
 .btn-primary:focus, .btn-primary.focus {
@@ -2545,16 +2550,18 @@ fieldset:disabled a.btn {
   box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
 }
 
+/* need this */
 .btn-secondary {
   color: #fff;
-  background-color: #6c757d;
-  border-color: #6c757d;
+  background-color: #2E479E;
+  border-color: #2E479E;
 }
 
+/* need this */
 .btn-secondary:hover {
   color: #fff;
-  background-color: #5a6268;
-  border-color: #545b62;
+  background-color: #283e8d;
+  border-color: #283e8d;
 }
 
 .btn-secondary:focus, .btn-secondary.focus {
@@ -4939,10 +4946,12 @@ tbody.collapse.show {
   background-color: #1d2124;
 }
 
+/** need this */
+
 .jumbotron {
   padding: 2rem 1rem;
   margin-bottom: 2rem;
-  background-color: #e9ecef;
+  background-color: #1B1C1D;
   border-radius: 0.3rem;
 }
 
@@ -6153,6 +6162,8 @@ button.bg-light:hover,
 button.bg-light:focus {
   background-color: #dae0e5 !important;
 }
+
+/** need this */
 
 .bg-dark {
   background-color: #343a40 !important;

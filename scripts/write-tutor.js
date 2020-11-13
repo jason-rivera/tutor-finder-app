@@ -20,6 +20,15 @@ function writeTutor() {
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user){
 					console.log(user.uid + " is now a tutor.");
+					db.collection("Tutors").doc(user.uid).set({
+						description: "",
+						rate: 0,
+						math: false,
+						english: false,
+						history: false,
+						programming: false
+					})
+					
 					db.collection("Tutors").doc(user.uid).update({
 						description: document.getElementById("tutor-description").value,
 						rate: document.getElementById("rate").value
@@ -28,24 +37,40 @@ function writeTutor() {
 						db.collection("Tutors").doc(user.uid).update({
 							math: true
 						})
+					} else {
+						db.collection("Tutors").doc(user.uid).update({
+							math: false	
+						})
 					}
 					if(document.getElementById("englishCheckbox").checked) {
 						db.collection("Tutors").doc(user.uid).update({
 							english: true
+						})
+					} else {
+						db.collection("Tutors").doc(user.uid).update({
+							english: false	
 						})
 					}
 					if(document.getElementById("historyCheckbox").checked) {
 						db.collection("Tutors").doc(user.uid).update({
 							history: true
 						})
+					} else {
+						db.collection("Tutors").doc(user.uid).update({
+							history: false		
+						})
 					}
 					if(document.getElementById("programmingCheckbox").checked) {
 						db.collection("Tutors").doc(user.uid).update({
 							programming: true
 						})
-					}					
-				}
-				else {
+					} else {
+						db.collection("Tutors").doc(user.uid).update({
+							programming: false		
+						})
+					}
+					
+				} else {
 					console.log("no user signed in");
 				}
 			})

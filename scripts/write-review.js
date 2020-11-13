@@ -1,12 +1,10 @@
 function writeReview() {  
-    $('#reviewTutor').submit(function () { //makes it so page doesn't refresh on submit
-      return false;
-    });
-    
-      $(document).ready(function () {
+        $(document).ready(function () {
           $("#submitReview").click(function (){
               firebase.auth().onAuthStateChanged(function (user) {
+
                   var dateNow = new Date();
+
                   if (user){
                       console.log(user.uid + " Left a review");
                       db.collection("Reviews").doc(tutorIDForReview).set({
@@ -18,8 +16,6 @@ function writeReview() {
                           message: document.getElementById("reviewTextArea").value,
                           Date: dateNow.getTime()
                       })
-
-                      
                       $("#submitReview").value = "Thanks!";
                       
                   } else {

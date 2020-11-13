@@ -4,9 +4,6 @@ function updateProfile() {
   });
 }
   
-
-
-
 $(document).ready(function () {
   $("#update-btn").click(function (){
     firebase.auth().onAuthStateChanged(function (user) {

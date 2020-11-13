@@ -41,6 +41,9 @@ body {
 h4 {
   background-color: rgb(235, 235, 235);
 }
+#update-profile-header {
+  text-align: center;
+}
 @media screen and (min-width: 800px) {
   body {
       position: relative;

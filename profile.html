@@ -1,12 +1,10 @@
 <!DOCTYPE html>
 <html lang="en">
-
     <head>
         <meta charset="utf-8">
         <title>My BCIT Project</title>
         <meta name="comp1800 boilerplate code" content="my bcit project">
         <meta name="author" content="BCIT">
-
         <!-- Bootstrap for Mobile-first, and JQuery -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
@@ -19,11 +17,42 @@
     <body>
 
 
-      <h2 id="your-name">Your name:</h2>
-      <h2 id="your-email">Your email: </h2>
-      <h2 id="your-year">Your birth year: </h2>
-      <h2 id="your-location">Your location: </h2>
-      <h2 id="your-picture">Your name: </h2>
+      <h4 id="your-picture">*pic*</h4>
+      <h4 id="your-name">Name:</h4>
+      <h4 id="your-email">Email:</h4>
+      <h4 id="your-year">Birth Year:</h4>
+      <h4 id="your-location">Location:</h4>
+
+
+    <br/><br/><br/><br/><h3 id="update-profile-header">UPDATE PROFILE</h3><br/>
+
+    <form id="update-profile">   
+        <div class="form-group">
+            <label for="name-text">Name:</label>
+            <input type="text" id="name-text" name="name-text">
+        </div>
+        <div class="form-group">
+            <label for="email-text">Email:</label>
+            <input type="text" id="email-text" name="email-text">
+        </div> 
+        <div class="form-group">
+            <label for="birth-year-text">Birth Year:</label>
+            <input type="text" id="birth-year-text" name="birth-year-text">
+        </div> 
+        <div class="form-group">
+            <label for="location-text">Location:</label>
+            <input type="text" id="location-text" name="location-text">
+        </div> 
+        <br/>
+
+        <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
+    </form>
+      
+    <br/>
+    <br/>
+
+
+
 
 
 
@@ -53,13 +82,11 @@
       <script> var navBarCommonName={name: "Profile" }; </script>
       <script src="scripts/navbar-common.js"></script>
 
-      <!-- Scripts for testing -->
-      <script src="scripts/populate-tutors.js"> </script>
-      
-
-
-      <!-- Jason's scripts for testing -->
+      <!-- Scripts for testing -->      
       <script src="scripts/get-profile.js"> </script>
+      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+      <script src="scripts/update-profile.js"> </script>
+
 
     </body>
 </html>

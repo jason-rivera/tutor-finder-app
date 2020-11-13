@@ -27,6 +27,64 @@
         </div>
         
 
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+          <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+              <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLongTitle">Leave Review</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                  <span aria-hidden="true">&times;</span>
+                </button>
+              </div>
+              <div class="modal-body">
+                <form id="reviewTutor">
+                  <div class="media" >
+                    <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
+                    <div class="media-body">
+                      <h5 class="mt-0" id="tutorName">$Tutor Name</h5>
+                      <p id="reviewDate">Date: date</p>
+                      <p>Subject taught: subject</p>
+                      
+                    </div>
+                  </div>
+        
+                  <hr class="my-4">
+        
+                  <div class="form-group">
+                    <label for="rangeOnTime">On time?</label>
+                    <input type="range" class="form-control-range" id="rangeOnTime">
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="teachingAbility">Teaching ability</label>
+                    <input type="range" class="form-control-range" id="teachingAbility">
+                  </div>
+        
+                  <div class="form-group">
+                    <label for="knowledge">Knowledge</label>
+                    <input type="range" class="form-control-range" id="knowledge">
+                  </div>
+        
+                  <div class="form-group" id="textAreaDiv" >
+                    <label for="reviewTextArea">Write your feedback here</label>
+                    <textarea class="form-control" id="reviewTextArea" rows="3"></textarea>
+                    <hr class="my-4">
+                    <input class="btn btn-primary" type="submit" id="submitReview" value="Submit" style="float: right">
+                  </div>
+        
+                </form>
+              </div>
+              <!--
+              <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+              </div>
+            -->
+            </div>
+          </div>
+        </div>
+
         <div class="accordion" id="accordionExample">
             
             
@@ -34,7 +92,7 @@
               <div class="card-header" id="headingOne">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    Collapsible Group Item #1
+                    November, 15. 2020
                   </button>
                 </h2>
               </div>
@@ -46,9 +104,13 @@
                     </div>
                     <div class="col-md-8">
                       <div class="card-body">
-                        <h5 class="card-title">$TUTOR NAME</h5>
+                        <h5 class="card-title">TUTOR NAME</h5>
                         <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
                         <p class="card-text"><small class="text-muted">Session ID: 123412341243</small></p>
+                        <!-- Button trigger modal. -->
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+                        Leave Review
+                        </button>
                       </div>
                     </div>
                   </div>
@@ -58,7 +120,7 @@
               <div class="card-header" id="headingTwo">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                    Collapsible Group Item #2
+                    November, 9. 2020
                   </button>
                 </h2>
               </div>
@@ -72,7 +134,7 @@
               <div class="card-header" id="headingThree">
                 <h2 class="mb-0">
                   <button class="btn btn-link btn-block text-left collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                    Collapsible Group Item #3
+                    November, 6. 2020
                   </button>
                 </h2>
               </div>
@@ -119,5 +181,10 @@
         <script> var navBarCommonName={name: "Previous Sessions" }; </script>
         <script src="scripts/navbar-common.js"> ;</script>
         
+        <script src="scripts/populate-previous-sessions-test.js"></script>
+
+      <!-- Testing files for submitting review -->
+      <script> var tutorIDForReview = "placeholderTutorIDprevses"</script>
+      <script src="scripts/write-review.js"></script>
     </body>
 </html>

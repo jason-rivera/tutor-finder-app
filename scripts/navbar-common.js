@@ -2,20 +2,31 @@
 function navbarCommonAdd() {    
     $("body").prepend('<navbar id="navBarCommonBar" class="navbar navbar-expand-lg navbar-dark bg-dark">');
     $("#navBarCommonBar").append('<a class="navbar-brand" href=""></a>');
-        $("#navBarCommonBar a").text(navBarCommonName.name);
+    $("#navBarCommonBar a").text(navBarCommonName.name);
     $("#navBarCommonBar").append('<button class="navbar-toggler" id="navBarButton" type="button" data-toggle="collapse" data-target="#navbarToggler">');
-        $("#navBarButton").append('<span class="navbar-toggler-icon">');
+    $("#navBarButton").append('<span class="navbar-toggler-icon">');
     $("#navBarCommonBar").append('<div class="collapse navbar-collapse" id="navbarToggler">');
-        $("#navbarToggler").append('<ul id="burgerMenu" class="navbar-nav ml-auto">');
-            $("#burgerMenu").append('<li class="nav-item" id="searchNavButton">');
-            $("#burgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
-            $("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
-            $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
-                $("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
-                $("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
-                $("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
-                $("#loginNavButton").append('<a class="nav-link" href="login.html">Log in</a>');
+    $("#navbarToggler").append('<ul id="burgerMenu" class="navbar-nav ml-auto">');
+	$("#burgerMenu").append('<li class="nav-item" id="searchNavButton">');
+	$("#burgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
+	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
+	$("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
+	$("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
+	$("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
+	$("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
+
+    $('body').append('<script src="scripts/logout.js"></script>');
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user){
+			$("#loginNavButton").append('<a class="nav-link" href="" onClick="logout()">Log Out</a>');
+        }
+        else {
+            $("#loginNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
+        }
+    })
+				
 }
+
 
 navbarCommonAdd()
 

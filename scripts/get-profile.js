@@ -1,7 +1,8 @@
 
-function updateUserProfileAuth() {
+function getUser() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
+      console.log ("user is signed in");
       db.collection("Users").doc(user.uid).get().then(function(doc){
           let name = doc.data().name;
           let email = doc.data().email;
@@ -27,4 +28,4 @@ function updateUserProfileAuth() {
 }
 
 
-updateUserProfileAuth();
+getUser();

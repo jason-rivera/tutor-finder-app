@@ -16,4 +16,4 @@ function createUserProfile(studentid, name, email, yearOfBirth, location, photoU
 	});
 }
 
-createUserProfile("111", "jacob twotwo", "j22@coolness.com", "2000", "Burnaby", "http://www.j22.com");
+createUserProfile("111", "jacob twotwo", "j22@coolness.com", "2000", "Burnaby", "http://www.j222.com");

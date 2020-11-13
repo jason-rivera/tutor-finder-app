@@ -14,8 +14,19 @@ function navbarCommonAdd() {
                 $("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
                 $("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
                 $("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
-                $("#loginNavButton").append('<a class="nav-link" href="login.html">Log in</a>');
+
+    $('body').append('<script src="scripts/logout.js"></script>');
+    firebase.auth().onAuthStateChanged(function (user) {
+        if (user){
+			$("#loginNavButton").append('<a class="nav-link" href="" onClick="logout()">Log Out</a>');
+        }
+        else {
+            $("#loginNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
+        }
+    })
+				
 }
+
 
 navbarCommonAdd()
 

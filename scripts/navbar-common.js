@@ -29,7 +29,7 @@ function navbarCommonAdd() {
 				
 }
 
-function logout(){
+function logout(){ //needed for logout functionality on logout button
     firebase.auth().signOut().then(function () { //if successful
 		console.log("user logged out");
 	})

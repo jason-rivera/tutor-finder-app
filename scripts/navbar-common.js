@@ -10,7 +10,8 @@ function navbarCommonAdd() {
 	$("#burgerMenu").append('<li class="nav-item" id="searchNavButton">');
 	$("#burgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
 	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
-	$("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
+    $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
+    $("#searchNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');
 	$("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
 	$("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');

@@ -43,12 +43,12 @@ body {
   text-align: center;
 }
 @media screen and (min-width: 800px) {
-  body {
+  /* body {
       position: relative;
       width: 800px;
       left: 50%;
       transform: translate(-50%, 0);
-  }
+  } */
 
   .homepage-button {
     position: relative;

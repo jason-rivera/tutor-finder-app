@@ -46,8 +46,8 @@ function getTutor() {
 			tutorsRef = tutorsRef.where("programming", "==", true);
 		}
 
-		//let rate = document.getElementById("rate").value;
-		//tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rate));			
+		let rate = document.getElementById("rate").value;
+		tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rate));			
 
 		tutorsRef
 		.get()

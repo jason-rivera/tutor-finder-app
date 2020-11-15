@@ -44,6 +44,12 @@ body {
 #update-profile-header {
   text-align: center;
 }
+
+
+h6 {
+  text-align: center;
+}
+
 @media screen and (min-width: 800px) {
 
   .homepage-button {
@@ -54,17 +60,13 @@ body {
   }
 }
 
-h6 {
-  text-align: center;
-}
-
 
 
 /* For the subject buttons */
 
 .button-cont {
   position: relative;
-  max-width: 500px;
+  max-width: 550px;
   left: 50%;
   transform: translate(-50%, 0);
   padding: 0px;
@@ -80,7 +82,7 @@ h6 {
 }
 
 .ck-button label {
-  float:left;
+  /* float:left; */
 
   width: 100px;
   height: 25px;

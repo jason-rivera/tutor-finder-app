@@ -10,95 +10,102 @@
         <link type="text/css" rel="stylesheet" href="styles/search.css" />
         <link type="text/css" rel="stylesheet" href="styles/bootstrap.css" />
         <style>
-
+            .body-container {
+                position: relative;
+                width: 800px;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
         </style>
     </head>
     <body>
-
-        <div class="jumbotron">
-        <h4>Keyword Search</h4>
-        <p class="lead"></p>
-        </div>
-
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control form-control-lg" type="search" placeholder="Enter a subject/name" style="width: 100%">
-        <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Find Tutor <i class="fas fa-search"></i></a>
-        </form>
-
-        <br/>
-        <div class="jumbotron">
-            <h4>Category Search</h4>
+        <div class="body-container">
+            <div class="jumbotron">
+            <h4>Keyword Search</h4>
             <p class="lead"></p>
-        </div>
-
-        <div class="button-container">
-            <button type="button" class="btn btn-secondary">Math</button>
-            <button type="button" class="btn btn-secondary">English</button>
-            <button type="button" class="btn btn-secondary">Spanish</button>
-            <button type="button" class="btn btn-secondary">Biology</button>
-            <button type="button" class="btn btn-secondary">Science</button>
-            <button type="button" class="btn btn-secondary">Physics</button>
-            <button type="button" class="btn btn-secondary">Geography</button>
-            <button type="button" class="btn btn-secondary">French</button>
-            <button type="button" class="btn btn-secondary">Subject</button>
-            <button type="button" class="btn btn-secondary">Subject</button>
-        </div>
-
-        <br/>
-        <div class="jumbotron">
-            <h4>Advanced Search </h4>
-            <p class="lead"></p>
-        </div>
-
-        <form>
-            <div class="form-group">
-                <label for="customRange3" id="current-level">Your Current Level</label>
-                <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
             </div>
-        </form>
 
-        <div class="filter-text">Subject:</div>
-        <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-        </select>
-        <br/>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control form-control-lg" type="search" placeholder="Enter a subject/name" style="width: 100%">
+            <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Find Tutor <i class="fas fa-search"></i></a>
+            </form>
 
-        <div class="filter-text">Location:</div>
-        <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-        </select>
-        <br/>
+            <br/>
+            <div class="jumbotron">
+                <h4>Category Search</h4>
+                <p class="lead"></p>
+            </div>
 
-        <div class="filter-text">Highest level of Education:</div>
-        <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-        </select>
-        <br/>
+            <div class="button-container">
+                <button type="button" class="btn btn-secondary">Math</button>
+                <button type="button" class="btn btn-secondary">English</button>
+                <button type="button" class="btn btn-secondary">Spanish</button>
+                <button type="button" class="btn btn-secondary">Biology</button>
+                <button type="button" class="btn btn-secondary">Science</button>
+                <button type="button" class="btn btn-secondary">Physics</button>
+                <button type="button" class="btn btn-secondary">Geography</button>
+                <button type="button" class="btn btn-secondary">French</button>
+                <button type="button" class="btn btn-secondary">Subject</button>
+                <button type="button" class="btn btn-secondary">Subject</button>
+            </div>
 
-        <div class="filter-text">Years of experience:</div>
-        <select class="form-control">
-        <option>Default select</option>
-        <option>Default select</option>
-        <option>Default select</option>
-        </select>
+            <br/>
+            <div class="jumbotron">
+                <h4>Advanced Search </h4>
+                <p class="lead"></p>
+            </div>
 
-        <br/>
-        <div class="progress">
-        <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Search Optimized 75%</div>
+            <form>
+                <div class="form-group">
+                    <label for="customRange3" id="current-level">Your Current Level</label>
+                    <input type="range" class="custom-range" min="0" max="5" step="0.5" id="customRange3">
+                </div>
+            </form>
+
+            <div class="filter-text">Subject:</div>
+            <select class="form-control">
+            <option>Default select</option>
+            <option>Default select</option>
+            <option>Default select</option>
+            </select>
+            <br/>
+
+            <div class="filter-text">Location:</div>
+            <select class="form-control">
+            <option>Default select</option>
+            <option>Default select</option>
+            <option>Default select</option>
+            </select>
+            <br/>
+
+            <div class="filter-text">Highest level of Education:</div>
+            <select class="form-control">
+            <option>Default select</option>
+            <option>Default select</option>
+            <option>Default select</option>
+            </select>
+            <br/>
+
+            <div class="filter-text">Years of experience:</div>
+            <select class="form-control">
+            <option>Default select</option>
+            <option>Default select</option>
+            <option>Default select</option>
+            </select>
+
+            <br/>
+            <div class="progress">
+            <div class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100" style="width: 75%">Search Optimized 75%</div>
+            </div>
+
+            <br/>
+            <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Advanced Search <i class="fas fa-search"></i></a>
+
+            <br/>
+            <br/>
+            <br/>
+
         </div>
-
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 find-button" href="results.html" role="button">Advanced Search <i class="fas fa-search"></i></a>
-
-        <br/>
-        <br/>
-        <br/>
 
 
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"

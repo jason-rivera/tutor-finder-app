@@ -3,6 +3,13 @@ body {
   background-color: rgb(255, 255, 255);
 }
 
+.body-container {
+  position: relative;
+  max-width: 800px;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
 .btn-secondary {
   margin: 5px;
   width: 100px;
@@ -38,12 +45,6 @@ body {
   text-align: center;
 }
 @media screen and (min-width: 800px) {
-  /* body {
-      position: relative;
-      width: 800px;
-      left: 50%;
-      transform: translate(-50%, 0);
-  } */
 
   .homepage-button {
     position: relative;
@@ -51,4 +52,55 @@ body {
     transform: translate(-50%, 0);
     width: 500px;
   }
+}
+
+h6 {
+  text-align: center;
+}
+
+
+
+/* For the subject buttons */
+
+.button-cont {
+  position: relative;
+  max-width: 500px;
+  left: 50%;
+  transform: translate(-50%, 0);
+  padding: 0px;
+  margin: 0px;
+}
+
+.ck-button {
+  margin: 5px;
+  background-color:#EFEFEF;
+  border-radius: 5px;
+  overflow:auto;
+  float:left;
+}
+
+.ck-button label {
+  float:left;
+
+  width: 100px;
+  height: 25px;
+  
+}
+
+.ck-button label span {
+  text-align:center;
+  display:block;
+  padding-top: 1px;
+}
+
+.ck-button label input {
+  position:absolute;
+  top:10px;
+  left: 10px;
+  z-index: -1;
+}
+
+.ck-button input:checked + span {
+  background-color:#6c757d;
+  color:#fff;
 }

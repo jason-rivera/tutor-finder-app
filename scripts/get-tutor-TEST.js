@@ -33,8 +33,21 @@ function getTutor() {
 
 		let tutorsRef = db.collection("Tutors");
 
-		let rate = document.getElementById("rate").value;
-		tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rate));			
+		if (document.getElementById("mathCheckbox").checked) {
+			tutorsRef = tutorsRef.where("math", "==", true);
+		}
+		if (document.getElementById("englishCheckbox").checked) {
+			tutorsRef = tutorsRef.where("english", "==", true);
+		}
+		if (document.getElementById("historyCheckbox").checked) {
+			tutorsRef = tutorsRef.where("history", "==", true);
+		}
+		if (document.getElementById("programmingCheckbox").checked) {
+			tutorsRef = tutorsRef.where("programming", "==", true);
+		}
+
+		//let rate = document.getElementById("rate").value;
+		//tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rate));			
 
 		tutorsRef
 		.get()

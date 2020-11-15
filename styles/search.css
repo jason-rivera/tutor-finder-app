@@ -2,12 +2,7 @@
 body {
   background-color: rgb(255, 255, 255);
 }
-.button-container {
-  position: relative;
-  width: 250px;
-  left: 50%;
-  transform: translate(-45%, 0);
-}
+
 .btn-secondary {
   margin: 5px;
   width: 100px;

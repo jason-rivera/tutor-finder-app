@@ -12,7 +12,7 @@ function navbarCommonAdd() {
 	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
     $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
     $("#searchNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');
-	$("#searchNavButton").append('<a class="nav-link" href="search.html">Search</a>');
+	$("#searchNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
 	$("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
 	// Login/logout link below

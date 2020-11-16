@@ -46,11 +46,10 @@ function getTutor() {
 			tutorsRef = tutorsRef.where("programming", "==", true);
 		}
 
-		let rate = document.getElementById("rate").value;
-		tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rate));			
+		let rateQuery = document.getElementById("rate").value;
+		tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rateQuery));			
 
-		tutorsRef
-		.get()
+		tutorsRef.get()
 		.then(function(querySnapshot) {
 			querySnapshot.forEach(function(doc) {
 				console.log(doc.id, " => ", doc.data());

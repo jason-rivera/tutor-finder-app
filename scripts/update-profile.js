@@ -1,5 +1,6 @@
 function updateProfile() {  
   $(document).ready(function () {
+    
     $("#update-btn").click(function (){
       firebase.auth().onAuthStateChanged(function (user) {
         if (user){
@@ -9,6 +10,7 @@ function updateProfile() {
             birthYear: document.getElementById("birth-year-text").value,
             location: document.getElementById("location-text").value,
             photoURL: document.getElementById("picture-text").value,
+            
           })
         }
       })

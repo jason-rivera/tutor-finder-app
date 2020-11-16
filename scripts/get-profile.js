@@ -18,7 +18,6 @@ function getUser() {
           document.getElementById("your-email").innerText = "Email: " + email;
           document.getElementById("your-year").innerHTML = "Birth year: " + birthYear;
           document.getElementById("your-location").innerText = "Location: " + location;
-          
       });
     } else {
       console.log('not logged in');

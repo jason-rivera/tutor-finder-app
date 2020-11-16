@@ -16,7 +16,7 @@ body {
 }
 .form-group {
   padding-top: 20px;
-  text-align: center;
+  /* text-align: center; */
   font-weight: bold;
 }
 .jumbotron {
@@ -48,6 +48,11 @@ body {
 
 h6 {
   text-align: center;
+  
+}
+
+span {
+  cursor: pointer;
 }
 
 @media screen and (min-width: 800px) {
@@ -72,6 +77,8 @@ h6 {
   padding: 0px;
   margin: 0px;
 }
+
+
 
 .ck-button {
   margin: 5px;
@@ -106,3 +113,4 @@ h6 {
   background-color:#6c757d;
   color:#fff;
 }
+

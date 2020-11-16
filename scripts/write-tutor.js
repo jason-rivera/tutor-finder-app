@@ -10,7 +10,7 @@ function writeTutor() {
 					console.log(user.uid + " is now a tutor.");
 					db.collection("Tutors").doc(user.uid).set({
 						description: document.getElementById("tutor-description").value,
-						rate: document.getElementById("rate").value,
+						rate: parseFloat(document.getElementById("rate").value),
 						math: document.getElementById("mathCheckbox").checked,
 						english: document.getElementById("englishCheckbox").checked,
 						history: document.getElementById("historyCheckbox").checked,

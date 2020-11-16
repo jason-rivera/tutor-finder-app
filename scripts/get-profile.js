@@ -1,4 +1,3 @@
-
 function getUser() {
   firebase.auth().onAuthStateChanged(function(user) {
     if (user) {
@@ -9,23 +8,21 @@ function getUser() {
           let birthYear = doc.data().birthYear;
           let location = doc.data().location;
           let pic = doc.data().photoURL;
-          console.log('Your name is: ' + name);
-          console.log('Your email is: ' + email);
-          console.log('Your birth year is: ' + birthYear);
-          console.log('Your location is: ' + location);
+          console.log('Name: ' + name);
+          console.log('Email: ' + email);
+          console.log('Birth year: ' + birthYear);
+          console.log('Location: ' + location);
           console.log('Your photo is: ' + pic);
-          document.getElementById("your-picture").innerHTML = 'Profile Picture: <br><center> <img src="' + pic + ' height="100" width="100" alt="Your photo" style="border-radius: 100px"></center>';
-          document.getElementById("your-name").innerText = "Your name: " + name;
-          document.getElementById("your-email").innerText = "Your email: " + email;
-          document.getElementById("your-year").innerHTML = "Your birth year: " + birthYear;
-          document.getElementById("your-location").innerText = "Your location: " + location;
-          
+          document.getElementById("your-picture").innerHTML = '<center><br> <img src="' + pic + '" height="100" width="100" alt="Your photo" style="border-radius: 100px"></center><br>';
+          document.getElementById("your-name").innerText = "Name: " + name;
+          document.getElementById("your-email").innerText = "Email: " + email;
+          document.getElementById("your-year").innerHTML = "Birth year: " + birthYear;
+          document.getElementById("your-location").innerText = "Location: " + location;
       });
     } else {
       console.log('not logged in');
     }
   });
 }
-
 
 getUser();

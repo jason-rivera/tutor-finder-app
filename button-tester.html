@@ -9,11 +9,12 @@
 
         <!-- Bootstrap for Mobile-first, and JQuery -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+        <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"> -->
 
         <!-- Optional styles and scripts of your own -->
-        <link type="text/css" rel="stylesheet" href="styles/index.css" />
+        <link type="text/css" rel="stylesheet" href="styles/search.css" />
         <link type="text/css" rel="stylesheet" href="styles/bootstrap.css" />
+        <link type="text/css" rel="stylesheet" href="styles/button-check.css" />
 
     </head>
 
@@ -23,17 +24,71 @@
         <!-- The following is HTML for layout -->
         <!-------------------------------------->
         
-        <h1 id="welcome-msg"></h1>
-        
-        <br/>        
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="searchV2.html" role="button"><div class="homepage-text">Search for a Tutor</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="review-tutor.html" role="button"><div class="homepage-text">Browse Reviews</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="previous-sessions.html" role="button"><div class="homepage-text">Previous Sessions</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="main.html" role="button"><div class="homepage-text">testinghtml</div></a>
-        <br/>
+        <div class="button-container ck-button">
+          <label>
+          <input type="checkbox" value="1" class="btn btn-secondary"><span>Math</span>
+        </label>
+
+
+          <button type="button" class="btn btn-secondary">English</button>
+          <button type="button" class="btn btn-secondary">Spanish</button>
+          <button type="button" class="btn btn-secondary">Biology</button>
+          <button type="button" class="btn btn-secondary">Science</button>
+          <button type="button" class="btn btn-secondary">Physics</button>
+          <button type="button" class="btn btn-secondary">Geography</button>
+          <button type="button" class="btn btn-secondary">French</button>
+          <button type="button" class="btn btn-secondary">Subject</button>
+          <button type="button" class="btn btn-secondary">Subject</button>
+        </div>
+
+        <div class="ck-button">
+          <label>
+             <input type="checkbox" value="1"><span>Math</span>
+          </label>
+       </div>
+
+       <div class="ck-button">
+          <label>
+            <input type="checkbox" value="1"><span>English</span>
+          </label>
+        </div>
+
+        <div class="ck-button">
+          <label>
+            <input type="checkbox" value="1"><span>Spanish</span>
+          </label>
+      </div>
+
+      <div class="ck-button">
+        <label>
+          <input type="checkbox" value="1"><span>Biology</span>
+        </label>
+      </div>
+
+      <div class="ck-button">
+        <label>
+          <input type="checkbox" value="1"><span>Physics</span>
+        </label>
+      </div>
+
+      <div class="ck-button">
+        <label>
+          <input type="checkbox" value="1"><span>Chemistry</span>
+        </label>
+      </div>
+
+      <div class="ck-button">
+        <label>
+          <input type="checkbox" value="1"><span>Geography</span>
+        </label>
+      </div>
+
+      <div class="ck-button">
+        <label>
+          <input type="checkbox" value="1"><span>French</span>
+        </label>
+      </div>
+       
 
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->
@@ -81,3 +136,6 @@
 
     </body>
 </html>
+
+
+

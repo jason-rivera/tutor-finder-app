@@ -10,47 +10,120 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
         <!-- Optional styles and scripts of your own -->
-        <link type="text/css" rel="stylesheet" href="styles/search.css" />
+        <link type="text/css" rel="stylesheet" href="styles/profile.css" />
         <link type="text/css" rel="stylesheet" href="styles/bootstrap.css" />
-
+        <style>
+            .body-container {
+                position: relative;
+                max-width: 800px;
+                left: 50%;
+                transform: translate(-50%, 0);
+            }
+            #your-picture {
+                text-align: center;
+            }
+        </style>
     </head>
 
     <body>
-
-
-      <h4 id="your-picture">*pic*</h4>
-      <h4 id="your-name">Name:</h4>
-      <h4 id="your-email">Email:</h4>
-      <h4 id="your-year">Birth Year:</h4>
-      <h4 id="your-location">Location:</h4>
-
-
-    <br/><br/><h3 id="update-profile-header">UPDATE PROFILE</h3><br/>
-
-    <form id="update-profile">   
-        <div class="form-group">
-            <label for="name-text">Name:</label>
-            <input type="text" id="name-text" name="name-text">
+        <div class="jumbotron">
+            <h4>Your Profile</h4>
         </div>
-        <div class="form-group">
-            <label for="email-text">Email:</label>
-            <input type="text" id="email-text" name="email-text">
-        </div> 
-        <div class="form-group">
-            <label for="birth-year-text">Birth Year:</label>
-            <input type="text" id="birth-year-text" name="birth-year-text">
-        </div> 
-        <div class="form-group">
-            <label for="location-text">Location:</label>
-            <input type="text" id="location-text" name="location-text">
-        </div> 
-        <br/>
+        <div class="body-container">
+            <h4 id="your-picture">*you are not logged in*</h4>
+            <h4 id="your-name">Name:</h4>
+            <h4 id="your-email">Email:</h4>
+            <h4 id="your-year">Birth Year:</h4>
+            <h4 id="your-location">Location:</h4>
 
-        <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
-    </form>
-      
-    <br/>
-    <br/>
+            <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter" style="float: right">Edit Profile</button>
+
+
+
+            <!-- <form id="update-profile">   
+                <div class="form-group">
+                    <label for="name-text">Name:</label>
+                    <input type="text" id="name-text" name="name-text">
+                </div>
+                <div class="form-group">
+                    <label for="email-text">Email:</label>
+                    <input type="text" id="email-text" name="email-text">
+                </div> 
+                <div class="form-group">
+                    <label for="birth-year-text">Birth Year:</label>
+                    <input type="text" id="birth-year-text" name="birth-year-text">
+                </div> 
+                <div class="form-group">
+                    <label for="location-text">Location:</label>
+                    <input type="text" id="location-text" name="location-text">
+                </div> 
+                <br/>
+
+                <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
+            </form> -->
+            
+            <br/>
+            <br/>
+
+        </div>
+
+
+
+        <!-- Modal -->
+        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Edit Profile</h5>
+
+                </div>
+                <div class="modal-body">
+                  <form id="update-profile">
+                        <div class="form-group">
+                            <label for="name-text">Full Name:</label>
+                            <input type="text" class="form-control" id="name-text" name="name-text">
+                        </div>
+                        <div class="form-group">
+                            <label for="password-text">Password</label>
+                            <input type="text" class="form-control" id="password-text" name="password-text" autocomplete="off" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email-text">Email:</label>
+                            <input type="text" class="form-control" id="email-text" name="email-text">
+                        </div> 
+                        <div class="form-group">
+                            <label for="birth-year-text">Birth Year:</label>
+                            <input type="text" class="form-control" id="birth-year-text" name="birth-year-text">
+                        </div> 
+                        <div class="form-group">
+                            <label for="location-text">Location:</label>
+                            <input type="text" class="form-control" id="location-text" name="location-text">
+                        </div>
+                        <div class="form-group">
+                            <label for="picture-text">Profile Picture URL:</label>
+                            <input type="text" class="form-control" id="picture-text" name="picture-text">
+                        </div> 
+                
+                        <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -84,10 +157,10 @@
       <script src="scripts/navbar-common.js"></script>
 
       <!-- Scripts for testing -->      
-      <script src="scripts/get-profile.js"> </script>
+      
       <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
       <script src="scripts/update-profile.js"> </script>
-
+      <script src="scripts/get-profile.js"> </script>
 
     </body>
 </html>

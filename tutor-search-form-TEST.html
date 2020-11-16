@@ -1,10 +1,8 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>My BCIT Project</title>
-        <meta name="comp1800 boilerplate code" content="my bcit project">
+        <title>Team24 Tutor Info Submission</title>
         <meta name="author" content="BCIT">
 
         <!-- Bootstrap for Mobile-first, and JQuery -->
@@ -12,28 +10,42 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
         <!-- Optional styles and scripts of your own -->
-        <link type="text/css" rel="stylesheet" href="styles/index.css" />
-        <link type="text/css" rel="stylesheet" href="styles/bootstrap.css" />
 
     </head>
-
+    
     <body>
 
         <!-------------------------------------->
         <!-- The following is HTML for layout -->
         <!-------------------------------------->
-        
-        <h1 id="welcome-msg"></h1>
-        
-        <br/>        
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="searchV2.html" role="button"><div class="homepage-text">Search for a Tutor</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="review-tutor.html" role="button"><div class="homepage-text">Browse Reviews</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="previous-sessions.html" role="button"><div class="homepage-text">Previous Sessions</div></a>
-        <br/>
-        <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="main.html" role="button"><div class="homepage-text">testinghtml</div></a>
-        <br/>
+    
+        <form id="tutor-form">   
+
+            <div class="form-group">
+                <label for="rate">Rate:</label>
+                <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
+            </div> 
+            <div class="form-group" id="subjects">
+            <div>Subjects you teach:</div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="mathCheckbox" value="option1">
+                <label class="form-check-label" for="mathCheckbox">Math</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="englishCheckbox" value="option2">
+                <label class="form-check-label" for="englishCheckbox">English</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="historyCheckbox" value="option2">
+                <label class="form-check-label" for="historyCheckbox">History</label>
+            </div>
+            <div class="form-check form-check-inline">
+                <input class="form-check-input" type="checkbox" id="programmingCheckbox" value="option2">
+                <label class="form-check-label" for="programmingCheckbox">Programming</label>
+            </div>
+            </div>
+            <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+        </form>
 
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->
@@ -61,23 +73,13 @@
         <!--------------------------------------------------------------------->
         <!--      JS files: Your own JavaScript functions included here      -->
         <!--------------------------------------------------------------------->
-
         <!-- Header Navigation Bar -->
-        <script> var navBarCommonName={name: "Home" }; </script>
-        <script src="scripts/navbar-common.js"> ;</script>
+        <script> var navBarCommonName={name: "TEST" }; </script>
+        <script src="scripts/navbar-common.js"></script>
 
-        <!-- Scripts for testing -->
-        <script src="scripts/populate-tutors.js"> </script>
-        <script src="scripts/welcome-msg.js"> </script>
-
-
-        <!-- Jason's scripts for testing -->
-        <!-- <script src="scripts/get-email-test.js"></script> -->
-        <!-- <script src="scripts/get-user-test.js"></script> -->
-        <!-- <script src="scripts/update-email-test.js"></script> -->
-        <!-- <script src="scripts/update-email-test2.js"></script> -->
-        <script src="scripts/create-update-user-profile.js"></script>
-        <!-- <script src="scripts/populate-users-test.js"></script> -->
+        <!-- Writing to database-->
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+		<script src="scripts/get-tutor-TEST.js"></script>
 
     </body>
 </html>

@@ -7,8 +7,8 @@ function navbarCommonAdd() {
     $("#navBarButton").append('<span class="navbar-toggler-icon">');
     $("#navBarCommonBar").append('<div class="collapse navbar-collapse" id="navbarToggler">');
     $("#navbarToggler").append('<ul id="burgerMenu" class="navbar-nav ml-auto">');
-	$("#burgerMenu").append('<li class="nav-item" id="searchNavButton">');
-	$("#burgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
+	$("#navBarburgerMenu").append('<li class="nav-item" id="searchNavButton">');
+	$("#navBarburgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
 	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
     $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
     $("#searchNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');

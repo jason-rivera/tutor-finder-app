@@ -15,23 +15,9 @@ function updateProfile() {
     });
   });
 
-
-
-
 	$('#update-profile').submit(function () {
 		return false;
   });
 }
   
-
-
-
 updateProfile();
-
-
-
-
-// var input = document.getElementById('myInput');
-
-// if(input.value.length == 0)
-//     input.value = "Empty";

@@ -33,6 +33,11 @@ function getTutor() {
 
 		let tutorsRef = db.collection("Tutors");
 
+		//Doesn't work because you need a composite index for each combination of subject and rate.
+		//A composite index is needed when the query has chained comparison operators that are not "=="
+		//let rateQuery = document.getElementById("rate").value;
+		//tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rateQuery));
+
 		if (document.getElementById("mathCheckbox").checked) {
 			tutorsRef = tutorsRef.where("math", "==", true);
 		}
@@ -46,10 +51,9 @@ function getTutor() {
 			tutorsRef = tutorsRef.where("programming", "==", true);
 		}
 
-		let rateQuery = document.getElementById("rate").value;
-		tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rateQuery));			
 
-		tutorsRef.get()
+		tutorsRef
+		.get()
 		.then(function(querySnapshot) {
 			querySnapshot.forEach(function(doc) {
 				console.log(doc.id, " => ", doc.data());

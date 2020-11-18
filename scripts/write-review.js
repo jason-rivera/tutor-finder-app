@@ -1,9 +1,14 @@
 function writeReview() {  
+    $('#tutor-form').submit(function () { //makes it so page doesn't refresh on submit
+		return false;
+	});
         $(document).ready(function () {
           $("#submitReview").click(function (){
               firebase.auth().onAuthStateChanged(function (user) {
 
-                  var dateNow = new Date();
+                 
+                  
+
 
                   if (user){
                       console.log(user.uid + " Left a review");
@@ -14,9 +19,9 @@ function writeReview() {
                           teachingSkill: document.getElementById("teachingAbility").value,
                           knowledge: document.getElementById("knowledge").value,
                           message: document.getElementById("reviewTextArea").value,
-                          Date: dateNow.getTime()
+                          Date: new Date()
                       })
-                      $("#submitReview").value = "Thanks!";
+                      //$("#submitReview").value = "Thanks!";
                       
                   } else {
                       console.log("no user signed in");

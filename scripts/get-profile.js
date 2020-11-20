@@ -18,6 +18,11 @@ function getUser() {
           document.getElementById("your-email").innerText = "Email: " + email;
           document.getElementById("your-year").innerHTML = "Birth year: " + birthYear;
           document.getElementById("your-location").innerText = "Location: " + location;
+		  document.getElementById("name-text").value = name;
+		  document.getElementById("email-text").value = email;
+		  document.getElementById("birth-year-text").value = birthYear;
+		  document.getElementById("location-text").value = location;
+		  //document.getElementById("picture-text").value = photoURL;
       });
     } else {
       console.log('not logged in');

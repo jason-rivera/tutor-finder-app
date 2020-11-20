@@ -17,8 +17,32 @@
 		<!-- Optional CSS of your own               -->
 		<link type="text/css" rel="stylesheet" href="styles/results.css" />
 		<link type="text/css" rel="stylesheet" href="styles/bootstrap.css" />
-	</head>
 
+		<style>
+			.grid-2x1 {
+				display: grid;
+				grid-template-columns: 50% 50%; /* 2 column */
+				grid-template-rows: 100%; /* 1 rows */
+			}
+			.grid-1x2 {
+				display: grid;
+				grid-template-columns: 100%; /* 1 column */
+				grid-template-rows: 60% 40%; /* 2 rows */
+			}
+			.pair-container {
+				display: grid;
+				grid-template-columns: 30% 70%; /* 1 column */
+			}
+			.rating-star {
+				height: 45px;
+				width: 45px;
+			}
+			.rate-heading {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+		
 	<body>
 
 		<!-------------------------------------->
@@ -77,8 +101,8 @@
 		</nav>
 
 		<!-------------------------------------->
-		<!-- Pagination of other tutors -->
-		<!-------------------------------------->
+		<!-- Pagination of other tutors 
+		
 		<nav aria-label="...">
 			<ul class="pagination pagination-lg">
 				<li class="page-item active">
@@ -94,16 +118,54 @@
 				</li>
 			</ul>
 		</nav>
+		-------------------------------------->
 
 		<!-------------------------------------->
 		<!-- Tutor entries -->
 		<!-------------------------------------->
+
+		<div class="card" style="width: 18rem;">
+		  <img src="images/profile_pic2.jpg" class="card-img-top" alt="...">
+		  <div class="card-body">
+			<h5 class="card-title">Tutor title</h5>
+			<div class="grid-1x2">
+				<div class="pair-container">
+					<img src="images/star.svg.png" class="rating-star" alt="star">
+					<div class="rating-value">4.6</div>
+				</div>
+				<div class="pair-container">
+					<p class="rate-heading">Rate:</p>
+					<p class="rate-value">$10/hr</p>
+				</div>
+			</div>
+			<p class="card-text">Subjects:</p>
+			<a href="#" class="btn btn-primary">Learn more</a>
+		  </div>
+		</div>
+		</br>
+
 		<div class="jumbotron">
-			<h1>Tutor Title</h1>
-			<img src="images/test.png" class="img-thumbnail" alt="thumbnail">
-			<p class="lead">This is a simple hero unit, a simple jumbotron-style component for calling extra attention to featured content or information.</p>
+			<h1 class="tutor-title">Tutor Title</h1>
+			<div class="grid-2x1">
+				<div class="profile_pic">
+					<img src="images/profile_pic2.jpg" class="img-thumbnail" alt="thumbnail">
+				</div>
+				<div class="grid-1x2">
+					<div class="pair-container">
+						<img src="images/star.svg.png" class="rating-star" alt="star">
+						<p class="rating-value">4.6</p>
+					</div>
+					<div class="pair-container">
+						<h4>Rate:</h4>
+						<p class="rate-value">$10/hr</p>
+					</div>
+				</div>
+			</div>
 			<hr class="my-4">
-			<p>It uses utility classes for typography and spacing to space content out within the larger container.</p>
+			<div class="subject-container">
+				<h4>Subjects:</h4>
+			</div>
+			<hr class="my-4">
 			<a class="btn btn-primary btn-lg" href="#" role="button">Learn more</a>
 		</div>
 
@@ -126,8 +188,7 @@
 		</div>
 
 		<!-------------------------------------->
-		<!-- Pagination of other tutors -->
-		<!-------------------------------------->
+		<!-- Pagination of other tutors 
 		<nav aria-label="...">
 			<ul class="pagination pagination-lg">
 				<li class="page-item active">
@@ -143,7 +204,8 @@
 				</li>
 			</ul>
 		</nav>
-
+		-->
+		
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->
         <!----------------------------------------------->

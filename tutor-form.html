@@ -32,7 +32,7 @@
             <div class="form-group" id="subjects">
 				<div>Subjects you teach:</div>
 				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="math" value="option1">
+					<input class="form-check-input" type="checkbox" id="math	" value="option1">
 					<label class="form-check-label" for="mathCheckbox">Math</label>
 				</div>
 				<div class="form-check form-check-inline">
@@ -48,6 +48,34 @@
 					<label class="form-check-label" for="programmingCheckbox">Programming</label>
 				</div>
             </div>
+
+			<div>Time Slots:</div>
+			<div class="form-row align-items-center" id="time-slots">
+				<div class="col-auto">
+					<label for="day">Day:</label>
+					<select id="inputState" class="form-control">
+						<option selected>Monday</option>
+						<option>Tuesday</option>
+						<option>Wednesday</option>
+						<option>Thursday</option>
+						<option>Friday</option>
+						<option>Saturday</option>
+						<option>Sunday</option>
+					</select>
+				</div>
+				<div class="col-auto">
+					<label for="start-time">Start time:</label>
+					<input type="time" id="start-time">
+				</div>
+				<div class="col-auto">
+					<label for="end-time">End time:</label>
+					<input type="time" id="end-time">
+				</div>
+				<div class="col-auto">
+					<label for="add-time-slot"></label>
+					<button type="submit" class="btn btn-primary" id="add-time-slot">Add Time Slot</button>
+				</div>
+			</div>
 
             <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
         </form>

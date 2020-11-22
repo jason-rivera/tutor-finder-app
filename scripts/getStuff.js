@@ -13,8 +13,3 @@ function getStuff() {
 }
 
 getStuff();
-
-
-
-CollectionReference tutorCollectionReference = db.collection("Tutors")
-tutorCollectionRefere

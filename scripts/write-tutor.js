@@ -11,11 +11,38 @@ function writeTutor() {
 					db.collection("Tutors").doc(user.uid).set({
 						description: document.getElementById("tutor-description").value,
 						rate: parseFloat(document.getElementById("rate").value),
-						math: document.getElementById("mathCheckbox").checked,
-						english: document.getElementById("englishCheckbox").checked,
-						history: document.getElementById("historyCheckbox").checked,
-						programming: document.getElementById("programmingCheckbox").checked
+						subjects: []
 					})
+					$('.form-check-input').each(function() {
+						if(this.checked) {
+							db.collection("Tutors").doc(user.uid).update({
+								subjects: firebase.firestore.FieldValue.arrayUnion(this.id)
+							})
+						}
+					})
+
+					/*
+					if(document.getElementById("math").checked) {
+						db.collection("Tutors").doc(user.uid).update({
+							subjects: firebase.firestore.FieldValue.arrayUnion("math")
+						})
+					}
+					if(document.getElementById("english").checked) {
+						db.collection("Tutors").doc(user.uid).update({
+							subjects: firebase.firestore.FieldValue.arrayUnion("english")
+						})
+					}
+					if(document.getElementById("history").checked) {
+						db.collection("Tutors").doc(user.uid).update({
+							subjects: firebase.firestore.FieldValue.arrayUnion("history")
+						})
+					}
+					if(document.getElementById("programming").checked) {
+						db.collection("Tutors").doc(user.uid).update({
+							subjects: firebase.firestore.FieldValue.arrayUnion("programming")
+						})
+					}
+					*/
 				} else {
 					console.log("no user signed in");
 				}

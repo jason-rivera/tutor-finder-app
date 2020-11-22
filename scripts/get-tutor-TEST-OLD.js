@@ -1,4 +1,7 @@
 function getTutor() {  
+	$('#submit').submit(function () { //makes it so page doesn't refresh on submit
+		return true;
+	});
     /*
 	$(document).ready(function () {
 		$("#submit-button").click(function (){
@@ -57,15 +60,7 @@ function getTutor() {
 			});
 		});
 	});
-}
 
-/*
-function redirect() {
-	document.getElementById("submit").addEventListener('click', function(){
-		console.log("button pressed");
-		window.location.href = "searchV2.html" + "test";
-	});
 }
-*/
 
 getTutor();

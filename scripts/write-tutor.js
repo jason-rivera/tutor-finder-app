@@ -46,8 +46,22 @@ function writeTutor() {
 				} else {
 					console.log("no user signed in");
 				}
+				writeTimeslot();
 			})
 		});
+	});
+}
+
+function writeTimeslot() {
+	firebase.auth().onAuthStateChanged(function (user) {
+		if (user){
+			db.collection("Timeslots").add({
+				tutorId: user.uid,
+				day: document.getElementById("day").value,
+				start: document.getElementById("start-time").value,
+				end: document.getElementById("end-time").value
+			})
+		}
 	});
 }
 

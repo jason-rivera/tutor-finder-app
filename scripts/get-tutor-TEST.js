@@ -9,12 +9,14 @@ function getTutor() {
 		//tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rateQuery));
 		$('.subject-check-input').each(function() {
 			if(this.checked) {
-				console.log(this.id);
 				searchSubjects.push(this.id);
 			}
 		})
-
 		tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
+
+		if(document.getElementById("max-text").value !== "") {
+			tutorsRef = tutorsRef.where("rate", "<=", document.getElementById("max-text").value);
+		}
 
 		tutorsRef.get()
 		.then(function(querySnapshot) {

@@ -5428,6 +5428,7 @@ button.close {
   display: none;
   overflow: hidden;
   outline: 0;
+  color: black;
 }
 
 .modal-open .modal {

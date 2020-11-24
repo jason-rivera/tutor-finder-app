@@ -55,6 +55,11 @@ body {
 }
 
 
+
+
+
+
+
 h6 {
   text-align: center;
 }
@@ -98,6 +103,7 @@ h4 {
 
 /* edit profile button */
 
+
 .btn {
   display: inline-block;
   position: relative;
@@ -117,12 +123,13 @@ h4 {
   transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
   left: 50%;
   transform: translate(-50%, 0);
-  
-  min-width: 400px;
 }
 
 
-
+.edit-profile-button {
+  border-radius: 0px;
+  width: 100%;
+}
 
 
 /* For the subject buttons */

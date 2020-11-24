@@ -12,11 +12,20 @@ function getTutor() {
 				searchSubjects.push(this.id);
 			}
 		})
-		tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
-
-		if(document.getElementById("max-text").value !== "") {
-			tutorsRef = tutorsRef.where("rate", "<=", document.getElementById("max-text").value);
+		
+		if (!(searchSubjects === undefined || searchSubjects.length == 0)) {
+			tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
 		}
+
+		$('.price-bracket').each(function() {
+			if(this.checked) {
+				if(this.id == 0) {
+					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 10);
+				} else {
+					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 9);
+				}
+			}
+		})
 
 		tutorsRef.get()
 		.then(function(querySnapshot) {

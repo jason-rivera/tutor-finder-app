@@ -99,18 +99,26 @@ span {
 .ck-button label span {
   text-align:center;
   display:block;
-  padding-top: 1px;
+  padding-top:1px;
+  color:#000000;
 }
 
 .ck-button label input {
   position:absolute;
   top:10px;
-  left: 10px;
-  z-index: -1;
+  left:10px;
+  z-index:-1;
+}
+
+@keyframes colorAnim {
+	from {background-color: #EFEFEF; }
+	to {background-color: #02ff88; }
 }
 
 .ck-button input:checked + span {
-  background-color:#6c757d;
-  color:#fff;
+  height: 33px;
+  background-color:#02ff88;
+  color:#000000;
+  animation: colorAnim 1s forwards;
 }
 

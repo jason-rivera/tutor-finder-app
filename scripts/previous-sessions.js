@@ -47,7 +47,7 @@ function updateModal(tutorid) {
 
   document.getElementById("tutorName").innerText = tutorid;
   
-  }
+}
 
 /*
             <div class="card">

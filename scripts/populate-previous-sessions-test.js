@@ -17,7 +17,7 @@ function populateSessions() {
         date: new Date(2020, 10, 9, 3, 24, 0),
         subject: "science",
         sessionID: 2
-        
+    
     })
     db.collection("PastSessions").doc("TestSessionID3"+user.uid).set({
         tutorID: "33333TEST",

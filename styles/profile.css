@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Glegoo&display=swap');
 
 body {
 
@@ -5,9 +6,22 @@ body {
 
 .body-container {
   position: relative;
-  max-width: 800px;
+  max-width: 400px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.profile-text-container {
+  background-color: rgb(39, 39, 39);
+}
+
+.modal-body {
+  background-color: rgb(212, 212, 212);
+  color: black;
+}
+
+.modal-title {
+  color: black;
 }
 
 .btn-secondary {
@@ -15,9 +29,8 @@ body {
   width: 100px;
 }
 .form-group {
-  padding-top: 20px;
-  
-  font-weight: bold;
+  padding-top: 0px;
+  font-weight: none;
 }
 .jumbotron {
 
@@ -46,6 +59,11 @@ body {
 }
 
 
+
+
+
+
+
 h6 {
   text-align: center;
 }
@@ -65,6 +83,17 @@ h5 {
   background-color: rgb(0, 0, 0);
   padding: 0;
   margin: 0;
+  font-size: 14px;
+}
+
+.edit-profile-text {
+  padding-left: 40px;
+  font-size: 15px;
+  font-family: 'Glegoo', serif;
+}
+
+.edit-profile-head {
+  padding-left: 20px;
 }
 
 /* background color */
@@ -78,8 +107,36 @@ h4 {
 }
 
 
+/* edit profile button */
 
 
+.btn {
+  display: inline-block;
+  position: relative;
+  font-weight: 400;
+  text-align: center;
+  white-space: nowrap;
+  vertical-align: middle;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  border: 1px solid transparent;
+  padding: 0.375rem 0.75rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  border-radius: 0.25rem;
+  transition: color 0.15s ease-in-out, background-color 0.15s ease-in-out, border-color 0.15s ease-in-out, box-shadow 0.15s ease-in-out;
+  left: 50%;
+  transform: translate(-50%, 0);
+}
+
+
+.edit-profile-button {
+  
+  border-radius: 0px;
+  width: 100%;
+}
 
 
 /* For the subject buttons */

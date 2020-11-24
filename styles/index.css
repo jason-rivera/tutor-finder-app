@@ -1,6 +1,12 @@
 
 body {
-  background-color: rgb(255, 255, 255);
+  background-color: #1B1C1D;
+}
+
+h1 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Roboto;
 }
 
 .btn-secondary {

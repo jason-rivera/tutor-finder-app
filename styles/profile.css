@@ -5,9 +5,18 @@ body {
 
 .body-container {
   position: relative;
-  max-width: 800px;
+  max-width: 400px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.modal-body {
+  background-color: rgb(212, 212, 212);
+  color: black;
+}
+
+.modal-title {
+  color: black;
 }
 
 .btn-secondary {

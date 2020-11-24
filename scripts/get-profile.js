@@ -14,10 +14,10 @@ function getUser() {
           console.log('Location: ' + location);
           console.log('Your photo is: ' + pic);
           document.getElementById("your-picture").innerHTML = '<center><br> <img src="' + pic + '" height="100" width="100" alt="Your photo" style="border-radius: 100px"></center><br>';
-          document.getElementById("your-name").innerText = "Name: " + name;
-          document.getElementById("your-email").innerText = "Email: " + email;
-          document.getElementById("your-year").innerHTML = "Birth year: " + birthYear;
-          document.getElementById("your-location").innerText = "Location: " + location;
+          document.getElementById("your-name").innerText = name;
+          document.getElementById("your-email").innerText = email;
+          document.getElementById("your-year").innerHTML = birthYear;
+          document.getElementById("your-location").innerText = location;
 		  document.getElementById("name-text").value = name;
 		  document.getElementById("email-text").value = email;
 		  document.getElementById("birth-year-text").value = birthYear;

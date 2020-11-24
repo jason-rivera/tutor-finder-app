@@ -19,8 +19,10 @@ function getTutor() {
 
 		$('.price-bracket').each(function() {
 			if(this.checked) {
-				if(this.id == 0) {
+				if (this.id == 0) {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 10);
+				} else if (this.id == 71) {
+					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id));
 				} else {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 9);
 				}

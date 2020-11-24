@@ -1,3 +1,4 @@
+@import url('https://fonts.googleapis.com/css2?family=Glegoo&display=swap');
 
 body {
 
@@ -8,6 +9,10 @@ body {
   max-width: 400px;
   left: 50%;
   transform: translate(-50%, 0);
+}
+
+.profile-text-container {
+  background-color: rgb(39, 39, 39);
 }
 
 .modal-body {
@@ -24,9 +29,8 @@ body {
   width: 100px;
 }
 .form-group {
-  padding-top: 20px;
-  
-  font-weight: bold;
+  padding-top: 0px;
+  font-weight: none;
 }
 .jumbotron {
 
@@ -84,6 +88,8 @@ h5 {
 
 .edit-profile-text {
   padding-left: 40px;
+  font-size: 15px;
+  font-family: 'Glegoo', serif;
 }
 
 .edit-profile-head {
@@ -127,6 +133,7 @@ h4 {
 
 
 .edit-profile-button {
+  
   border-radius: 0px;
   width: 100%;
 }

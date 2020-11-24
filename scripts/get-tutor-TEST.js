@@ -21,7 +21,9 @@ function getTutor() {
 			if(this.checked) {
 				if (this.id == 0) {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 10);
-				} else if (this.id == 71) {
+				} else if (this.id == "any-price") {
+					tutorsRef = tutorsRef.where("rate", ">=", 0);
+				} else if (this.id == 61) {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id));
 				} else {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 9);

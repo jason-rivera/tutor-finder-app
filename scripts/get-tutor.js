@@ -37,7 +37,7 @@ function writeToModal(tutorsRef) {
 			db.collection("Users").doc(doc.id)
 			.onSnapshot(function(snap){
 				//console.log(doc.id, " => ", doc.data());
-				$(".modal-body").append(
+				$("#search-results").append(
 					'<div class="card" style="width: 18rem;">'
 					+    '<img src="images/profile_pic2.jpg" class="card-img-top" alt="...">'
 					+   '<div class="card-body">'
@@ -45,7 +45,7 @@ function writeToModal(tutorsRef) {
 					+	'<div class="grid-1x2">'
 					+		'<div class="pair-container">'
 					+			'<img src="images/star.svg.png" class="rating-star" alt="star">'
-					+			'<div class="rating-value">4.6</div>'
+					+			'<div class="rating-value">' + doc.data().rating + '</div>'
 					+		'</div>'
 					+		'<div class="pair-container">'
 					+			'<p class="rate-heading">Rate:</p>'
@@ -53,11 +53,12 @@ function writeToModal(tutorsRef) {
 					+		'</div>'
 					+	'</div>'
 					+	'<p class="card-text">Subjects:</p>'
-					+	'<a href="#" class="btn btn-primary">Learn more</a>'
+					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
 					+  '</div>'
 					+ '</div>'
 					+ '</br>'
 				);
+				$(".card-text").append("a");
 			});
 		});
 	});

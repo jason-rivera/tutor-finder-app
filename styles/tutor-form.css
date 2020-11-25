@@ -7,7 +7,7 @@ body {
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
-  max-width: 800px;
+  max-width: 500px;
   color: white;
 }
 
@@ -49,9 +49,6 @@ h6 {
 
 
 /* for checkboxes */
-
-
-/* For the subject buttons */
 
 .button-cont {
   position: relative;
@@ -104,4 +101,22 @@ h6 {
   background-color:#02ff88;
   color:#000000;
   animation: colorAnim 1s forwards;
+}
+
+
+
+
+/* start-end section */
+
+.start-end-container {
+
+
+}
+
+.col-auto {
+  -webkit-box-flex: 0;
+  -ms-flex: 0 0 auto;
+  flex: 0 0 auto;
+  width: 100%;
+  max-width: none;
 }

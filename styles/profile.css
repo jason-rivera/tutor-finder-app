@@ -12,7 +12,7 @@ body {
 }
 
 .profile-text-container {
-  background-color: rgb(39, 39, 39);
+  
 }
 
 .modal-body {
@@ -86,6 +86,10 @@ h5 {
   font-size: 14px;
 }
 
+
+/* profile headers */
+
+
 .edit-profile-text {
   padding-left: 40px;
   font-size: 15px;
@@ -94,6 +98,8 @@ h5 {
 
 .edit-profile-head {
   padding-left: 20px;
+  background-color: rgb(39, 39, 39);
+  color: red;
 }
 
 /* background color */

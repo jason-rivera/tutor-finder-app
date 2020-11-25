@@ -4,6 +4,7 @@ body {
 }
 
 .body-container {
+  background-color: #1B1C1D;
   max-width: 800px;
   position: relative;
   left: 50%;

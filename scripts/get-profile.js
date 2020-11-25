@@ -10,10 +10,10 @@ function getUser() {
           let pic = doc.data().photoURL;
           console.log('Name: ' + name);
           console.log('Email: ' + email);
-          console.log('Birth year: ' + birthYear);
+          console.log('Birthdate: ' + birthYear);
           console.log('Location: ' + location);
           console.log('Your photo is: ' + pic);
-          document.getElementById("your-picture").innerHTML = '<center><br> <img src="' + pic + '" height="150" width="150" alt="Your photo" style="border: 4px solid white; border-radius: 100px;"></center><br>';
+          document.getElementById("your-picture").innerHTML = '<center> <img src="' + pic + '" height="150" width="150" alt="Your photo" style="border: 4px solid white; border-radius: 100px;"></center><br>';
           document.getElementById("your-name").innerText = name;
           document.getElementById("your-email").innerText = email;
           document.getElementById("your-year").innerHTML = birthYear;

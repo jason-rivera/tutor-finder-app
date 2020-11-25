@@ -33,6 +33,7 @@ function getTutor() {
 
 		tutorsRef.get()
 		.then(function(querySnapshot) {
+			$(".modal-body").empty();
 			querySnapshot.forEach(function(doc) {
 				$(".modal-body").append("<p>" + doc.id + "</p>");
 				console.log(doc.id, " => ", doc.data());

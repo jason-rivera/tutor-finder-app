@@ -1,3 +1,11 @@
+
+
+/* .edit-profile-text {
+  padding-left: 40px;
+
+} */
+
+
 body {
   background: #1B1C1D;
 }
@@ -13,8 +21,11 @@ body {
 
 h6 {
   text-align: center;
+  background-color: rgb(189, 189, 189, 0.1);
+  font-size: 17px;
+  font-family: Roboto;
+  color: rgb(255, 255, 255), 255);
 }
-
 
 /* submit button */
 
@@ -46,6 +57,18 @@ h6 {
   width: 100%;
 }
 
+/* add time slot button */
+
+.timeslot {
+
+}
+
+#add-time-slot {
+  width: auto;
+  float: right;
+  padding: 2px 5px;
+}
+
 
 
 /* for checkboxes */
@@ -70,11 +93,8 @@ h6 {
 }
 
 .ck-button label {
-  /* float:left; */
-
   width: 100px;
   height: 25px;
-  
 }
 
 .ck-button label span {
@@ -119,4 +139,13 @@ h6 {
   flex: 0 0 auto;
   width: 100%;
   max-width: none;
+}
+
+/* hourly rate section */
+
+.dropdown-modifier {
+  position: relative;
+  left: 50%;
+  transform: translate(-50%, 0);
+  width: 200px;
 }

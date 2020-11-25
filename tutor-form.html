@@ -12,6 +12,7 @@
         <!-- Optional styles and scripts of your own -->
         <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
         <link type="text/css" rel="stylesheet" href="styles/tutor-form.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     
     <body>
@@ -107,12 +108,14 @@
                 <br>
                 <br>
                 <br>
+                <br>
 
                 <h6>Time Slots:</h6>
+                <br>
                 <div class="form-row align-items-center" id="time-slots">
                     <div class="col-auto">
                         <!-- <label for="day">Day:</label> -->
-                        <select id="day" class="form-control">
+                        <select id="day" class="form-control dropdown-modifier">
                             <option selected>Select Day</option>
                             <option >Monday</option>
                             <option>Tuesday</option>
@@ -177,32 +180,41 @@
                 <br>
                 <br>
                 
-                <div class="start-end-container">
-                    <div class="col-auto">
+                <div class="d-flex justify-content-around">
+                    <div class="timeslot">
                         <label for="start-time">From:</label>
                         <input type="time" id="start-time">
                     </div>
-                    <div class="col-auto">
+                    <div class="timeslot">
                         <label for="end-time">To:</label>
                         <input type="time" id="end-time">
                     </div>
-                    <div class="col-auto">
+                    <div class="">
                         <label for="add-time-slot"></label>
-                        <button type="submit" class="btn btn-primary" id="add-time-slot">Add Time Slot</button>
+                        <button type="submit" class="btn btn-primary" id="add-time-slot"><i class="fas fa-calendar-plus"></i></button>
                     </div>
+
                 </div>
+      
                     
+                <br>
+                <br>
+
                 <div class="form-group">
-                    <label for="rate">Rate:</label>
-                    <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
+                    
+                    <h6><label for="rate">Hourly Rate:</label></h6>
+                    <br>
+
+
+                    <input class="form-control dropdown-modifier" type="number" id="rate" step=".05" name="rate" min="0" max="200" />
+
                 </div> 
 
                 <br>
-                <br>
-                <br>
 
                 <h6><label for="tutor-description">Tell us about yourself:</label></h6>
-                <textarea class="form-control" id="tutor-description" rows="3"></textarea>
+                
+                    <textarea class="form-control" id="tutor-description" rows="3"></textarea>
                 
                 <br/>
 

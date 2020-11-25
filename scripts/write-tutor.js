@@ -7,49 +7,53 @@ function writeTutor() {
 		$("#submit-button").click(function (){
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user){
-					console.log(user.uid + " is now a tutor.");
-					db.collection("Tutors").doc(user.uid).set({
-						description: document.getElementById("tutor-description").value,
-						rate: parseFloat(document.getElementById("rate").value),
-						subjects: []
-					})
-					$('.form-check-input').each(function() {
-						if(this.checked) {
-							db.collection("Tutors").doc(user.uid).update({
-								subjects: firebase.firestore.FieldValue.arrayUnion(this.id)
-							})
+					db.collection("Tutors").doc(user.uid).get()
+					.then(function(docSnapshot) {
+						if(docSnapshot.exists) {
+							updateTutorFields(user);
+							setCheckedSubjects(user);
+						} else {
+							setTutorFields(user);
+							setCheckedSubjects(user);
 						}
-					})
-
-					/*
-					if(document.getElementById("math").checked) {
-						db.collection("Tutors").doc(user.uid).update({
-							subjects: firebase.firestore.FieldValue.arrayUnion("math")
-						})
-					}
-					if(document.getElementById("english").checked) {
-						db.collection("Tutors").doc(user.uid).update({
-							subjects: firebase.firestore.FieldValue.arrayUnion("english")
-						})
-					}
-					if(document.getElementById("history").checked) {
-						db.collection("Tutors").doc(user.uid).update({
-							subjects: firebase.firestore.FieldValue.arrayUnion("history")
-						})
-					}
-					if(document.getElementById("programming").checked) {
-						db.collection("Tutors").doc(user.uid).update({
-							subjects: firebase.firestore.FieldValue.arrayUnion("programming")
-						})
-					}
-					*/
+					});
 				} else {
 					console.log("no user signed in");
 				}
 				writeTimeslot();
+				
 			})
 		});
 	});
+}
+
+function setCheckedSubjects(user) {
+	$('.form-check-input').each(function() {
+		if(this.checked) {
+			db.collection("Tutors").doc(user.uid).update({
+				subjects: firebase.firestore.FieldValue.arrayUnion(this.id)
+			})
+		}
+	})
+}
+
+function updateTutorFields(user) {
+	console.log(user.uid + " has been updated.");
+	db.collection("Tutors").doc(user.uid).update({
+		description: document.getElementById("tutor-description").value,
+		rate: parseFloat(document.getElementById("rate").value),
+		subjects: [],
+	});
+}
+
+function setTutorFields(user) {
+	console.log(user.uid + "is now a tutor.");
+	db.collection("Tutors").doc(user.uid).set({
+		description: document.getElementById("tutor-description").value,
+		rate: parseFloat(document.getElementById("rate").value),
+		rating: 0,
+		subjects: [],
+	})
 }
 
 function writeTimeslot() {

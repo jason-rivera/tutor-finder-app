@@ -35,8 +35,27 @@ function getTutor() {
 		.then(function(querySnapshot) {
 			$(".modal-body").empty();
 			querySnapshot.forEach(function(doc) {
-				$(".modal-body").append("<p>" + doc.id + "</p>");
-				console.log(doc.id, " => ", doc.data());
+				$(".modal-body").append(
+					'<div class="card" style="width: 18rem;">'
+					+    '<img src="images/profile_pic2.jpg" class="card-img-top" alt="...">'
+					+   '<div class="card-body">'
+					+	'<h5 class="card-title">Tutor title</h5>'
+					+	'<div class="grid-1x2">'
+					+		'<div class="pair-container">'
+					+			'<img src="images/star.svg.png" class="rating-star" alt="star">'
+					+			'<div class="rating-value">4.6</div>'
+					+		'</div>'
+					+		'<div class="pair-container">'
+					+			'<p class="rate-heading">Rate:</p>'
+					+			'<p class="rate-value">$10/hr</p>'
+					+		'</div>'
+					+	'</div>'
+					+	'<p class="card-text">Subjects:</p>'
+					+	'<a href="#" class="btn btn-primary">Learn more</a>'
+					+  '</div>'
+					+ '</div>'
+					+ '</br>'
+				);
 			});
 		});
 	});

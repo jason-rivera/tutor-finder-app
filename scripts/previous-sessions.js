@@ -19,21 +19,20 @@ $(document).ready(function () {
                             '<div id="collapseOne'+doc.data().sessionID+'" class="collapse" aria-labelledby="headingOne'+doc.data().sessionID+'" data-parent="#accordionExample">'+
                                 '<div class="row no-gutters">'+
                                     '<div class="col-md-2">'+
-                                    '<img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="card-img" alt="small profile pic">'+
+                                      '<img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="card-img" alt="small profile pic">'+
                                     '</div>'+
                                     '<div class="col-md-8">'+
-                                    '<div class="card-body">'+
-                                        '<h5 class="card-title">'+doc.data().tutorID+'</h5>'+
-                                        '<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
-                                        '<p class="card-text"><small class="text-muted">Session ID: '+doc.data().sessionID+'</small></p>'+
-                                        '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter">Leave Review</button>'+
-                                    '</div>'+
+                                      '<div class="card-body">'+
+                                          '<h5 class="card-title">'+doc.data().tutorID+'</h5>'+
+                                          '<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
+                                          '<p class="card-text"><small class="text-muted">Session ID: '+doc.data().sessionID+'</small></p>'+
+                                          '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter">Leave Review</button>'+
+                                      '</div>'+
                                     '</div>'+
                                 '</div>'+
                             '</div>'+
                         '</div>'
                     );
-
                     console.log(doc.id, " => ", doc.data());
                 });
             })

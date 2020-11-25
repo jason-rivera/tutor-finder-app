@@ -10,7 +10,9 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
         <!-- Optional styles and scripts of your own -->
-
+        <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
+        <link type="text/css" rel="stylesheet" href="styles/tutor-form.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     
     <body>
@@ -18,67 +20,207 @@
         <!-------------------------------------->
         <!-- The following is HTML for layout -->
         <!-------------------------------------->
+        <div class="body-container">
+            <form id="tutor-form">   
+
+                <div class="form-group" id="subjects">
+                    <br>
+                    <h6>Subjects you teach:</h6>
+
+                    <!-- <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="math" value="option1">
+                        <label class="form-check-label" for="mathCheckbox">Math</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="english" value="option2">
+                        <label class="form-check-label" for="englishCheckbox">English</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="history" value="option2">
+                        <label class="form-check-label" for="historyCheckbox">History</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="checkbox" id="programming" value="option2">
+                        <label class="form-check-label" for="programmingCheckbox">Programming</label>
+                    </div> -->
+
+                </div>
+
+                <div class="button-cont">
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="1100"><span>COMP 1100</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="1113"><span>COMP 1113</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="1116"><span>COMP 1116</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="1510"><span>COMP 1510</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="1537"><span>COMP 1537</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="1712"><span>COMP 1712</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="1800"><span>COMP 1800</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="9999"><span>COMP 9999</span>
+                    </label>
+                    </div>
     
-        <form id="tutor-form">   
-            <div class="form-group">
-            <label for="tutor-description">Tell us about yourself:</label>
-            <textarea class="form-control" id="tutor-description" rows="3"></textarea>
-            </div>
+                    <div class="ck-button">
+                        <label>
+                            <input class="subject-check-input" type="checkbox" id="8888"><span>COMP 8888</span>
+                        </label>
+                    </div>
+                </div>
 
-            <div class="form-group">
-                <label for="rate">Rate:</label>
-                <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
-            </div> 
-            <div class="form-group" id="subjects">
-				<div>Subjects you teach:</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="math" value="option1">
-					<label class="form-check-label" for="mathCheckbox">Math</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="english" value="option2">
-					<label class="form-check-label" for="englishCheckbox">English</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="history" value="option2">
-					<label class="form-check-label" for="historyCheckbox">History</label>
-				</div>
-				<div class="form-check form-check-inline">
-					<input class="form-check-input" type="checkbox" id="programming" value="option2">
-					<label class="form-check-label" for="programmingCheckbox">Programming</label>
-				</div>
-            </div>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
 
-			<div>Time Slots:</div>
-			<div class="form-row align-items-center" id="time-slots">
-				<div class="col-auto">
-					<label for="day">Day:</label>
-					<select id="day" class="form-control">
-						<option selected>Monday</option>
-						<option>Tuesday</option>
-						<option>Wednesday</option>
-						<option>Thursday</option>
-						<option>Friday</option>
-						<option>Saturday</option>
-						<option>Sunday</option>
-					</select>
-				</div>
-				<div class="col-auto">
-					<label for="start-time">Start time:</label>
-					<input type="time" id="start-time">
-				</div>
-				<div class="col-auto">
-					<label for="end-time">End time:</label>
-					<input type="time" id="end-time">
-				</div>
-				<div class="col-auto">
-					<label for="add-time-slot"></label>
-					<button type="submit" class="btn btn-primary" id="add-time-slot">Add Time Slot</button>
-				</div>
-			</div>
-			<br/>
-            <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
-        </form>
+                <h6>Time Slots:</h6>
+                <br>
+                <div class="form-row align-items-center" id="time-slots">
+                    <div class="col-auto">
+                        <!-- <label for="day">Day:</label> -->
+                        <select id="day" class="form-control dropdown-modifier">
+                            <option selected>Select Day</option>
+                            <option >Monday</option>
+                            <option>Tuesday</option>
+                            <option>Wednesday</option>
+                            <option>Thursday</option>
+                            <option>Friday</option>
+                            <option>Saturday</option>
+                            <option>Sunday</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="button-cont">
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="sunday"><span>Sunday</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="monday"><span>Monday</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="tuesday"><span>Tuesday</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="wednesday"><span>Wednesday</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="thursday"><span>Thursday</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="friday"><span>Friday</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="saturday"><span>Saturday</span>
+                    </label>
+                    </div>
+                </div>
+                
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                <br>
+                
+                <div class="d-flex justify-content-around">
+                    <div class="timeslot">
+                        <label for="start-time">From:</label>
+                        <input type="time" id="start-time">
+                    </div>
+                    <div class="timeslot">
+                        <label for="end-time">To:</label>
+                        <input type="time" id="end-time">
+                    </div>
+                    <div class="">
+                        <label for="add-time-slot"></label>
+                        <button type="submit" class="btn btn-primary" id="add-time-slot"><i class="fas fa-calendar-plus"></i></button>
+                    </div>
+
+                </div>
+      
+                    
+                <br>
+                <br>
+
+                <div class="form-group">
+                    
+                    <h6><label for="rate">Hourly Rate:</label></h6>
+                    <br>
+
+
+                    <input class="form-control dropdown-modifier" type="number" id="rate" step=".05" name="rate" min="0" max="200" />
+
+                </div> 
+
+                <br>
+
+                <h6><label for="tutor-description">Tell us about yourself:</label></h6>
+                
+                    <textarea class="form-control" id="tutor-description" rows="3"></textarea>
+                
+                <br/>
+
+                <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
+            </form>
+        </div>
 
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->

@@ -1,12 +1,7 @@
-function getTutor() {  
-	
+function getTutor() {  	
 	$("#submit").click(function (){
 		let tutorsRef = db.collection("Tutors");
 		let searchSubjects = [];
-		//Doesn't work because you need a composite index for each combination of subject and rate.
-		//A composite index is needed when the query has chained comparison operators that are not "=="
-		//let rateQuery = document.getElementById("rate").value;
-		//tutorsRef = tutorsRef.where("rate", "<=", parseFloat(rateQuery));
 		$('.subject-check-input').each(function() {
 			if(this.checked) {
 				searchSubjects.push(this.id);
@@ -30,25 +25,43 @@ function getTutor() {
 				}
 			}
 		})
+		writeToModal(tutorsRef);
+	});
+}
 
-		tutorsRef.get()
-		.then(function(querySnapshot) {
-			$(".modal-body").empty();
-			querySnapshot.forEach(function(doc) {
-				$(".modal-body").append("<p>" + doc.id + "</p>");
-				console.log(doc.id, " => ", doc.data());
+function writeToModal(tutorsRef) {
+	tutorsRef.get()
+	.then(function(querySnapshot) {
+		$(".modal-body").empty();
+		querySnapshot.forEach(function(doc) {
+			db.collection("Users").doc(doc.id)
+			.onSnapshot(function(snap){
+				//console.log(doc.id, " => ", doc.data());
+				$("#search-results").append(
+					'<div class="card" style="width: 18rem;">'
+					+    '<img src="images/profile_pic2.jpg" class="card-img-top" alt="...">'
+					+   '<div class="card-body">'
+					+	'<h5 class="card-title">' + snap.data().name + '</h5>'
+					+	'<div class="grid-1x2">'
+					+		'<div class="pair-container">'
+					+			'<img src="images/star.svg.png" class="rating-star" alt="star">'
+					+			'<div class="rating-value">' + doc.data().rating + '</div>'
+					+		'</div>'
+					+		'<div class="pair-container">'
+					+			'<p class="rate-heading">Rate:</p>'
+					+			'<p class="rate-value">$' + doc.data().rate + '/hr</p>'
+					+		'</div>'
+					+	'</div>'
+					+	'<p class="card-text">Subjects:</p>'
+					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
+					+  '</div>'
+					+ '</div>'
+					+ '</br>'
+				);
+				$(".card-text").append("a");
 			});
 		});
 	});
 }
-
-/*
-function redirect() {
-	document.getElementById("submit").addEventListener('click', function(){
-		console.log("button pressed");
-		window.location.href = "searchV2.html" + "test";
-	});
-}
-*/
 
 getTutor();

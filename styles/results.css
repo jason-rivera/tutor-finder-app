@@ -3,3 +3,29 @@
 	width: 200px;
 	border: solid black 2px;
 }
+
+.grid-2x1 {
+	display: grid;
+	grid-template-columns: 50% 50%; /* 2 column */
+	grid-template-rows: 100%; /* 1 rows */
+}
+.grid-1x2 {
+	display: grid;
+	grid-template-columns: 100%; /* 1 column */
+	grid-template-rows: 60% 40%; /* 2 rows */
+}
+.pair-container {
+	display: grid;
+	grid-template-columns: 30% 70%; /* 1 column */
+}
+.rating-star {
+	height: 45px;
+	width: 45px;
+}
+.rate-heading {
+	font-weight: bold;
+}
+
+.modal-content {
+	
+}

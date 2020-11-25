@@ -9,12 +9,13 @@
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
         <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
         <link type="text/css" rel="stylesheet" href="styles/search.css" />
+		<link type="text/css" rel="stylesheet" href="styles/results.css" />
         
         <style>
         </style>
     </head>
     <body>
-
+		
         <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content">
@@ -24,18 +25,29 @@
 				  <span aria-hidden="true">&times;</span>
 				</button>
 			  </div>
-			  <div class="modal-body"></div>
+			  <div class="modal-body" id="search-results"></div>
+			</div>
+		  </div>
+		</div>
+
+		<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title">Appointment has been sent</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
 			</div>
 		  </div>
 		</div>
 
 
-
         <div class="jumbotron">
-        <!-- <div class="jumbotron">
->>>>>>> d574b9c6d20ca20fc41e111e1024e81a05c5dfc7
-            <h4>Search for a Tutor</h4>
-        </div> -->
 
         <div class="body-container">
             <br/>

@@ -10,6 +10,7 @@
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
 
         <!-- Optional styles and scripts of your own -->
+        <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
         <link type="text/css" rel="stylesheet" href="styles/tutor-form.css" />
     </head>
     
@@ -20,18 +21,13 @@
         <!-------------------------------------->
         <div class="body-container">
             <form id="tutor-form">   
-                <div class="form-group">
-                <label for="tutor-description">Tell us about yourself:</label>
-                <textarea class="form-control" id="tutor-description" rows="3"></textarea>
-                </div>
 
-                <div class="form-group">
-                    <label for="rate">Rate:</label>
-                    <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
-                </div> 
                 <div class="form-group" id="subjects">
-                    <div>Subjects you teach:</div>
-                    <div class="form-check form-check-inline">
+                    <br>
+                    <h6><div>Subjects you teach:</div></h6>
+
+
+                    <!-- <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="math" value="option1">
                         <label class="form-check-label" for="mathCheckbox">Math</label>
                     </div>
@@ -46,15 +42,101 @@
                     <div class="form-check form-check-inline">
                         <input class="form-check-input" type="checkbox" id="programming" value="option2">
                         <label class="form-check-label" for="programmingCheckbox">Programming</label>
-                    </div>
+                    </div> -->
+
+
                 </div>
 
-                <div>Time Slots:</div>
+
+
+
+
+
+
+                <div class="button-cont">
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="math"><span>COMP 1100</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="english"><span>COMP 1113</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                        <label>
+                        <input class="subject-check-input" type="checkbox" id="spanish"><span>COMP 1116</span>
+                        </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="biology"><span>COMP 1510</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="physics"><span>COMP 1537</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="chemistry"><span>COMP 1712</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="geography"><span>COMP 1800</span>
+                    </label>
+                    </div>
+            
+                    <div class="ck-button">
+                    <label>
+                        <input class="subject-check-input" type="checkbox" id="french"><span>COMP 9999</span>
+                    </label>
+                    </div>
+    
+                    <div class="ck-button">
+                        <label>
+                            <input class="subject-check-input" type="checkbox" id="history"><span>COMP 8888</span>
+                        </label>
+                    </div>
+    
+    
+                    <br>
+                    <br><br>
+                </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                <br><br><br><br>
+                <h6><div>Time Slots:</div></h6>
                 <div class="form-row align-items-center" id="time-slots">
                     <div class="col-auto">
-                        <label for="day">Day:</label>
+                        <!-- <label for="day">Day:</label> -->
                         <select id="day" class="form-control">
-                            <option selected>Monday</option>
+                            <option selected>Select Day</option>
+                            <option >Monday</option>
                             <option>Tuesday</option>
                             <option>Wednesday</option>
                             <option>Thursday</option>
@@ -63,6 +145,8 @@
                             <option>Sunday</option>
                         </select>
                     </div>
+
+                    <br>
                     <div class="col-auto">
                         <label for="start-time">Start time:</label>
                         <input type="time" id="start-time">
@@ -76,8 +160,20 @@
                         <button type="submit" class="btn btn-primary" id="add-time-slot">Add Time Slot</button>
                     </div>
                 </div>
+
+                    
+                <div class="form-group">
+                    <label for="rate">Rate:</label>
+                    <input type="number" id="rate" step=".05" name="rate" min="0" max="200">
+                </div> 
+                    <br>
+                    <h6><label for="tutor-description">Tell us about yourself:</label></h6>
+                <textarea class="form-control" id="tutor-description" rows="3"></textarea>
+                </div>
+
+
                 <br/>
-                <button type="submit" class="btn btn-primary" id="submit-button">Submit</button>
+                <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
             </form>
         </div>
 

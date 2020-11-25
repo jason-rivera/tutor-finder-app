@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>TEMPLATE</title>
+        <meta name="comp1800 boilerplate code" content="my bcit project">
+        <meta name="author" content="BCIT">
+
+        <!-- Bootstrap for Mobile-first, and JQuery -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+
+        <!-- Firebase CSS for Authentication UI -->
+        <link type="text/css" rel="stylesheet" href="https://www.gstatic.com/firebasejs/ui/4.6.1/firebase-ui-auth.css" />
+
+        <!-- Optional CSS of your own -->
+        <!-- <link type="text/css" rel="stylesheet" href=".css" /> -->
+
+        <!--Temp stylesheet-->
+        <style>
+            body {
+                justify-self:center;
+            }
+
+            #centerContent {
+                display: flex;
+                justify-content: center;
+                align-content: center;
+                margin-top: 50px;
+            }
+            
+            #calendarContainer {
+                display:grid;
+                grid-template-columns: 4em repeat(7, 3em);
+                grid-template-rows: 2em repeat(24, 1.5em);
+                row-gap: 0;
+                margin:auto;
+                
+            }
+
+            #calendarContainer > p {
+                margin: 0;
+            }
+
+            
+
+
+            .times {
+                grid-column: 1;
+            }
+            .monday {
+                grid-column: 2;
+            }
+            .tuesday {
+                grid-column: 3;
+            }
+            .wednesday {
+                grid-column: 4;
+            }
+            .thursday {
+                grid-column: 5;
+            }
+            .friday {
+                grid-column: 6;
+            }
+            .saturday {
+                grid-column: 7;
+            }
+            .sunday {
+                grid-column: 8;
+            }
+
+
+            .color0 {
+                background-color: rgba(150, 43, 52, 0.267);
+            }
+            .color1 {
+                background-color: rgba(100, 148, 237, 0.267);
+            }
+
+            .color2 {
+                background-color: rgba(150, 150, 43, 0.438);
+            }
+
+        </style>
+       
+
+
+    </head>
+
+    <body>
+        <!-------------------------------------->
+        <!-- The following is HTML for layout -->
+        <!-------------------------------------->
+        <div id="centerContent">
+            <div id="calendarContainer">
+                <h6 class="times text-center border"></h6>
+                
+
+    
+    
+                
+    
+    
+    
+            </div>
+            
+        </div>
+        <button onclick="updateTable()">submit test</button>
+
+        
+
+
+
+        <!----------------------------------------------->
+        <!--    JS: Boostrap, Firebase, API related    -->
+        <!----------------------------------------------->
+        <!-- Bootstrap libraries from CDN -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
+
+        <!-- Firebase libraries from CDN -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+
+        <!-- Your own Firebase API key information -->
+        <script src="scripts/firebase_api_team24.js"> </script>
+
+        <!--------------------------------------------------------------------->
+        <!--      JS files: Your own JavaScript functions included here      -->
+        <!--------------------------------------------------------------------->
+        <!-- Header Navigation Bar -->
+        <script> var navBarCommonName={name: "TEMPLATE" }; </script>
+        <script src="scripts/navbar-common.js"> ;</script>
+
+
+        <script>
+
+            //This mess holds the Map for the calendar, it can be generated and edited by the code below.
+            //In order to save this map to firestore all you need to do is 
+            //
+
+            //Test map/array
+            //
+            
+            let availability = new Map([
+			// 0 never avalible, 1 avalible, 2 booked. array pos means hour
+			['Monday', 	    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]],
+			['Tuesday', 	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
+			['Wednesday',   [0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
+			['Thursday', 	[0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0]],
+			['Friday', 	    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
+			['Saturday', 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
+            ['Sunday', 	    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]]
+            ])
+            console.log(availability)
+
+            
+            
+            
+            
+            let startTime = 6
+            let endTime = 22
+
+            let calDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
+            let calDaysShort = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+            
+
+            db.collection("TutorsTEST").where("tutorid","==","11111TEST")
+            .get()
+            .then(function(querySnapshot) {
+                querySnapshot.forEach(function(doc) {
+                    
+                    console.log(doc.data().schedule) 
+                    console.log(doc.data().schedule.Monday) 
+                    
+                    console.log(availability.get(calDays[0])[6]) 
+
+                    availability.set("Monday", doc.data().schedule.Monday)
+                    availability.set("Tuesday", doc.data().schedule.Tuesday)
+                    availability.set("Wednesday", doc.data().schedule.Wednesday)
+                    availability.set("Thursday", doc.data().schedule.Thursday)
+                    availability.set("Friday", doc.data().schedule.Friday)
+                    availability.set("Saturday", doc.data().schedule.Saturday)
+                    availability.set("Sunday", doc.data().schedule.Sunday)
+
+                    for (let index = 0; index < calDays.length; index++) {
+                        
+                        $('#calendarContainer').append(
+                            //I have no idea why this code works while missing a " but it breaks when put in
+                            '<h6 class="text-center align-middle border  '+calDays[index]+' style=" grid-row: 1;" >'+calDaysShort[index]+'</h6>'
+                    
+                    )                 
+                    
+                    }
+
+                    for (let index = startTime; index < endTime; index++) {
+                        
+                        $('#calendarContainer').append(
+                            '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
+                        )
+
+                        for (let index2 = 0; index2 < calDays.length; index2++) {
+                            
+                            console.log(availability.get(calDays[index2])[index])
+                            $('#calendarContainer').append(
+                                '<p id="button_'+index+'_'+index2+'" onClick="updateTime(this.id)" class="text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+availability.get(calDays[index2])[index]+'</p>'
+                                
+                            )
+                        }
+                    }
+                })
+            }).catch(function(error) {
+                console.log("Error getting documents: ", error);
+            });
+
+            
+
+            
+                
+            function updateTime(inputString) {
+                let rowPos = inputString.split("_")[1]
+                let colPos = inputString.split("_")[2]
+                
+
+                let aval = availability.get(calDays[colPos])[rowPos]
+                console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
+                switch (aval) {
+                    case 0:
+                    availability.get(calDays[colPos])[rowPos] = 1;
+                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
+                        break;
+
+                     case 1:
+                     availability.get(calDays[colPos])[rowPos] = 0;
+                     $('#button_'+rowPos+'_'+colPos).removeClass("color1")
+                     $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                        break;
+                     case 2:
+                        
+                        break;
+                
+                    default:
+                        break;
+                }
+                
+            }
+
+            function updateTable() {
+                db.collection("TutorsTEST").doc("11111TEST").set({
+                    schedule: {
+                    // 0 never avalible, 1 avalible, 2 booked. array pos means hour
+                    Monday: 	availability.get(calDays[0]),
+                    Tuesday: 	availability.get(calDays[1]),
+                    Wednesday: 	availability.get(calDays[2]),
+                    Thursday: 	availability.get(calDays[3]),
+                    Friday: 	availability.get(calDays[4]),
+                    Saturday: 	availability.get(calDays[5]),
+                    Sunday: 	availability.get(calDays[6])
+                }
+                }, {merge: true})
+            
+            }
+
+        </script>
+
+    </body>
+</html>

@@ -123,12 +123,10 @@ function changeRows(){
             
             $("."+calDays[index]).css("color", "#000000FF")
             $("."+calDays[index]).css("width", openWidth)
-            $("."+calDays[index]+ " h6").html(calDays[index])
 
         } else {
             $("."+calDays[index]).css("color", "#00000000")
             $("."+calDays[index]).css("width", closedWidth)
-            $("."+calDays[index]+ " h6").html(calDays[index].charAt(0))
         }
     }
 }

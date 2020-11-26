@@ -17,7 +17,7 @@ let availability = new Map([
 let selectedDay = 3;
 
 let rowHeight = "40px"
-let openWidth = "100px"
+let openWidth = "150px"
 let closedWidth ="20px"
 
 let startTime = 6
@@ -130,8 +130,6 @@ function changeRows(){
             $("."+calDays[index]).css("width", closedWidth)
             $("."+calDays[index]+ " h6").html(calDays[index].charAt(0))
         }
-        
-        
     }
 }
 

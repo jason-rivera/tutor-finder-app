@@ -1,135 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <title>Review Page</title>
+    <meta name="comp1800 boilerplate code" content="my bcit project">
+    <meta name="author" content="BCIT">
 
-    <head>
-        <meta charset="utf-8">
-        <title>Review Page</title>
-        <meta name="comp1800 boilerplate code" content="my bcit project">
-        <meta name="author" content="BCIT">
+    <!-- Bootstrap for Mobile-first, and JQuery -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
 
-        <!-- Bootstrap for Mobile-first, and JQuery -->
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+    <!-- Optional styles and scripts of your own -->
+      <link type="text/css" rel="stylesheet" href="styles/previous-sessions.css" />
 
-        <!-- Optional styles and scripts of your own -->
-         <link type="text/css" rel="stylesheet" href="styles/previous-sessions.css" />
+  </head>
+  <body>
 
-    </head>
-
-    <body>
-
-        <!-------------------------------------->
-        <!-- The following is HTML for layout -->
-        <!-------------------------------------->
-        <div class="jumbotron">
-            <h1 class="display-6">Previous sessions</h1>
-            <p class="lead">Here you can view your previous sessions </p>  
-        </div>
-        
-
-        <!-- Modal -->
-        <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
-          <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-              <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLongTitle">Leave Review</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                  <span aria-hidden="true">&times;</span>
-                </button>
-              </div>
-              
-              <div class="modal-body">
-                <form id="reviewTutor">
-                  <div class="media" >
-                    <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
-                    <div class="media-body">
-                      <h5 class="mt-0" id="tutorName">$Tutor Name</h5>
-                      <p id="reviewDate">Date: date</p>
-                      <p id="subjectTaught">Subject taught: subject</p>
-                    </div>
-                  </div>
-        
-                  <hr class="my-4">
-        
-                  <div class="form-group">
-                    <label for="rangeOnTime">On time?</label>
-                    <input type="range" class="form-control-range" id="rangeOnTime">
-                  </div>
-        
-                  <div class="form-group">
-                    <label for="teachingAbility">Teaching ability</label>
-                    <input type="range" class="form-control-range" id="teachingAbility">
-                  </div>
-        
-                  <div class="form-group">
-                    <label for="knowledge">Knowledge</label>
-                    <input type="range" class="form-control-range" id="knowledge">
-                  </div>
-        
-                  <div class="form-group" id="textAreaDiv" >
-                    <label for="reviewTextArea">Write your feedback here</label>
-                    <textarea class="form-control" id="reviewTextArea" rows="3"></textarea>
-                    <hr class="my-4">
-                    <input class="btn btn-primary" type="submit" id="submitReview" value="Submit" style="float: right">
-                  </div>
-        
-                </form>
-              </div>
-              <!--
-              <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-              </div>
-            -->
+    <div class="body-container">
+      <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLongTitle">Leave Review</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
             </div>
+            
+            <div class="modal-body">
+              <form id="reviewTutor">
+                <div class="media" >
+                  <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
+                  <div class="media-body">
+                    <h5 class="mt-0" id="tutorName">$Tutor Name</h5>
+                    <p id="reviewDate">Date: date</p>
+                    <p id="subjectTaught">Subject taught: subject</p>
+                  </div>
+                </div>
+      
+                <hr class="my-4">
+      
+                <div class="form-group">
+                  <label for="rangeOnTime">On time?</label>
+                  <input type="range" class="form-control-range" id="rangeOnTime">
+                </div>
+      
+                <div class="form-group">
+                  <label for="teachingAbility">Teaching ability</label>
+                  <input type="range" class="form-control-range" id="teachingAbility">
+                </div>
+      
+                <div class="form-group">
+                  <label for="knowledge">Knowledge</label>
+                  <input type="range" class="form-control-range" id="knowledge">
+                </div>
+      
+                <div class="form-group" id="textAreaDiv" >
+                  <label for="reviewTextArea">Write your feedback here</label>
+                  <textarea class="form-control" id="reviewTextArea" rows="3"></textarea>
+                  <hr class="my-4">
+                  <input class="btn btn-primary" type="submit" id="submitReview" value="Submit" style="float: right">
+                </div>
+      
+              </form>
+            </div>
+            <!--
+            <div class="modal-footer">
+              <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+              <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            -->
           </div>
         </div>
-        
-        <div class="accordion" id="accordionExample"></div>
-        
-        
-        
+      </div>
+      
+      <div class="accordion" id="accordionExample"></div>
+    </div>
 
-        
+    <!-- Bootstrap libraries from CDN -->
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
-        <!----------------------------------------------->
-        <!--    JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
-        <!-- Bootstrap libraries from CDN -->
-        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-        </script>
-        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-        </script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-        </script>
+    <!-- Firebase libraries from CDN -->
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+    <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
 
-        <!-- Firebase libraries from CDN -->
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+    <!-- Your own Firebase API key information -->
+    <script src="scripts/firebase_api_team24.js"></script>
 
-        <!-- Your own Firebase API key information -->
-        <script src="scripts/firebase_api_team24.js"> </script>
+    <!-- Header Navigation Bar -->
+    <script> var navBarCommonName={name: "Previous Sessions" }; </script>
+    <script src="scripts/navbar-common.js"></script>
+    
+    <script src="scripts/populate-previous-sessions-test.js"></script>
+    <script src="scripts/populate-tutors-test.js"></script>
 
-        <!--------------------------------------------------------------------->
-        <!--      JS files: Your own JavaScript functions included here      -->
-        <!--------------------------------------------------------------------->
-        <!-- Header Navigation Bar -->
-        <script> var navBarCommonName={name: "Previous Sessions" }; </script>
-        <script src="scripts/navbar-common.js"> ;</script>
-        
-        <script src="scripts/populate-previous-sessions-test.js"></script>
-        <script src="scripts/populate-tutors-test.js"></script>
+    <!-- Testing files for submitting review -->
+    <script> var tutorIDForReview = "placeholderTutorIDprevses2";</script>
+    <script src="scripts/write-review.js"></script>
 
-      <!-- Testing files for submitting review -->
-      <script> var tutorIDForReview = "placeholderTutorIDprevses2"</script>
-      <script src="scripts/write-review.js"></script>
-
-      <script src="scripts/previous-sessions.js" ></script>
-      <script src="scripts/previous-sessions-modal.js" ></script>
-    </body>
+    <script src="scripts/previous-sessions.js"></script>
+    <script src="scripts/previous-sessions-modal.js"></script>
+  </body>
 </html>

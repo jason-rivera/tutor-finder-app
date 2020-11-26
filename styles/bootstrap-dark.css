@@ -2553,7 +2553,7 @@ fieldset:disabled a.btn {
 /* need this */
 .btn-secondary {
   color: #fff;
-  background-color: rgba(108, 117, 125, 0.5);
+  background-color: rgb(150, 150, 150);
   border-color: rgba(108, 117, 125, 0.5);
 }
 

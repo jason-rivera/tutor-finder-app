@@ -118,7 +118,7 @@ h6 {
   height: 33px;
   background-color:#02ff88;
   color:#000000;
-  animation: colorAnim 1s forwards;
+  animation: colorAnim 0.5s forwards;
 }
 
 

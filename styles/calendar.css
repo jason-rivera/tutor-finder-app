@@ -23,24 +23,6 @@
     font-size: 1em;
 }
 
-#calendarContaineMini {
-    display:grid;
-    grid-template-columns: 0px repeat(7, auto);
-    grid-template-rows: 2em repeat(16, 20px);
-    row-gap: 0;
-    margin:auto;      
-}
-
-#calendarContainerMini > p {
-    margin: 0;
-    font-size: 0.8em;
-}
-
-#calendarContainerMini > h6 {
-    margin: 0;
-    font-size: 1em;
-}          
-
 .times {
     grid-column: 1;
     visibility: hidden;

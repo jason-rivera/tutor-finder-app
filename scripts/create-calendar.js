@@ -5,13 +5,13 @@
 
 let availability = new Map([
     // 0 never avalible, 1 avalible, 2 booked. array pos means hour
-    ['Monday', 	    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]],
-    ['Tuesday', 	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-    ['Wednesday',   [0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-    ['Thursday', 	[0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0]],
-    ['Friday', 	    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-    ['Saturday', 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-    ['Sunday', 	    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]]
+    ['Monday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Tuesday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Wednesday',   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Thursday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Friday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Saturday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Sunday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
     ])
 
 let selectedDay = 3;
@@ -25,14 +25,14 @@ let endTime = 21
 
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-    
-//This would be a problem if there was more than one tutor with the same id but that should not matter
-function createCalendar(userID) {
-    db.collection("TutorsTEST").doc(userID)
-        .get().then(function(doc) {
 
-            $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
-            //Looping through this was difficult so its hardcoded
+
+
+function setCalendar(userid) {
+    
+    db.collection("TutorsTEST").doc(userid)
+        .get().then(function(doc) {
+            console.log("load tutor")
             availability.set("Monday", doc.data().schedule.Monday)
             availability.set("Tuesday", doc.data().schedule.Tuesday)
             availability.set("Wednesday", doc.data().schedule.Wednesday)
@@ -41,37 +41,49 @@ function createCalendar(userID) {
             availability.set("Saturday", doc.data().schedule.Saturday)
             availability.set("Sunday", doc.data().schedule.Sunday)
 
-            for (let index = 0; index < calDays.length; index++) {
-                
-                $('#calendarContainer').append(
-                    //I have no idea why this code works while missing a " but it breaks when put in
-                    '<h6 id="heading_'+calDays[index]+'" class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1;">'+calDays[index]+'</h6>'
-            )                 
-            
-            }
-
-            for (let index = startTime; index < endTime; index++) {
-                
-                $('#calendarContainer').append(
-                    '<p class=" text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                )
-                
-                for (let index2 = 0; index2 < calDays.length; index2++) {
-                    
-                    console.log(availability.get(calDays[index2])[index])
-                    $('#calendarContainer').append(
-                        '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                        
-                    )
-                }
-            }
-
-            changeRows()
-                
-            
         }).catch(function(error) {
             console.log("Error getting documents: ", error)
+        
     })
+}
+    
+//This would be a problem if there was more than one tutor with the same id but that should not matter
+function createCalendar() {
+
+
+    $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
+    //Looping through this was difficult so its hardcoded
+    
+
+    for (let index = 0; index < calDays.length; index++) {
+        
+        $('#calendarContainer').append(
+            //I have no idea why this code works while missing a " but it breaks when put in
+            '<h6 id="heading_'+calDays[index]+'" class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1;">'+calDays[index]+'</h6>'
+        )                 
+    
+    }
+
+    for (let index = startTime; index < endTime; index++) {
+        
+        $('#calendarContainer').append(
+            '<p class=" text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
+        )
+        
+        for (let index2 = 0; index2 < calDays.length; index2++) {
+            
+            console.log(availability.get(calDays[index2])[index])
+            $('#calendarContainer').append(
+                '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
+                
+            )
+        }
+    }
+
+    changeRows()
+                
+            
+
 }
 
         

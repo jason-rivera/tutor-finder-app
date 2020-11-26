@@ -123,3 +123,12 @@ span {
   animation: colorAnim 1s forwards;
 }
 
+.keyword-search-bar {
+  grid-column: 2;
+}
+
+.keyword-search-bar-container {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 30px;
+}

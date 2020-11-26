@@ -12,6 +12,7 @@
         <!-- Optional styles and scripts of your own -->
         <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
         <link type="text/css" rel="stylesheet" href="styles/tutor-form.css" />
+		<link type="text/css" rel="stylesheet" href="styles/calendar.css" />
         <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
     </head>
     
@@ -101,6 +102,7 @@
                         </label>
                     </div>
                 </div>
+<<<<<<< HEAD
 
                 <br>
                 <br>
@@ -203,25 +205,30 @@
 
                 <div class="form-group">
                     
+=======
+                <div class="form-group">   
+>>>>>>> bb03011cff7fd31a954adefad3029c07cbe51afd
                     <h6><label for="rate">Hourly Rate:</label></h6>
                     <br>
-
-
                     <input class="form-control dropdown-modifier" type="number" id="rate" step=".05" name="rate" min="0" max="200" />
-
                 </div> 
-
-                <br>
-
-                <h6><label for="tutor-description">Tell us about yourself:</label></h6>
-                
-                    <textarea class="form-control" id="tutor-description" rows="3"></textarea>
-                
                 <br/>
+                <h6><label for="tutor-description">Tell us about yourself:</label></h6>
+				<textarea class="form-control" id="tutor-description" rows="3"></textarea>
+                <br/>
+
+				<div id="centerContent">
+					<div id="calendarContainer">
+						<h6 class="times text-center align-middle"></h6>
+					</div>
+				</div>
 
                 <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
             </form>
         </div>
+
+
+        <button id="calendar-submit">submit testing</button>
 
         <!----------------------------------------------->
         <!--    JS: Boostrap, Firebase, API related    -->

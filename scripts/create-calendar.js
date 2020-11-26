@@ -50,8 +50,9 @@ function setCalendar(userid) {
 //This would be a problem if there was more than one tutor with the same id but that should not matter
 function createCalendar() {
 
-
+    document.getElementById("calendarContainer").innerHTML = "<h6 class='times text-center  align-middle'></h6>";
     $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
+    
     //Looping through this was difficult so its hardcoded
     
 

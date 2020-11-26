@@ -1,8 +1,6 @@
-
 body {
   background-color: #1B1C1D;
 }
-
 .body-container {
   background-color: #1B1C1D;
   max-width: 800px;
@@ -10,14 +8,12 @@ body {
   left: 50%;
   transform: translate(-50%, 0);
 }
-
 .btn-secondary {
   margin: 3px;
   width: 100px;
 }
 .form-group {
   padding-top: 20px;
-  /* text-align: center; */
   font-weight: bold;
 }
 .jumbotron {
@@ -41,35 +37,29 @@ body {
 .homepage-text {
   font-size: 1.6em;
 }
-
 #update-profile-header {
   text-align: center;
 }
-
-
 h6 {
   text-align: center;
   
 }
-
 span {
   cursor: pointer;
 }
 
-@media screen and (min-width: 800px) {
-
-  .homepage-button {
-    position: relative;
-    left: 50%;
-    transform: translate(-50%, 0);
-    width: 500px;
-  }
+/* keyword search bar */
+.keyword-search-bar {
+  grid-column: 2;
 }
 
-
+.keyword-search-bar-container {
+  display: grid;
+  grid-template-columns: 10% 80% 10%;
+  grid-template-rows: 30px;
+}
 
 /* For the subject checkboxes */
-
 .button-cont {
   position: relative;
   max-width: 550px;
@@ -78,8 +68,6 @@ span {
   padding: 0px;
   margin: 0px;
 }
-
-
 
 .ck-button {
   margin: 5px;
@@ -90,11 +78,8 @@ span {
 }
 
 .ck-button label {
-  /* float:left; */
-
   width: 100px;
   height: 25px;
-  
 }
 
 .ck-button label span {
@@ -111,6 +96,7 @@ span {
   z-index:-1;
 }
 
+/* animation for button */
 @keyframes colorAnim {
 	from {background-color: #EFEFEF; }
 	to {background-color: #02ff88; }
@@ -121,14 +107,4 @@ span {
   background-color:#02ff88;
   color:#000000;
   animation: colorAnim 0.5s forwards;
-}
-
-.keyword-search-bar {
-  grid-column: 2;
-}
-
-.keyword-search-bar-container {
-  display: grid;
-  grid-template-columns: 10% 80% 10%;
-  grid-template-rows: 30px;
 }

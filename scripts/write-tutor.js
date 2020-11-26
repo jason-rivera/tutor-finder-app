@@ -34,6 +34,7 @@ function fillForm() {
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user){
 			let tutorRef = db.collection("Tutors").doc(user.uid);
+			setCalendar(tutorRef);
 			tutorRef.get()
 			.then(function(docSnapshot) {
 				if(docSnapshot.exists) {
@@ -42,7 +43,6 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
-					setCalendar(tutorRef);
 					makeCalendar();
 				} else {
 					makeCalendar();
@@ -99,7 +99,7 @@ function setTutorFields(user, tutorRef) {
 let availability = new Map([
 	['Monday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
 	['Tuesday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
-	['Wednesday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Wednesday', [1,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
 	['Thursday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
 	['Friday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
 	['Saturday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
@@ -110,7 +110,6 @@ let selectedDay = 3;
 let startTime = 6;
 let endTime = 21;
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
-let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 
 function setCalendar(tutorRef) {
     tutorRef
@@ -224,7 +223,6 @@ function writeSchedule(tutorRef) {
 		}
     }, {merge: true})      
 }
-
 
 fillForm();
 submitButtonEvent();

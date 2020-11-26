@@ -27,7 +27,7 @@ h6 {
 
 /* submit button */
 
-.btn {
+#submit-button {
   display: inline-block;
   position: relative;
   font-weight: 400;

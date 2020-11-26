@@ -17,7 +17,24 @@
     </head>
     
     <body>
-
+        <!-------------------------------------->
+        <!---      Update success modal      --->
+        <!-------------------------------------->
+		<div class="modal fade" id="successModal" tabindex="-1" role="dialog">
+		  <div class="modal-dialog modal-dialog-centered" role="document">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<h5 class="modal-title">Tutor profile updated</h5>
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close">
+				  <span aria-hidden="true">&times;</span>
+				</button>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
         <!-------------------------------------->
         <!-- The following is HTML for layout -->
         <!-------------------------------------->
@@ -100,13 +117,14 @@
                 <br/>
 
 				<h6>Schedule:</h6>
+				
 				<div id="centerContent">
 					<div id="calendarContainer">
 						<h6 class="times text-center align-middle"></h6>
 					</div>
 				</div>
 
-                <button type="submit" class="btn btn-primary submit-button" id="submit-button">Submit</button>
+                <button type="submit" class="btn btn-primary submit-button" id="submit-button" data-toggle="modal" data-target="#successModal">Submit</button>
             </form>
         </div>
 
@@ -138,14 +156,14 @@
         <!--------------------------------------------------------------------->
         <!--      JS files: Your own JavaScript functions included here      -->
         <!--------------------------------------------------------------------->
-        <!-- Header Navigation Bar -->
+        <!-- Header Navigation Bar -->	
         <script> var navBarCommonName={name: "Tutor Form" }; </script>
         <script src="scripts/navbar-common.js"></script>
 
         <!-- Writing to database-->
         <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script src="scripts/write-tutor.js"></script>
-		<script src="scripts/create-calendar.js"></script>
+		
 
     </body>
 </html>

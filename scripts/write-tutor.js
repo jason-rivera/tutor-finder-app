@@ -42,6 +42,7 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
+					setCalendar(doc, tutorsRef);
 				}
 			});
 		} else {
@@ -98,87 +99,64 @@ function writeTimeslot() {
 }
 
 let availability = new Map([
-// 0 never avalible, 1 avalible, 2 booked. array pos means hour
-['Monday', 	    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]],
-['Tuesday', 	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-['Wednesday',   [0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-['Thursday', 	[0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0]],
-['Friday', 	    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-['Saturday', 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-['Sunday', 	    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]]
+	['Monday', []],
+	['Tuesday', []],
+	['Wednesday', []],
+	['Thursday', []],
+	['Friday', []],
+	['Saturday', []],
+	['Sunday', []]
 ])
 
 let selectedDay = 3;
             
-let startTime = 6
-let endTime = 21
+let startTime = 6;
+let endTime = 21;
 
-let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
      
-function calendar() {
-    //This would be a problem if there was more than one tutor with the same id but that should not matter
-    db.collection("TutorsTEST").doc("22222TEST")
-    .get().then(function(doc) {
-                    
-            console.log(doc.data().schedule)
-		
-            console.log(doc.data().schedule.Monday) 
-                    
-            console.log(availability.get(calDays[0])[6]) 
-                    
-            //Looping through this was difficult so its hardcoded
-            availability.set("Monday", doc.data().schedule.Monday)
-            availability.set("Tuesday", doc.data().schedule.Tuesday)
-            availability.set("Wednesday", doc.data().schedule.Wednesday)
-            availability.set("Thursday", doc.data().schedule.Thursday)
-            availability.set("Friday", doc.data().schedule.Friday)
-            availability.set("Saturday", doc.data().schedule.Saturday)
-            availability.set("Sunday", doc.data().schedule.Sunday)
+function makeCalendar() {
 
-            for (let index = 0; index < calDays.length; index++) {
-                $('#calendarContainer').append(
-                    //I have no idea why this code works while missing a " but it breaks when put in
-                    '<h6  class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1; width: 15em">'+calDays[index]+'</h6>'
-            )                 
-                    
-            }
+	//makes day header for each column
+    for (let index = 0; index < calDays.length; index++) {
+        $('#calendarContainer').append(
+            //I have no idea why this code works while missing a " but it breaks when put in
+            '<h6  class=" text-center align-middle '+calDays[index]+' style=" grid-row: 1; width: 15em">'+calDays[index]+'</h6>'
+		);                        
+    }
 
-            for (let index = startTime; index < endTime; index++) {
+	//makes time buttons for each cell on the grid
+    for (let index = startTime; index < endTime; index++) {
                         
-                $('#calendarContainer').append(
-                    '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                )      
-                for (let index2 = 0; index2 < calDays.length; index2++) {
+        $('#calendarContainer').append(
+            '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
+        )      
+        for (let index2 = 0; index2 < calDays.length; index2++) {
                             
-                    console.log(availability.get(calDays[index2])[index])
-                    $('#calendarContainer').append(
-                        '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'      
-                    )
-					$('')
-                }
-            }
-            for (let index = 0; index < calDays.length; index++) {
-                if (index == selectedDay){
-                    $("."+calDays[index]).css("color", "#000000FF")
-                    $("."+calDays[index]).css("width", "100px")
-                    console.log(index + " is " + calDays[index] + " and is selected")
-                    console.log($("."+calDays[index]))
+            console.log(availability.get(calDays[index2])[index])
+            $('#calendarContainer').append(
+                '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'      
+            )
+        }
+    }
+		
+	//color of the time cells if they are pressed on/off
+    for (let index = 0; index < calDays.length; index++) {
+        if (index == selectedDay){
+            $("."+calDays[index]).css("color", "#000000FF")
+            $("."+calDays[index]).css("width", "100px")
+            console.log(index + " is " + calDays[index] + " and is selected")
+            console.log($("."+calDays[index]))
 
-                } else {
-                    $("."+calDays[index]).css("color", "#00000000")
-                    $("."+calDays[index]).css("width", "20px")
-                    console.log(index + " is " + calDays[index] + " and is notselected")
+        } else {
+            $("."+calDays[index]).css("color", "#00000000")
+            $("."+calDays[index]).css("width", "20px")
+            console.log(index + " is " + calDays[index] + " and is not selected")
                             
-                }
-            }
-                    
-                
-    }).catch(function(error) {
-        console.log("Error getting documents: ", error);
-    });
-}
-            
+        }
+    }          
+}         
                
 function updateTime(inputString) {
     let rowPos = inputString.split("_")[1]
@@ -223,7 +201,7 @@ function updateTime(inputString) {
     }             
 }
 
-function updateTable() {
+function writeSchedule() {
     db.collection("TutorsTEST").doc("22222TEST").set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. array pos means hour
@@ -239,9 +217,18 @@ function updateTable() {
     }, {merge: true})      
 }
 
-
-
+function setCalendar(doc, tutorsRef) {
+    tutorsRef
+    .get().then(function(doc) {
+		availability.set("Monday", doc.data().schedule.Monday);
+		availability.set("Tuesday", doc.data().schedule.Tuesday);
+		availability.set("Wednesday", doc.data().schedule.Wednesday);
+		availability.set("Thursday", doc.data().schedule.Thursday);
+		availability.set("Friday", doc.data().schedule.Friday);
+		availability.set("Saturday", doc.data().schedule.Saturday);
+		availability.set("Sunday", doc.data().schedule.Sunday);
+	}
+}
 
 fillForm();
 submitButton();
-calendar();

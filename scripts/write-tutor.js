@@ -1,4 +1,4 @@
-function submitButton() {  
+function submitButtonEvent() {  
 	$('#tutor-form').submit(function () { //makes it so page doesn't refresh on submit
 		return false;
 	});
@@ -42,7 +42,10 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
+					makeCalendar();
 					setCalendar(tutorRef);
+				} else {
+					makeCalendar();
 				}
 			});
 		} else {
@@ -232,4 +235,4 @@ function setCalendar(tutorRef) {
 }
 
 fillForm();
-submitButton();
+submitButtonEvent();

@@ -52,6 +52,9 @@
                 visibility: hidden;
                 
             }
+            .Sunday {
+                grid-column: 2;
+            }
             .Monday {
                 grid-column: 3;
             }
@@ -70,9 +73,7 @@
             .Saturday {
                 grid-column: 8;
             }
-            .Sunday {
-                grid-column: 2;
-            }
+            
 
 
             .color0 {
@@ -181,12 +182,12 @@
             let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
             
             //This would be a problem if there was more than one tutor with the same id but that should not matter
-            db.collection("TutorsTEST").where("tutorid","==","22222TEST")
-            .get()
-            .then(function(querySnapshot) {
-                querySnapshot.forEach(function(doc) {
+            db.collection("TutorsTEST").doc("222222TEST")
+            .get().then(function(doc) {
                     
-                    console.log(doc.data().schedule) 
+                    console.log(doc.data().schedule)
+
+
                     console.log(doc.data().schedule.Monday) 
                     
                     console.log(availability.get(calDays[0])[6]) 
@@ -224,26 +225,24 @@
                             )
                         }
                     }
-                    for (let index = 0; index < calDays.length; index++) {
-                    if (index == selectedDay){
-                        
-                        $("."+calDays[index]).css("color", "#000000FF")
-                        $("."+calDays[index]).css("width", "100px")
-                        console.log(index + " is " + calDays[index] + " and is selected")
-                        console.log($("."+calDays[index]))
 
-                    } else {
-                        $("."+calDays[index]).css("color", "#00000000")
-                        $("."+calDays[index]).css("width", "20px")
-                        console.log(index + " is " + calDays[index] + " and is notselected")
-                        
+                    for (let index = 0; index < calDays.length; index++) {
+                        if (index == selectedDay){
+                            
+                            $("."+calDays[index]).css("color", "#000000FF")
+                            $("."+calDays[index]).css("width", "100px")
+                            console.log(index + " is " + calDays[index] + " and is selected")
+                            console.log($("."+calDays[index]))
+
+                        } else {
+                            $("."+calDays[index]).css("color", "#00000000")
+                            $("."+calDays[index]).css("width", "20px")
+                            console.log(index + " is " + calDays[index] + " and is notselected")
+                            
+                        }
                     }
                     
-                    
-                }
-                })
-            }).catch(function(error) {
-                console.log("Error getting documents: ", error);
+                
             });
 
             
@@ -310,17 +309,17 @@
             }
 
             function updateTable() {
-                db.collection("TutorsTEST").doc("11111TEST").set({
+                db.collection("TutorsTEST").doc("22222TEST").set({
                     schedule: {
                     // 0 never avalible, 1 avalible, 2 booked. array pos means hour
                     //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
-                    Monday: 	availability.get(calDays[0]),
-                    Tuesday: 	availability.get(calDays[1]),
-                    Wednesday: 	availability.get(calDays[2]),
-                    Thursday: 	availability.get(calDays[3]),
-                    Friday: 	availability.get(calDays[4]),
-                    Saturday: 	availability.get(calDays[5]),
-                    Sunday: 	availability.get(calDays[6])
+                    Monday: 	availability.get(calDays[1]),
+                    Tuesday: 	availability.get(calDays[2]),
+                    Wednesday: 	availability.get(calDays[3]),
+                    Thursday: 	availability.get(calDays[4]),
+                    Friday: 	availability.get(calDays[5]),
+                    Saturday: 	availability.get(calDays[6]),
+                    Sunday: 	availability.get(calDays[0])
                 }
                 }, {merge: true})
             

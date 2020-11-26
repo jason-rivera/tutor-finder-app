@@ -97,7 +97,7 @@ function writeTimeslot() {
 	});
 }
 
-function calendar() {
+
 
 	let availability = new Map([
 	// 0 never avalible, 1 avalible, 2 booked. array pos means hour
@@ -139,7 +139,6 @@ function calendar() {
             availability.set("Sunday", doc.data().schedule.Sunday)
 
             for (let index = 0; index < calDays.length; index++) {
-                        
                 $('#calendarContainer').append(
                     //I have no idea why this code works while missing a " but it breaks when put in
                     '<h6  class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1; width: 15em">'+calDays[index]+'</h6>'
@@ -157,15 +156,14 @@ function calendar() {
                             
                     console.log(availability.get(calDays[index2])[index])
                     $('#calendarContainer').append(
-                        '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                                
+                        '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'      
                     )
+					$('')
                 }
             }
 
             for (let index = 0; index < calDays.length; index++) {
                 if (index == selectedDay){
-                            
                     $("."+calDays[index]).css("color", "#000000FF")
                     $("."+calDays[index]).css("width", "100px")
                     console.log(index + " is " + calDays[index] + " and is selected")
@@ -262,7 +260,7 @@ function calendar() {
         }, {merge: true})
             
     }
-}
+
 
 
 

@@ -135,8 +135,8 @@ function changeRows(){
     }
 }
 
-function updateTable() {
-    db.collection("TutorsTEST").doc("22222TEST").set({
+function updateTable(userid) {
+    db.collection("TutorsTEST").doc(userid).set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. array pos means hour
         //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh

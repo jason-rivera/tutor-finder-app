@@ -42,7 +42,7 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
-					setCalendar(doc, tutorsRef);
+					setCalendar(tutorsRef);
 				}
 			});
 		} else {
@@ -201,8 +201,9 @@ function updateTime(inputString) {
     }             
 }
 
-function writeSchedule() {
-    db.collection("TutorsTEST").doc("22222TEST").set({
+function writeSchedule(tutorsRef) {
+    tutorsRef
+	.set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. array pos means hour
         //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
@@ -217,7 +218,7 @@ function writeSchedule() {
     }, {merge: true})      
 }
 
-function setCalendar(doc, tutorsRef) {
+function setCalendar(tutorsRef) {
     tutorsRef
     .get().then(function(doc) {
 		availability.set("Monday", doc.data().schedule.Monday);

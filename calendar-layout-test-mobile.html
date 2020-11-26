@@ -37,7 +37,7 @@
 
             #calendarContainer > p {
                 margin: 0;
-                font-size: 8px;
+                font-size: 12px;
             }
             #calendarContainer > h6 {
                 margin: 0;
@@ -103,13 +103,6 @@
             <div id="calendarContainer">
                 <h6 class="times text-center  align-middle"></h6>
                 
-
-    
-    
-                
-    
-    
-    
             </div>
             
         </div>
@@ -182,7 +175,7 @@
             let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
             
             //This would be a problem if there was more than one tutor with the same id but that should not matter
-            db.collection("TutorsTEST").doc("222222TEST")
+            db.collection("TutorsTEST").doc("22222TEST")
             .get().then(function(doc) {
                     
                     console.log(doc.data().schedule)

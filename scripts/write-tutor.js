@@ -21,7 +21,7 @@ function writeTutor() {
 				} else {
 					setTutorFields(user, tutorRef);
 				}
-				writeTimeslot();
+				writeSchedule(tutorRef);
 				setCheckedSubjects(user, tutorRef);
 			});
 		} else {
@@ -42,8 +42,8 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
-					makeCalendar();
 					setCalendar(tutorRef);
+					makeCalendar();
 				} else {
 					makeCalendar();
 				}
@@ -72,55 +72,64 @@ function updateTutorFields(user, tutorRef) {
 		rate: parseFloat(document.getElementById("rate").value),
 		subjects: [], //don't worry about finding unchecked subjects, just reset the array
 		//reviews and rating get updated when a review is submitted
-		schedule: new Map()
 	});
 }
 
 function setTutorFields(user, tutorRef) {
 	console.log(user.uid + "is now a tutor.");
-	tutorRef.set({
+	tutorRef
+	.set({
 		description: document.getElementById("tutor-description").value,
 		rate: parseFloat(document.getElementById("rate").value),
 		rating: 0,
 		reviews: 0,
 		subjects: [],
-		schedule: new Map()
+        schedule: {
+			Monday: 	availability.get(calDays[1]),
+			Tuesday: 	availability.get(calDays[2]),
+			Wednesday: 	availability.get(calDays[3]),
+			Thursday: 	availability.get(calDays[4]),
+			Friday: 	availability.get(calDays[5]),
+			Saturday: 	availability.get(calDays[6]),
+			Sunday: 	availability.get(calDays[0])
+		}
 	})
 }
 
-function writeTimeslot() {
-	firebase.auth().onAuthStateChanged(function (user) {
-		if (user){
-			db.collection("Timeslots").add({
-				tutorId: user.uid,
-				day: document.getElementById("day").value,
-				start: document.getElementById("start-time").value,
-				end: document.getElementById("end-time").value
-			})
-		}
-	});
-}
-
 let availability = new Map([
-	['Monday', []],
-	['Tuesday', []],
-	['Wednesday', []],
-	['Thursday', []],
-	['Friday', []],
-	['Saturday', []],
-	['Sunday', []]
+	['Monday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Tuesday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Wednesday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Thursday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Friday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Saturday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+	['Sunday', [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
 ])
 
-let selectedDay = 3;
-            
+let selectedDay = 3;  
 let startTime = 6;
 let endTime = 21;
-
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
-     
+
+function setCalendar(tutorRef) {
+    tutorRef
+    .get().then(function(doc) {
+		availability.set('Monday', doc.data().schedule.Monday);
+		availability.set('Tuesday', doc.data().schedule.Tuesday);
+		availability.set('Wednesday', doc.data().schedule.Wednesday);
+		availability.set('Thursday', doc.data().schedule.Thursday);
+		availability.set('Friday', doc.data().schedule.Friday);
+		availability.set('Saturday', doc.data().schedule.Saturday);
+		availability.set('Sunday', doc.data().schedule.Sunday);
+	});
+	
+}   
+   
 function makeCalendar() {
 
+	console.log(availability);
+	console.log(availability.get("Wednesday"));
 	//makes day header for each column
     for (let index = 0; index < calDays.length; index++) {
         $('#calendarContainer').append(
@@ -132,12 +141,11 @@ function makeCalendar() {
 	//makes time buttons for each cell on the grid
     for (let index = startTime; index < endTime; index++) {
                         
-        $('#calendarContainer').append(
+        $('#calendarContainer').append( //put the hour at 30 mins (e.g. 6:30, 7:30, 8:30, etc)
             '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-        )      
+        )
         for (let index2 = 0; index2 < calDays.length; index2++) {
-                            
-            console.log(availability.get(calDays[index2])[index])
+            console.log(availability.get(calDays[index2])[index]);
             $('#calendarContainer').append(
                 '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'      
             )
@@ -149,14 +157,10 @@ function makeCalendar() {
         if (index == selectedDay){
             $("."+calDays[index]).css("color", "#000000FF")
             $("."+calDays[index]).css("width", "100px")
-            console.log(index + " is " + calDays[index] + " and is selected")
-            console.log($("."+calDays[index]))
 
         } else {
             $("."+calDays[index]).css("color", "#00000000")
-            $("."+calDays[index]).css("width", "20px")
-            console.log(index + " is " + calDays[index] + " and is not selected")
-                            
+            $("."+calDays[index]).css("width", "20px")                 
         }
     }          
 }         
@@ -165,7 +169,7 @@ function updateTime(inputString) {
     let rowPos = inputString.split("_")[1]
     let colPos = inputString.split("_")[2]
     let aval = availability.get(calDays[colPos])[rowPos]
-    console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
+    console.log("Column: "+ colPos+" Row: "+ rowPos + "Aval: " + aval)
 
     if (colPos > selectedDay){
         selectedDay++;
@@ -221,18 +225,6 @@ function writeSchedule(tutorRef) {
     }, {merge: true})      
 }
 
-function setCalendar(tutorRef) {
-    tutorRef
-    .get().then(function(doc) {
-		availability.set("Monday", doc.data().schedule.Monday);
-		availability.set("Tuesday", doc.data().schedule.Tuesday);
-		availability.set("Wednesday", doc.data().schedule.Wednesday);
-		availability.set("Thursday", doc.data().schedule.Thursday);
-		availability.set("Friday", doc.data().schedule.Friday);
-		availability.set("Saturday", doc.data().schedule.Saturday);
-		availability.set("Sunday", doc.data().schedule.Sunday);
-	});
-}
 
 fillForm();
 submitButtonEvent();

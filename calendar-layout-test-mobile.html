@@ -18,9 +18,6 @@
 
         <!--Temp stylesheet-->
         <style>
-            body {
-                justify-self:center;
-            }
 
             #centerContent {
                 display: flex;
@@ -31,8 +28,8 @@
             
             #calendarContainer {
                 display:grid;
-                grid-template-columns: 4em repeat(7, 20px);
-                grid-template-rows: 2em repeat(24, 12px);
+                grid-template-columns: 0px repeat(7, auto);
+                grid-template-rows: 2em repeat(24, 20px);
                 row-gap: 0;
                 margin:auto;
                 
@@ -44,37 +41,37 @@
             }
             #calendarContainer > h6 {
                 margin: 0;
-                font-size: 12px;
-                transform: translateX(-50%) rotate(90deg);
+                font-size: 16px;
             }
 
             
             
 
             .times {
-                grid-column: 0;
+                grid-column: 1;
+                visibility: hidden;
                 
             }
-            .monday {
-                grid-column: 2;
-            }
-            .tuesday {
+            .Monday {
                 grid-column: 3;
             }
-            .wednesday {
+            .Tuesday {
                 grid-column: 4;
             }
-            .thursday {
+            .Wednesday {
                 grid-column: 5;
             }
-            .friday {
+            .Thursday {
                 grid-column: 6;
             }
-            .saturday {
+            .Friday {
                 grid-column: 7;
             }
-            .sunday {
+            .Saturday {
                 grid-column: 8;
+            }
+            .Sunday {
+                grid-column: 2;
             }
 
 
@@ -115,7 +112,7 @@
             </div>
             
         </div>
-        <button onclick="updateTable()">submit test</button>
+        <button onclick="updateTable()">submit testing</button>
 
         
 
@@ -174,17 +171,17 @@
             console.log(availability)
 
             
-            
+            let selectedDay = 3;
             
             
             let startTime = 6
-            let endTime = 22
+            let endTime = 21
 
-            let calDays = ['Monday','Tuesday','Wednesday','Thursday','Friday','Saturday','Sunday']
-            let calDaysShort = ['Mon','Tue','Wed','Thu','Fri','Sat','Sun']
+            let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+            let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
             
             //This would be a problem if there was more than one tutor with the same id but that should not matter
-            db.collection("TutorsTEST").where("tutorid","==","11111TEST")
+            db.collection("TutorsTEST").where("tutorid","==","22222TEST")
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
@@ -207,7 +204,7 @@
                         
                         $('#calendarContainer').append(
                             //I have no idea why this code works while missing a " but it breaks when put in
-                            '<h6  class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1;">'+calDaysShort[index]+'</h6>'
+                            '<h6  class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1; width: 15em">'+calDays[index]+'</h6>'
                     )                 
                     
                     }
@@ -222,11 +219,28 @@
                             
                             console.log(availability.get(calDays[index2])[index])
                             $('#calendarContainer').append(
-                                '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';"></p>'
+                                '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
                                 
                             )
                         }
                     }
+                    for (let index = 0; index < calDays.length; index++) {
+                    if (index == selectedDay){
+                        
+                        $("."+calDays[index]).css("color", "#000000FF")
+                        $("."+calDays[index]).css("width", "100px")
+                        console.log(index + " is " + calDays[index] + " and is selected")
+                        console.log($("."+calDays[index]))
+
+                    } else {
+                        $("."+calDays[index]).css("color", "#00000000")
+                        $("."+calDays[index]).css("width", "20px")
+                        console.log(index + " is " + calDays[index] + " and is notselected")
+                        
+                    }
+                    
+                    
+                }
                 })
             }).catch(function(error) {
                 console.log("Error getting documents: ", error);
@@ -242,26 +256,56 @@
                 
 
                 let aval = availability.get(calDays[colPos])[rowPos]
-                console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
-                switch (aval) {
-                    case 0:
-                    availability.get(calDays[colPos])[rowPos] = 1;
-                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
-                        break;
 
-                     case 1:
-                     availability.get(calDays[colPos])[rowPos] = 0;
-                     $('#button_'+rowPos+'_'+colPos).removeClass("color1")
-                     $('#button_'+rowPos+'_'+colPos).addClass("color0")
-                        break;
-                     case 2:
-                        
-                        break;
-                
-                    default:
-                        break;
+
+
+                console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
+
+                if (colPos > selectedDay){
+                    selectedDay++
+
+                } else if (colPos < selectedDay) {
+                    selectedDay--
+                } else {
+                    switch (aval) {
+                        case 0:
+                            availability.get(calDays[colPos])[rowPos] = 1;
+                            $('#button_'+rowPos+'_'+colPos).removeClass("color0")
+                            $('#button_'+rowPos+'_'+colPos).addClass("color1")
+                            break;
+
+                        case 1:
+                            availability.get(calDays[colPos])[rowPos] = 0;
+                            $('#button_'+rowPos+'_'+colPos).removeClass("color1")
+                            $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                            break;
+                        case 2:
+                            
+                            break;
+                    
+                        default:
+                            break;
+                    }
                 }
+
+                for (let index = 0; index < calDays.length; index++) {
+                    if (index == selectedDay){
+                        
+                        $("."+calDays[index]).css("color", "#000000FF")
+                        $("."+calDays[index]).css("width", "100px")
+                        console.log(index + " is " + calDays[index] + " and is selected")
+                        console.log($("."+calDays[index]))
+
+                    } else {
+                        $("."+calDays[index]).css("color", "#00000000")
+                        $("."+calDays[index]).css("width", "20px")
+                        console.log(index + " is " + calDays[index] + " and is notselected")
+                        
+                    }
+                    
+                    
+                }
+                
                 
             }
 

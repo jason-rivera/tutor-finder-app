@@ -42,7 +42,7 @@ function fillForm() {
 					for (i = 0; i < docSnapshot.data().subjects.length; i++) {
 						$('#' + docSnapshot.data().subjects[i]).prop("checked", true );
 					}
-					setCalendar(tutorsRef);
+					setCalendar(tutorRef);
 				}
 			});
 		} else {
@@ -201,8 +201,8 @@ function updateTime(inputString) {
     }             
 }
 
-function writeSchedule(tutorsRef) {
-    tutorsRef
+function writeSchedule(tutorRef) {
+    tutorRef
 	.set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. array pos means hour
@@ -218,8 +218,8 @@ function writeSchedule(tutorsRef) {
     }, {merge: true})      
 }
 
-function setCalendar(tutorsRef) {
-    tutorsRef
+function setCalendar(tutorRef) {
+    tutorRef
     .get().then(function(doc) {
 		availability.set("Monday", doc.data().schedule.Monday);
 		availability.set("Tuesday", doc.data().schedule.Tuesday);
@@ -228,7 +228,7 @@ function setCalendar(tutorsRef) {
 		availability.set("Friday", doc.data().schedule.Friday);
 		availability.set("Saturday", doc.data().schedule.Saturday);
 		availability.set("Sunday", doc.data().schedule.Sunday);
-	}
+	});
 }
 
 fillForm();

@@ -1,5 +1,7 @@
+var tutorIDForReview = "placeholderTutorIDprevses2"; //should be actual tutor id from session
+
 function writeReview() {  
-    $('#tutor-form').submit(function () { //makes it so page doesn't refresh on submit
+    $('#reviewTutor').submit(function () { //makes it so page doesn't refresh on submit
 		return false;
 	});
         $(document).ready(function () {

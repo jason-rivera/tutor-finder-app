@@ -44,9 +44,6 @@
                 font-size: 16px;
             }
 
-            
-            
-
             .times {
                 grid-column: 1;
                 visibility: hidden;
@@ -182,7 +179,7 @@
             let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
             
             //This would be a problem if there was more than one tutor with the same id but that should not matter
-            db.collection("TutorsTEST").doc("222222TEST")
+            db.collection("TutorsTEST").doc("22222TEST")
             .get().then(function(doc) {
                     
                     console.log(doc.data().schedule)

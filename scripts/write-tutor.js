@@ -97,34 +97,32 @@ function writeTimeslot() {
 	});
 }
 
+let availability = new Map([
+// 0 never avalible, 1 avalible, 2 booked. array pos means hour
+['Monday', 	    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]],
+['Tuesday', 	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
+['Wednesday',   [0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
+['Thursday', 	[0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0]],
+['Friday', 	    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
+['Saturday', 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
+['Sunday', 	    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]]
+])
 
-
-	let availability = new Map([
-	// 0 never avalible, 1 avalible, 2 booked. array pos means hour
-	['Monday', 	    [1,0,0,0,0,0,0,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]],
-	['Tuesday', 	[0,1,0,0,0,0,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-	['Wednesday',   [0,0,1,0,0,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-	['Thursday', 	[0,0,0,1,0,0,0,0,0,0,0,0,0,0,1,1,1,1,2,0,0,0,0,0]],
-	['Friday', 	    [0,0,0,0,1,0,0,0,0,0,0,0,0,0,1,1,1,2,1,0,0,0,0,0]],
-	['Saturday', 	[0,0,0,0,0,1,0,0,0,0,0,0,0,0,1,1,2,1,1,0,0,0,0,0]],
-	['Sunday', 	    [0,0,0,0,0,0,1,0,0,0,0,0,0,0,1,2,1,1,1,0,0,0,0,0]]
-	])
-
-    let selectedDay = 3;
+let selectedDay = 3;
             
-    let startTime = 6
-    let endTime = 21
+let startTime = 6
+let endTime = 21
 
-    let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-    let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-            
+let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+     
+function calendar() {
     //This would be a problem if there was more than one tutor with the same id but that should not matter
     db.collection("TutorsTEST").doc("22222TEST")
     .get().then(function(doc) {
                     
             console.log(doc.data().schedule)
-
-
+		
             console.log(doc.data().schedule.Monday) 
                     
             console.log(availability.get(calDays[0])[6]) 
@@ -149,9 +147,8 @@ function writeTimeslot() {
             for (let index = startTime; index < endTime; index++) {
                         
                 $('#calendarContainer').append(
-                    '<p  class=" text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                )
-                        
+                    '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
+                )      
                 for (let index2 = 0; index2 < calDays.length; index2++) {
                             
                     console.log(availability.get(calDays[index2])[index])
@@ -161,7 +158,6 @@ function writeTimeslot() {
 					$('')
                 }
             }
-
             for (let index = 0; index < calDays.length; index++) {
                 if (index == selectedDay){
                     $("."+calDays[index]).css("color", "#000000FF")
@@ -181,85 +177,67 @@ function writeTimeslot() {
     }).catch(function(error) {
         console.log("Error getting documents: ", error);
     });
-
+}
             
+               
+function updateTime(inputString) {
+    let rowPos = inputString.split("_")[1]
+    let colPos = inputString.split("_")[2]
+    let aval = availability.get(calDays[colPos])[rowPos]
+    console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
 
-            
-                
-    function updateTime(inputString) {
-        let rowPos = inputString.split("_")[1]
-        let colPos = inputString.split("_")[2]
-                
+    if (colPos > selectedDay){
+        selectedDay++;
 
-        let aval = availability.get(calDays[colPos])[rowPos]
+    } else if (colPos < selectedDay) {
+        selectedDay--;
+    } else {
+        switch (aval) {
+            case 0:
+                availability.get(calDays[colPos])[rowPos] = 1;
+                $('#button_'+rowPos+'_'+colPos).removeClass("color0")
+                $('#button_'+rowPos+'_'+colPos).addClass("color1")
+                break;
+            case 1:
+                availability.get(calDays[colPos])[rowPos] = 0;
+                $('#button_'+rowPos+'_'+colPos).removeClass("color1")
+                $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                break;
+            default:
+                break;
+        }
+    }
 
+    for (let index = 0; index < calDays.length; index++) {
+        if (index == selectedDay){   
+            $("."+calDays[index]).css("color", "#000000FF")
+            $("."+calDays[index]).css("width", "100px")
+            console.log(index + " is " + calDays[index] + " and is selected")
+            console.log($("."+calDays[index]))
 
-
-        console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
-
-        if (colPos > selectedDay){
-            selectedDay++
-
-        } else if (colPos < selectedDay) {
-            selectedDay--
         } else {
-            switch (aval) {
-                case 0:
-                    availability.get(calDays[colPos])[rowPos] = 1;
-                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
-                    break;
+            $("."+calDays[index]).css("color", "#00000000")
+            $("."+calDays[index]).css("width", "20px")
+            console.log(index + " is " + calDays[index] + " and is notselected") 
+        }           
+    }             
+}
 
-                case 1:
-                    availability.get(calDays[colPos])[rowPos] = 0;
-                    $('#button_'+rowPos+'_'+colPos).removeClass("color1")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color0")
-                    break;
-                case 2:
-                            
-                    break;
-                    
-                default:
-                    break;
-            }
-        }
-
-        for (let index = 0; index < calDays.length; index++) {
-            if (index == selectedDay){
-                        
-                $("."+calDays[index]).css("color", "#000000FF")
-                $("."+calDays[index]).css("width", "100px")
-                console.log(index + " is " + calDays[index] + " and is selected")
-                console.log($("."+calDays[index]))
-
-            } else {
-                $("."+calDays[index]).css("color", "#00000000")
-                $("."+calDays[index]).css("width", "20px")
-                console.log(index + " is " + calDays[index] + " and is notselected")
-                        
-            }
-                    
-                    
-        }      
-                
-    }
-
-    function updateTable() {
-        db.collection("TutorsTEST").doc("22222TEST").set({
-            schedule: {
-            // 0 never avalible, 1 avalible, 2 booked. array pos means hour
-            //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
-            Monday: 	availability.get(calDays[1]),
-            Tuesday: 	availability.get(calDays[2]),
-            Wednesday: 	availability.get(calDays[3]),
-            Thursday: 	availability.get(calDays[4]),
-            Friday: 	availability.get(calDays[5]),
-            Saturday: 	availability.get(calDays[6]),
-            Sunday: 	availability.get(calDays[0])
-        }
-        }, {merge: true})
-            
-    }
+function updateTable() {
+    db.collection("TutorsTEST").doc("22222TEST").set({
+        schedule: {
+        // 0 never avalible, 1 avalible, 2 booked. array pos means hour
+        //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
+        Monday: 	availability.get(calDays[1]),
+        Tuesday: 	availability.get(calDays[2]),
+        Wednesday: 	availability.get(calDays[3]),
+        Thursday: 	availability.get(calDays[4]),
+        Friday: 	availability.get(calDays[5]),
+        Saturday: 	availability.get(calDays[6]),
+        Sunday: 	availability.get(calDays[0])
+		}
+    }, {merge: true})      
+}
 
 
 

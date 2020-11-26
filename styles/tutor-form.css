@@ -153,21 +153,20 @@ h6 {
     display: flex;
     justify-content: center;
     align-content: center;
-    margin-top: 50px;
+    margin-top: 0px;
 }
             
 #calendarContainer {
     display:grid;
     grid-template-columns: 0px repeat(7, auto);
-    grid-template-rows: 2em repeat(24, 20px);
+    grid-template-rows: 2em repeat(16, 20px);
     row-gap: 0;
-    margin:auto;
-                
+    margin:auto;      
 }
 
 #calendarContainer > p {
     margin: 0;
-    font-size: 8px;
+    font-size: 0.8em;
 }
 
 #calendarContainer > h6 {

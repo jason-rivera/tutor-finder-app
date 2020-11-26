@@ -1,0 +1,62 @@
+#centerContent {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin-top: 0px;
+}
+            
+#calendarContainer {
+    display:grid;
+    grid-template-columns: 0px repeat(7, auto);
+    grid-template-rows: 2em repeat(16, 20px);
+    row-gap: 0;
+    margin:auto;      
+}
+
+#calendarContainer > p {
+    margin: 0;
+    font-size: 0.8em;
+}
+
+#calendarContainer > h6 {
+    margin: 0;
+    font-size: 16px;
+}          
+
+.times {
+    grid-column: 1;
+    visibility: hidden;
+                
+}
+.Sunday {
+    grid-column: 2;
+}
+.Monday {
+    grid-column: 3;
+}
+.Tuesday {
+    grid-column: 4;
+}
+.Wednesday {
+    grid-column: 5;
+}
+.Thursday {
+    grid-column: 6;
+}
+.Friday {
+    grid-column: 7;
+}
+.Saturday {
+    grid-column: 8;
+}
+
+.color0 {
+    background-color: rgba(150, 43, 52, 0.644);
+}
+.color1 {
+    background-color: rgba(100, 237, 162, 0.589);
+}
+
+.color2 {
+    background-color: rgba(150, 150, 43, 0.603);
+}

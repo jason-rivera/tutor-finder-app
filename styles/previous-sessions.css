@@ -1,6 +1,5 @@
 body {
   margin: 0;
-  
   font-family: "Segoe UI Emoji", "Segoe UI Symbol";
   font-size: 0.8rem;
   font-weight: 400;
@@ -10,41 +9,31 @@ body {
   background-color: #1B1C1D;
 }
 
-/* .body-container {
+/* this makes the width of the page content smaller, but messed up the modal */
+/*****************************************************************************/
+
+/* .body-container1 {
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
   width: 570px;
 } */
 
-
-
-.card-header {
-  padding: 0.5rem 0.5rem;
-  margin-bottom: 0;
-  background-color: rgb(56, 56, 56);
-  border: 0px;
-
-}
-
-
+/* button styles */
 .btn-link:hover {
   color: #1a89d3;
   text-decoration: none;
   background-color: transparent;
   border-color: transparent;
 }
-
 .btn-link {
   font-weight: 400;
   color: #ffffff;
   background-color: transparent;
 }
-
 .btn-link:hover {
   text-decoration: none;
 }
-
 .btn {
   display: inline-block;
   font-weight: 400;
@@ -61,6 +50,13 @@ body {
   width: 100%;
 }
 
+/* card styles */
+.card-header {
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0;
+  background-color: rgb(56, 56, 56);
+  border: 0px;
+}
 .card {
   position: relative;
   display: flex;
@@ -71,24 +67,17 @@ body {
   border: 5px solid #1B1C1D;
   margin: -2px;
 }
-
-
 .card-header {
   padding: 0;
   margin: 0;
 }
-
 .card-body {
-  -webkit-box-flex: 1;
-  -ms-flex: 1 1 auto;
-  flex: 1 1 auto;
   padding: 1.25rem;
   background-color: rgb(255, 255, 255);
+  width: 100%;
 }
-
 .card-img {
-  margin-top:10px;
-  margin-left: 0px;
+  margin: 10px 0;
   width: 100%;
   border-radius: 1000px;
   border: 5px solid black;
@@ -97,21 +86,26 @@ body {
   transform: translate(-50%, 0);
 }
 
-
-.text-muted {
-  color: #aaaaaa !important;
-}
-
+/* card background colour */
 div.row.no-gutters {
   background-color: white;
 }
 
+/* card-img background colour */
 .col-md-2 {
   display: grid;
 }
 
+/* session ID text */
+.text-muted {
+  color: #aaaaaa !important;
+}
 
 
+
+
+
+/* media queries for tutor profile image */
 @media screen and (max-width: 800px) {
   .card-img {
     max-width: 200px;

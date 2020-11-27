@@ -50,7 +50,7 @@ body {
   width: 40%;
 }
 
-.leave-review-button {
+.leave-review-button, #submitReview {
   height: 70px;
 }
 

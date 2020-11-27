@@ -24,3 +24,7 @@
 img.mr-3 {
  border-radius: 100px;
 }
+
+button.close {
+  color: white;
+}

@@ -26,7 +26,7 @@ $(document).ready(function () {
                                           '<h5 class="card-title">'+doc.data().tutorID+'</h5>'+
                                           '<p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>'+
                                           '<p class="card-text"><small class="text-muted">Session ID: '+doc.data().sessionID+'</small></p>'+
-                                          '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter">Leave Review</button>'+
+                                          '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter">Leave Review</button>'+
                                       '</div>'+
                                     '</div>'+
                                 '</div>'+

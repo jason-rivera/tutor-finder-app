@@ -7,7 +7,7 @@ function getTutor() {
 				searchSubjects.push(this.id);
 			}
 		})
-		console.log(searchSubjects);
+		console.log(searchSubjects); 
 		if (!(searchSubjects === undefined || searchSubjects.length == 0)) {
 			tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
 		}

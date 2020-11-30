@@ -28,21 +28,9 @@ function writeReview() {
 							setReview(reviewRef);
 						}
 					});
-					/*
-                    db.collection("Reviews").doc(reviewID).set({
-                        StudentID: user.uid,
-                        TutorID: tutorIDForReview,
-                        onTime: document.getElementById("rangeOnTime").value,
-                        teachingSkill: document.getElementById("teachingAbility").value,
-                        knowledge: document.getElementById("knowledge").value,
-                        message: document.getElementById("reviewTextArea").value,
-                        Date: new Date()
-                    })
-					*/
-                    //$("#submitReview").value = "Thanks!";
-                    } else {
-						console.log("no user signed in");
-					}
+                } else {
+					console.log("no user signed in");
+				}
 			})
 		});
 	});  

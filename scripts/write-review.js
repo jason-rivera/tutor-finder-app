@@ -1,8 +1,5 @@
 var tutorIDForReview = "yjkZGqsqF8cmCJziB05okSOYFj42"; //should be actual tutor id from session
 
-/////
-///// Asynchronous call issues with updating review before using old review score to calculate new averages
-/////
 function writeReview() {  
     $('#reviewTutor').submit(function () { //makes it so page doesn't refresh on submit
 		return false;
@@ -20,13 +17,17 @@ function writeReview() {
 						if(docSnapshot.exists) {
 							updateTutorUpdatedReview(tutorRef, reviewRef);
 							reviewRef.get()
-								.then(function(docSnapshot) {
-									updateReview(reviewRef);
-								});
+							.then(function(docSnapshot) {
+								updateReview(reviewRef);
+							});
 						} else {
 							updateTutorNewReview(tutorRef);
 							setReview(reviewRef);
 						}
+						tutorRef.get()
+						.then(function(docSnapshot) {
+							updateTutorRating(tutorRef);
+						});
 					});
                 } else {
 					console.log("no user signed in");
@@ -63,7 +64,7 @@ function updateTutorNewReview(tutorRef) {
 			onTime: calculateNewAverage(docSnapshot.data().onTime, parseInt(document.getElementById("rangeOnTime").value), docSnapshot.data().reviews),
 			teachingSkill: calculateNewAverage(docSnapshot.data().teachingSkill, parseInt(document.getElementById("teachingAbility").value), docSnapshot.data().reviews),
 			knowledge: calculateNewAverage(docSnapshot.data().knowledge, parseInt(document.getElementById("knowledge").value), docSnapshot.data().reviews),
-			reviews: firebase.firestore.FieldValue.increment(1)
+			reviews: firebase.firestore.FieldValue.increment(1),
 		})
 	});
 }
@@ -88,8 +89,18 @@ function updateTutorUpdatedReview(tutorRef, reviewRef) {
 	});
 }
 
+function updateTutorRating(tutorRef) {
+	tutorRef.get()
+	.then(function(docSnapshot) {
+		tutorRef.update({
+			rating : (docSnapshot.data().onTime + docSnapshot.data().teachingSkill + docSnapshot.data().knowledge) / 3
+		})
+	});
+	
+}
+
 function calculateNewAverage(average, score, total) {
-	return (average * (total) + score) / (total + 1);
+	return ((average * total) + score) / (total + 1);
 }
 
 function updateOldScore(average, newScore, oldScore, total) {

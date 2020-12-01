@@ -4,18 +4,18 @@
 }
 
 /* the whole modal itself */
-.modal {
+#exampleModalCenter {
   color: black;
   width: 100vw;
   height: 100%;
 }
 
-.modal-body {
+#exampleModalCenter .modal-body {
   background-color: rgb(185, 185, 185);
   border-top: none;
 }
 
-.modal-header {
+#exampleModalCenter .modal-header {
   background-color: rgb(68, 68, 68);
   color: white;
   border-bottom: none;

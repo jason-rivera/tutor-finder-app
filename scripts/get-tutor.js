@@ -54,13 +54,8 @@ function writeToModal(tutorsRef) {
 					+			'<p class="rate-value">$' + doc.data().rate + '/hr</p>'
 					+		'</div>'
 					+	'</div>'
-<<<<<<< HEAD
-					+	'<p class="card-text">Subjects:</p>'
-					+	'<a href="#" class="btn btn-primary" id="appt_'+snap.id+'"  onclick="requestAppointment(this.id)" data-dismiss="modal" data-toggle="modal" data-target="#apptModal">Request appointment</a>'
-=======
 					+	'<p class="card-text">Subjects:' + getSubjectString(doc) + '</p>'
-					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
->>>>>>> 4f933e17a1a228a957a6470a6dbedbf0434e88bb
+					+	'<a href="#" class="btn btn-primary" id="appt_'+snap.id+'"  onclick="requestAppointment(this.id)" data-dismiss="modal" data-toggle="modal" data-target="#apptModal">Request appointment</a>'
 					+  '</div>'
 					+ '</div>'
 					+ '</br>'
@@ -71,8 +66,7 @@ function writeToModal(tutorsRef) {
 	});
 }
 
-<<<<<<< HEAD
-getTutor();
+
 
 function requestAppointment(inputString) {
 	let userid = inputString.split("_")[1]
@@ -84,7 +78,6 @@ function requestAppointment(inputString) {
 	
 	
 }
-=======
 function getSubjectString(doc) {
 	let subjectString = " ";
 	let size = doc.data().subjects.length;
@@ -96,4 +89,3 @@ function getSubjectString(doc) {
 }
 
 getTutor();
->>>>>>> 4f933e17a1a228a957a6470a6dbedbf0434e88bb

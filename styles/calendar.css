@@ -16,11 +16,13 @@
 #calendarContainer > p {
     margin: 0;
     font-size: 0.8em;
+    user-select: none;
 }
 
 #calendarContainer > h6 {
     margin: 0;
     font-size: 1em;
+    user-select: none;
 }
 
 .times {

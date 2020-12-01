@@ -26,7 +26,7 @@ let endTime = 21
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
 let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 
-
+let selectedTutor = ""
 
 function setCalendar(userid) {
     
@@ -41,6 +41,8 @@ function setCalendar(userid) {
             availability.set("Saturday", doc.data().schedule.Saturday)
             availability.set("Sunday", doc.data().schedule.Sunday)
 
+            selectedTutor = userid
+
         }).catch(function(error) {
             console.log("Error getting documents: ", error)
         
@@ -50,8 +52,9 @@ function setCalendar(userid) {
 //This would be a problem if there was more than one tutor with the same id but that should not matter
 function createCalendar() {
 
-
+    document.getElementById("calendarContainer").innerHTML = "<h6 class='times text-center  align-middle'></h6>";
     $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
+    
     //Looping through this was difficult so its hardcoded
     
 
@@ -66,10 +69,6 @@ function createCalendar() {
 
     for (let index = startTime; index < endTime; index++) {
         
-        $('#calendarContainer').append(
-            '<p class=" text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-        )
-        
         for (let index2 = 0; index2 < calDays.length; index2++) {
             
             console.log(availability.get(calDays[index2])[index])
@@ -79,11 +78,7 @@ function createCalendar() {
             )
         }
     }
-
     changeRows()
-                
-            
-
 }
 
         

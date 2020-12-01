@@ -18,7 +18,8 @@ var uiConfig = {
             if (authResult.additionalUserInfo.isNewUser) {
                 db.collection("Users").doc(user.uid).set({
                         name: user.displayName,
-                        email: user.email
+                        email: user.email,
+						photoURL: "images/profile_pic0.png"
                     }).then(function () { //if successful
                         console.log("New user added to firestore");
                         window.location.assign("index.html"); //redirect back to main page

@@ -8,6 +8,11 @@ h2 {
   text-align: center;
   font-family: Roboto;
 }
+p {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Roboto;
+}
 
 .btn-secondary {
   margin: 5px;

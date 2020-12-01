@@ -21,7 +21,7 @@ body {
 
 /* button styles */
 .btn-link:hover {
-  color: #1a89d3;
+  color: #ffffff;
   text-decoration: none;
   background-color: transparent;
   border-color: transparent;
@@ -47,7 +47,12 @@ body {
   line-height: 1.5;
   border-radius: 5px;
   transition: color 0.15s ease-in-out;
-  width: 100%;
+  width: 40%;
+}
+
+.leave-review-button, #submitReview {
+  height: 70px;
+  width: 140px;
 }
 
 /* card styles */
@@ -73,25 +78,25 @@ body {
 }
 .card-body {
   padding: 1.25rem;
-  background-color: rgb(255, 255, 255);
+  background-color: rgb(226, 226, 226);
   width: 100%;
 }
 .card-img {
   margin: 10px 0;
   width: 100%;
   border-radius: 1000px;
-  border: 5px solid black;
+  border: 5px solid rgb(255, 255, 255);
   position: relative;
   left: 50%;
   transform: translate(-50%, 0);
 }
 
-/* card background colour */
+/* card-img background colour */
 div.row.no-gutters {
-  background-color: white;
+  background-color:rgb(0, 59, 126);
 }
 
-/* card-img background colour */
+
 .col-md-2 {
   display: grid;
 }
@@ -101,22 +106,27 @@ div.row.no-gutters {
   color: #aaaaaa !important;
 }
 
+.nav-link {
+  font-size: 15px;
+}
+
 
 
 
 
 /* media queries for tutor profile image */
+@media screen and (min-width: 801px) {
+  .card-img {
+    margin-top:10px;
+    margin-left: 0px;
+    border-radius: 1000px;
+    max-width: 183px;
+    max-height: 183px;
+  }
+}
 @media screen and (max-width: 800px) {
   .card-img {
     max-width: 200px;
   }
 
-}
-@media screen and (min-width: 801px) {
-  .card-img {
-    margin-top:10px;
-    margin-left: 0px;
-    min-width: 100%;
-    border-radius: 1000px;
-  }
 }

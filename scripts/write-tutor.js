@@ -83,6 +83,9 @@ function setTutorFields(user, tutorRef) {
 		rate: parseFloat(document.getElementById("rate").value),
 		rating: 0,
 		reviews: 0,
+		onTime: 0,
+		teachingSkill: 0,
+		knowledge: 0,
 		subjects: [],
         schedule: {
 			Monday: 	availability.get(calDays[1]),

@@ -1,0 +1,30 @@
+/* set border color for modal */
+.modal-body, .modal-header {
+  border: 3px solid rgb(255, 255, 255);
+}
+
+/* the whole modal itself */
+#exampleModalCenter {
+  color: black;
+  width: 100vw;
+  height: 100%;
+}
+
+#exampleModalCenter .modal-body {
+  background-color: rgb(185, 185, 185);
+  border-top: none;
+}
+
+#exampleModalCenter .modal-header {
+  background-color: rgb(68, 68, 68);
+  color: white;
+  border-bottom: none;
+}
+
+img.mr-3 {
+ border-radius: 100px;
+}
+
+button.close {
+  color: white;
+}

@@ -7,7 +7,7 @@ function getTutor() {
 				searchSubjects.push(this.id);
 			}
 		})
-		console.log(searchSubjects);
+		console.log(searchSubjects); 
 		if (!(searchSubjects === undefined || searchSubjects.length == 0)) {
 			tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
 		}
@@ -54,18 +54,24 @@ function writeToModal(tutorsRef) {
 					+			'<p class="rate-value">$' + doc.data().rate + '/hr</p>'
 					+		'</div>'
 					+	'</div>'
+<<<<<<< HEAD
 					+	'<p class="card-text">Subjects:</p>'
 					+	'<a href="#" class="btn btn-primary" id="appt_'+snap.id+'"  onclick="requestAppointment(this.id)" data-dismiss="modal" data-toggle="modal" data-target="#apptModal">Request appointment</a>'
+=======
+					+	'<p class="card-text">Subjects:' + getSubjectString(doc) + '</p>'
+					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
+>>>>>>> 4f933e17a1a228a957a6470a6dbedbf0434e88bb
 					+  '</div>'
 					+ '</div>'
 					+ '</br>'
 				);
-				$(".card-text").append("a");
+				getSubjectString(doc);
 			});
 		});
 	});
 }
 
+<<<<<<< HEAD
 getTutor();
 
 function requestAppointment(inputString) {
@@ -78,3 +84,16 @@ function requestAppointment(inputString) {
 	
 	
 }
+=======
+function getSubjectString(doc) {
+	let subjectString = " ";
+	let size = doc.data().subjects.length;
+	for (i = 0; i < size - 1; i++) {
+		subjectString += doc.data().subjects[i] + ", "
+	}
+	subjectString += doc.data().subjects[size - 1];
+	return subjectString;
+}
+
+getTutor();
+>>>>>>> 4f933e17a1a228a957a6470a6dbedbf0434e88bb

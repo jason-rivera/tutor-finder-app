@@ -11,20 +11,20 @@ function navbarCommonAdd() {
 	$("#navBarburgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
 	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
     $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
-    $("#searchNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');
-	$("#searchNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
-	$("#reviewsNavButton").append('<a class="nav-link" href="review-tutor.html">Reviews</a>');
-	$("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
+    $("#homeNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');
+	$("#homeNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
+	$("#homeNavButton").append('<a class="nav-link" href="previous-sessions.html">Previous Sessions</a>');
+	$("#homeNavButton").append('<a class="nav-link" href="tutor-form.html">Tutor Form</a>');
 	// Login/logout link below
     firebase.auth().onAuthStateChanged(function (user) {
         if (user){
-			$("#loginNavButton").append('<a class="nav-link" href="index.html">Log Out</a>');
+			$("#homeNavButton").append('<a class="nav-link" href="index.html">Log Out</a>');
 			$("#loginNavButton").click(function() {
 				logout();
 			})
         }
         else {
-            $("#loginNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
+            $("#homeNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
         }
     })
 				

@@ -11,6 +11,7 @@ function navbarCommonAdd() {
 	$("#navBarburgerMenu").append('<li class="nav-item" id="reviewsNavButton">');
 	$("#burgerMenu").append('<li class="nav-item" id="homeNavButton">');
     $("#burgerMenu").append('<li class="nav-item" id="loginNavButton">');
+    $("#homeNavButton").append('<a class="nav-link" href="index.html">Home</a>');
     $("#homeNavButton").append('<a class="nav-link" href="profile.html">Profile</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="previous-sessions.html">Previous Sessions</a>');

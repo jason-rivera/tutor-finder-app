@@ -59,12 +59,14 @@ body {
 }
 
 center {
-    overflow: hidden;
+	width: 60%;
 }
 
 #profile-pic {
 	width: 100%;
 	height: auto;
+	transform: translate(33%, 0);
+	
 }
 
 h6 {

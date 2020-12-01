@@ -22,7 +22,9 @@ function getUser() {
 		  document.getElementById("email-text").value = email;
 		  document.getElementById("birth-year-text").value = birthYear;
 		  document.getElementById("location-text").value = location;
-		  //document.getElementById("picture-text").value = photoURL;
+		  if(pic != "images/profile_pic0.png") {
+			document.getElementById("picture-text").value = pic;
+		  }
       });
     } else {
       console.log('not logged in');

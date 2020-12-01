@@ -8,11 +8,17 @@ h2 {
   text-align: center;
   font-family: Roboto;
 }
-p {
-  padding-top: 10px;
-  text-align: center;
-  font-family: Roboto;
+
+h5 {
+  color: black;
+  font-weight: bold;
 }
+
+p {
+  color: black;
+  font-weight: bold;
+}
+
 
 .btn-secondary {
   margin: 5px;

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 
     <head>
         <meta charset="utf-8">
@@ -21,11 +21,8 @@
 
     <body>
 
-        <!-------------------------------------->
-        <!-- The following is HTML for layout -->
-        <!-------------------------------------->
         
-        <h1 id="welcome-msg">Hello</h1>
+        <h2 id="welcome-msg">Welcome</h2>
         
         <br/>        
         <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="searchV2.html" role="button"><div class="homepage-text">Search for a Tutor</div></a>
@@ -39,9 +36,6 @@
         <br/>
         <a class="btn btn-primary my-2 my-sm-0 homepage-button" href="tutor-form.html" role="button"><div class="homepage-text">Tutor Form</div></a>
 
-        <!----------------------------------------------->
-        <!--    JS: Boostrap, Firebase, API related    -->
-        <!----------------------------------------------->
         <!-- Bootstrap libraries from CDN -->
         <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
             integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
@@ -62,26 +56,13 @@
         <!-- Your own Firebase API key information -->
         <script src="scripts/firebase_api_team24.js"> </script>
 
-        <!--------------------------------------------------------------------->
-        <!--      JS files: Your own JavaScript functions included here      -->
-        <!--------------------------------------------------------------------->
-
         <!-- Header Navigation Bar -->
         <script> var navBarCommonName={name: "Home" }; </script>
-        <script src="scripts/navbar-common.js"> ;</script>
+        <script src="scripts/navbar-common.js"> </script>
 
         <!-- Scripts for testing -->
         <script src="scripts/populate-tutors.js"> </script>
         <script src="scripts/welcome-msg.js"> </script>
-
-
-        <!-- Jason's scripts for testing -->
-        <!-- <script src="scripts/get-email-test.js"></script> -->
-        <!-- <script src="scripts/get-user-test.js"></script> -->
-        <!-- <script src="scripts/update-email-test.js"></script> -->
-        <!-- <script src="scripts/update-email-test2.js"></script> -->
-        <!-- <script src="scripts/create-update-user-profile.js"></script> -->
-        <!-- <script src="scripts/populate-users-test.js"></script> -->
 
     </body>
 </html>

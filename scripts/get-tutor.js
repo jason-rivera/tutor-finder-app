@@ -52,16 +52,26 @@ function writeToModal(tutorsRef) {
 					+			'<p class="rate-value">$' + doc.data().rate + '/hr</p>'
 					+		'</div>'
 					+	'</div>'
-					+	'<p class="card-text">Subjects:</p>'
+					+	'<p class="card-text">Subjects:' + getSubjectString(doc) + '</p>'
 					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
 					+  '</div>'
 					+ '</div>'
 					+ '</br>'
 				);
-				$(".card-text").append("a");
+				getSubjectString(doc);
 			});
 		});
 	});
+}
+
+function getSubjectString(doc) {
+	let subjectString = " ";
+	let size = doc.data().subjects.length;
+	for (i = 0; i < size - 1; i++) {
+		subjectString += doc.data().subjects[i] + ", "
+	}
+	subjectString += doc.data().subjects[size - 1];
+	return subjectString;
 }
 
 getTutor();

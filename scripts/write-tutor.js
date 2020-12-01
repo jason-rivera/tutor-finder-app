@@ -112,6 +112,7 @@ let availability = new Map([
 let selectedDay = 3;  
 let startTime = 6;
 let endTime = 21;
+let rowHeight = "20px";
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
 
 function setCalendar(tutorRef) {
@@ -132,6 +133,10 @@ function makeCalendar() {
 
 	console.log(availability);
 	console.log(availability.get("Wednesday"));
+
+	//create grid for new calendar
+	$('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");")
+	
 	//makes day header for each column
     for (let index = 0; index < calDays.length; index++) {
         $('#calendarContainer').append(

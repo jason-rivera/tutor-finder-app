@@ -8,9 +8,10 @@
 #calendarContainer {
     display:grid;
     grid-template-columns: 0px repeat(7, auto);
-    grid-template-rows: 2em repeat(16, 20px);
+    /*placed grid-template-rows into js of each;*/
     row-gap: 0;
-    margin:auto;      
+    margin:auto;
+    margin-bottom: 20px;      
 }
 
 #calendarContainer > p {

@@ -1,8 +1,23 @@
-//This mess holds the Map for the calendar, it can be generated and edited by the code below.
-//In order to save this map to firestore all you need to do is 
+// ----------- CALENDAR ----------
+//creates the html for a calendar and handles the user interaction
+//USAGE
+//setCalendar(tutorID) -> gets the calendar from the selected tutor, automatically calls createCalendar()
 
-//Test map/array
 
+// ----------- MUST BE INSTANCE VARIABLES BEGINNING -----------
+
+//instance array of the week days, could be replaced by methods already in the Date object
+let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+//shorter week day names
+let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
+
+//the local date, current weekday, and last sunday
+let localDate = new Date()
+let selectedDay = localDate.getDay()
+let lastSunday = new Date()
+lastSunday.setDate(localDate.getDate() - selectedDay)
+
+//this is a default map in the same format as what is stored
 let availability = new Map([
     // 0 never avalible, 1 avalible, 2 booked. array pos means hour
     ['Monday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
@@ -14,26 +29,31 @@ let availability = new Map([
     ['Sunday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
     ])
 
-let selectedDay = 3;
-
-let rowHeight = "40px"
-let openWidth = "150px"
-let closedWidth ="20px"
-
-let startTime = 6
-let endTime = 21
-
-let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
-let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-
-let selectedTutor = ""
-
-let user = firebase.auth().currentUser;
-
+//the last selected row and col, starts as null
 let radioRow = null
 let radioCol = null
 
+//the selected tutor
+let selectedTutor = null
+
+// ----------- MUST BE INSTANCE VARIABLES END -----------
+
+
+console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + "" + +" \nlast sunday date: " + lastSunday)
+
+//settings for the size of the grid. 
+let rowHeight = "40px" //does not work
+let openWidth = "150px"
+let closedWidth ="20px"
+
+//the first and last time to be displayed on the calendar
+let startTime = 6
+let endTime = 21
+
+
+// ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
 function setCalendar(tutorID) {
+
     console.log("getting calendar for: " + tutorID)
     
     db.collection("Tutors").doc(tutorID)
@@ -48,8 +68,9 @@ function setCalendar(tutorID) {
             availability.set("Sunday", doc.data().schedule.Sunday)
 
             selectedTutor = tutorID
-            user = firebase.auth().currentUser;
             console.log("Creating calendar")
+
+            //automatically create the calendar after the tutors info is loaded in
             createCalendar()
 
         }).catch(function(error) {
@@ -58,55 +79,88 @@ function setCalendar(tutorID) {
     })
 }
     
-//This would be a problem if there was more than one tutor with the same id but that should not matter
+// ----------- THIS CREATES THE HTML ELEMENT FOR THE CALENDAR ----------
 function createCalendar() {
 
-    document.getElementById("calendarContainer").innerHTML = "<h6 class='times text-center  align-middle'></h6>";
-    $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
-        
+    //clear old calendar
+    document.getElementById("calendarContainer").innerHTML = ""
 
-    for (let index = 0; index < calDays.length; index++) {
+    //create grid for new calendar
+    $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");")
         
-        $('#calendarContainer').append(
-            //I have no idea why this code works while missing a " but it breaks when put in
-            '<h6 id="heading_'+calDays[index]+'" class=" text-center align-middle  '+calDays[index]+' style=" grid-row: 1;">'+calDays[index]+'</h6>'
-        )                 
-    
+    //Creates the weekday headings
+    for (let weekday = 0; weekday < calDays.length; weekday++) {
+
+        let currentWeekday = calDays[weekday]
+        
+        //Creates the weekday names at the top of the calendar
+        $('#calendarContainer').append('<h6 id="heading_'+currentWeekday+'">'+currentWeekday+'</h6>')
+
+        //classes from bootstrap
+        $('#heading_'+currentWeekday).addClass("text-center")
+        $('#heading_'+currentWeekday).addClass("align-middle")
+
+        //sets the col
+        $('#heading_'+currentWeekday).addClass(currentWeekday)
+
+        //sets the row
+        $('#heading_'+currentWeekday).css("grid-row", "1")
+
     }
 
-    for (let index = startTime; index < endTime; index++) {
-        
-        for (let index2 = 0; index2 < calDays.length; index2++) {
-            
-            //console.log("DEBUG: aval on"+ calDays[index2] +" at "+index+":30 is: "+availability.get(calDays[index2])[index])
+    //creates the calendar body
+    for (let hour = startTime; hour < endTime; hour++) { 
+        for (let weekday = 0; weekday < calDays.length; weekday++) {
 
-            $('#calendarContainer').append(
-                '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-                
-            )
+            //Creates an element of the calendar
+            $('#calendarContainer').append('<p id="button_'+hour+'_'+weekday+'" onmousedown="updateTime(this.id)">'+hour+":30"+'</p>')
+            //classes from bootstrap
+            $('#button_'+hour+'_'+weekday).addClass("text-center")
+            $('#button_'+hour+'_'+weekday).addClass("align-middle")
+            $('#button_'+hour+'_'+weekday).addClass("border")
+            $('#button_'+hour+'_'+weekday).css("height", rowHeight)
+
+            //sets the color
+            $('#button_'+hour+'_'+weekday).addClass("color"+availability.get(calDays[weekday])[hour])
+
+            //sets the column
+            $('#button_'+hour+'_'+weekday).addClass(calDays[weekday])
+
+            //sets the row
+            $('#button_'+hour+'_'+weekday).css("grid-row", (hour - startTime + 2))
+
+            
+
+            //console.log("DEBUG: aval on"+ calDays[weekday] +" at "+index+":30 is: "+availability.get(calDays[weekday])[index])
+            
         }
     }
+    //update the col widths after everything loads in
     changeRows()
 }
 
         
 
-        
-            
+// ----------- THIS HANDLES THE INTERACTION BETWEEN THE USER AND THE CALENDAR ----------
 function updateTime(inputString) {
+    //breaks up an input string into the values after _
     let rowPos = inputString.split("_")[1]
     let colPos = inputString.split("_")[2]
     
     let aval = availability.get(calDays[colPos])[rowPos]
 
+    let user = firebase.auth().currentUser;
+
     //console.log("DEBUG: Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
 
     if (colPos > selectedDay){
-
+        
         selectedDay++
 
     } else if (colPos < selectedDay) {
+
         selectedDay--
+
     } else {
         switch (aval) {
             case 0:
@@ -153,28 +207,32 @@ function updateTime(inputString) {
                 break;
         }
     }
+    //update the col widths
     changeRows()
 }
 
+
+// ----------- THIS CHANGES WHICH DAY IS SELECTED AND THE CHANGING OF WIDTHS ----------
 function changeRows(){
-    for (let index = 0; index < calDays.length; index++) {
-        if (index == selectedDay){
+    for (let weekday = 0; weekday < calDays.length; weekday++) {
+        if (weekday == selectedDay){
             
-            $("."+calDays[index]).css("color", "#000000FF")
-            $("."+calDays[index]).css("width", openWidth)
+            $("."+calDays[weekday]).css("color", "#000000FF")
+            $("."+calDays[weekday]).css("width", openWidth)
 
         } else {
-            $("."+calDays[index]).css("color", "#00000000")
-            $("."+calDays[index]).css("width", closedWidth)
+            $("."+calDays[weekday]).css("color", "#00000000")
+            $("."+calDays[weekday]).css("width", closedWidth)
         }
     }
 }
 
+// ----------- THIS UPDATES THE TUTORS SCHEDULE ----------
 function updateTable() {
     db.collection("Tutors").doc(selectedTutor).set({
         schedule: {
-        // 0 never avalible, 1 avalible, 2 booked. array pos means hour
-        //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
+        // 0 never avalible, 1 avalible, 2 booked. 3 means selected,array pos means hour
+        // 3 should not show up in the database, if it does its an error
         Monday: 	availability.get(calDays[1]),
         Tuesday: 	availability.get(calDays[2]),
         Wednesday: 	availability.get(calDays[3]),
@@ -187,8 +245,8 @@ function updateTable() {
 
 }
 
+// ----------- THIS CREATES A SESSION ----------
 function createSession() {
-
 
     //CHANGE SELCTED TIMESLOT TO CONFIMRED (3 -> 2)
     if (radioRow != null) {
@@ -197,42 +255,28 @@ function createSession() {
 
     //UPDATE TUTOR SCHEDULE
     console.log("Updating schedule for: " + selectedTutor)
-    db.collection("Tutors").doc(selectedTutor).set({
-        schedule: {
-        // 0 never avalible, 1 avalible, 2 booked. 3 means selected,array pos means hour
-        // 3 should not show up in the database, if it does its an error
-        //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
-        Monday: 	availability.get(calDays[1]),
-        Tuesday: 	availability.get(calDays[2]),
-        Wednesday: 	availability.get(calDays[3]),
-        Thursday: 	availability.get(calDays[4]),
-        Friday: 	availability.get(calDays[5]),
-        Saturday: 	availability.get(calDays[6]),
-        Sunday: 	availability.get(calDays[0])
-    }
-    }, {merge: true})
-
+    updateTable()
 
     //CREATE NEW SESSION
     console.log("At this point a session must be created in the database, as of now it only updates the schedule for the tutor")
 
-    let newTimestamp = Date.now()
+    let user = firebase.auth().currentUser;
 
-    console.log("timestamp: " + newTimestamp)
+    //user.uid + newTimestamp is a pretty safe bet that it will be unique
+    db.collection("Sessions").doc(user.uid + Date.now()).set({
 
-    db.collection("Sessions").doc(selectedTutor + newTimestamp).set({
-
-        date: newTimestamp,
+        //just storing the row and col pos from the calendar currently, not as readable but its reliable. can be changed later
+        //calendar does not support creating a session thats not in the current week, this will need to be changed
+        tempRow: radioRow,
+        tempCol: radioCol,
+        sessionDate: "not implemented",
+        creationDate: newTimestamp,
         tutorID: selectedTutor,
         userID: user.uid, 
         subject: "NOT IMPLEMENTED YET"
 
 
     })
-
-
-
-
 }
         
     

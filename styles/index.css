@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Anton&family=Architects+Daughter&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anton&family=Architects+Daughter&family=Archivo+Black&family=Secular+One&display=swap');
 
 body {
   background-color: #1B1C1D;
@@ -7,10 +7,12 @@ body {
 h3 {
   padding-top: 10px;
   text-align: center;
-  /* font-family: Arial Narrow; */
   font-size: 40px;
+  /* font-family: Arial Narrow; */
   /* font-family: 'Architects Daughter', cursive; */
-  font-family: 'Anton', sans-serif;
+  /* font-family: 'Anton', sans-serif; */
+  /* font-family: 'Archivo Black', sans-serif; */
+  font-family: 'Secular One', sans-serif;
   -webkit-text-stroke: 2px rgba(131, 119, 235, 0.534);
 }
 
@@ -31,7 +33,6 @@ p {
   border: 0px solid rgb(255, 255, 255);
   font-size: 14px;
 }
-
 
 .btn-secondary {
   margin: 5px;

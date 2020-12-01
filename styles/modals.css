@@ -10,15 +10,21 @@
   height: 100%;
 }
 
-#exampleModalCenter .modal-body {
+.modal-body {
   background-color: rgb(185, 185, 185);
   border-top: none;
 }
 
-#exampleModalCenter .modal-header {
+.modal-header {
   background-color: rgb(68, 68, 68);
   color: white;
   border-bottom: none;
+}
+
+.modal-footer {
+  background-color: rgb(185, 185, 185);
+  color: white;
+  
 }
 
 img.mr-3 {
@@ -27,4 +33,9 @@ img.mr-3 {
 
 button.close {
   color: white;
+}
+
+#calendarContainer {
+  padding: 0px;
+  margin: 0px;
 }

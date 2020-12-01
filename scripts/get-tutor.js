@@ -36,7 +36,9 @@ function writeToModal(tutorsRef) {
 		querySnapshot.forEach(function(doc) {
 			db.collection("Users").doc(doc.id)
 			.onSnapshot(function(snap){
-				//console.log(doc.id, " => ", doc.data());
+				console.log(doc.id, " => ", doc.data());
+				console.log(snap.id, " => ", snap.data());
+
 				$("#search-results").append(
 					'<div class="card" style="width: 18rem;">'
 					+    '<img src="images/profile_pic2.jpg" class="card-img-top" alt="...">'
@@ -53,7 +55,7 @@ function writeToModal(tutorsRef) {
 					+		'</div>'
 					+	'</div>'
 					+	'<p class="card-text">Subjects:</p>'
-					+	'<a href="#" class="btn btn-primary" data-dismiss="modal" data-toggle="modal" data-target="#successModal">Request appointment</a>'
+					+	'<a href="#" class="btn btn-primary" id="appt_'+snap.id+'"  onclick="requestAppointment(this.id)" data-dismiss="modal" data-toggle="modal" data-target="#apptModal">Request appointment</a>'
 					+  '</div>'
 					+ '</div>'
 					+ '</br>'
@@ -65,3 +67,14 @@ function writeToModal(tutorsRef) {
 }
 
 getTutor();
+
+function requestAppointment(inputString) {
+	let userid = inputString.split("_")[1]
+	console.log(userid)
+	
+	setCalendar(userid)
+
+	createCalendar()
+	
+	
+}

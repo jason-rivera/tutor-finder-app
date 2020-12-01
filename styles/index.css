@@ -3,20 +3,29 @@ body {
   background-color: #1B1C1D;
 }
 
-h2 {
+h3 {
   padding-top: 10px;
   text-align: center;
   font-family: Roboto;
+  font-size: 22px;
 }
 
-h5 {
-  color: black;
-  font-weight: bold;
+h4 {
+  padding-top: 10px;
+  text-align: center;
+  font-family: Roboto;
+  font-size: 17px;
 }
+
+
+/* carousel text */
 
 p {
-  color: black;
-  font-weight: bold;
+  
+  padding: 2px;
+  background: rgba(15, 22, 122, 0.459);
+  border: 0px solid rgb(255, 255, 255);
+  font-size: 14px;
 }
 
 

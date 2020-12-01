@@ -41,13 +41,13 @@ function writeToModal(tutorsRef) {
 
 				$("#search-results").append(
 					'<div class="card" style="width: 18rem;">'
-					+    '<img src="images/profile_pic2.jpg" class="card-img-top" alt="...">'
+					+    '<img src="images/profile_pic0.png" class="card-img-top" alt="...">'
 					+   '<div class="card-body">'
 					+	'<h5 class="card-title">' + snap.data().name + '</h5>'
 					+	'<div class="grid-1x2">'
 					+		'<div class="pair-container">'
 					+			'<img src="images/star.svg.png" class="rating-star" alt="star">'
-					+			'<div class="rating-value">' + doc.data().rating + '</div>'
+					+			'<div class="rating-value">' + Math.round(doc.data().rating) + '</div>'
 					+		'</div>'
 					+		'<div class="pair-container">'
 					+			'<p class="rate-heading">Rate:</p>'

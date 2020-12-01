@@ -189,12 +189,14 @@ function updateTable() {
 
 function createSession() {
 
+
+    //CHANGE SELCTED TIMESLOT TO CONFIMRED (3 -> 2)
     if (radioRow != null) {
         availability.get(calDays[radioCol])[radioRow] = 2;
     }
-    console.log("Updating schedule for: " + selectedTutor)
-    
 
+    //UPDATE TUTOR SCHEDULE
+    console.log("Updating schedule for: " + selectedTutor)
     db.collection("Tutors").doc(selectedTutor).set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. 3 means selected,array pos means hour
@@ -210,7 +212,26 @@ function createSession() {
     }
     }, {merge: true})
 
+
+    //CREATE NEW SESSION
     console.log("At this point a session must be created in the database, as of now it only updates the schedule for the tutor")
+
+    let newTimestamp = Date.now()
+
+    console.log("timestamp: " + newTimestamp)
+
+    db.collection("Sessions").doc(selectedTutor + newTimestamp).set({
+
+        date: newTimestamp,
+        tutorID: selectedTutor,
+        userID: user.uid, 
+        subject: "NOT IMPLEMENTED YET"
+
+
+    })
+
+
+
 
 }
         

@@ -74,9 +74,6 @@ function requestAppointment(inputString) {
 	
 	setCalendar(userid)
 
-	
-	
-	
 }
 function getSubjectString(doc) {
 	let subjectString = " ";

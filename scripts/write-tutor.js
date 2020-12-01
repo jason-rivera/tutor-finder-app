@@ -50,7 +50,7 @@ function fillForm() {
 			});
 		} else {
 			console.log("no user signed in");
-			window.location.href = "index.html";
+			window.location.href = "login.html";
 		}
 	});
 }

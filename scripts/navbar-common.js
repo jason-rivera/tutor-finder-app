@@ -20,7 +20,7 @@ function navbarCommonAdd() {
         if (user){
 			$("#loginNavButton").append('<a class="nav-link" href="index.html">Log Out</a>');
 			$("#loginNavButton").click(function() {
-				logout();
+				logout();	
 			})
         }
         else {
@@ -33,6 +33,8 @@ function navbarCommonAdd() {
 function logout(){ //needed for logout functionality on logout button
     firebase.auth().signOut().then(function () { //if successful
 		console.log("user logged out");
+		window.location.href = "login.html";
+
 	})
 	.catch(function (error) {
 		console.log("Error logging out: " + error);

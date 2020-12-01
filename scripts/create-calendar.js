@@ -28,6 +28,11 @@ let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 
 let selectedTutor = ""
 
+let user = firebase.auth().currentUser;
+
+let radioRow = 0
+let radioCol = 0
+
 function setCalendar(userid) {
     
     db.collection("Tutors").doc(userid)
@@ -42,6 +47,8 @@ function setCalendar(userid) {
             availability.set("Sunday", doc.data().schedule.Sunday)
 
             selectedTutor = userid
+            user = firebase.auth().currentUser;
+            createCalendar()
 
         }).catch(function(error) {
             console.log("Error getting documents: ", error)
@@ -102,21 +109,35 @@ function updateTime(inputString) {
     } else {
         switch (aval) {
             case 0:
-                availability.get(calDays[colPos])[rowPos] = 1;
-                $('#button_'+rowPos+'_'+colPos).removeClass("color0")
-                $('#button_'+rowPos+'_'+colPos).addClass("color1")
-
+                if (selectedTutor == user.uid) {
+                    availability.get(calDays[colPos])[rowPos] = 1;
+                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
+                }
                 break;
 
             case 1:
-                availability.get(calDays[colPos])[rowPos] = 0;
-                $('#button_'+rowPos+'_'+colPos).removeClass("color1")
-                $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                if (selectedTutor == user.uid) {
+                    availability.get(calDays[colPos])[rowPos] = 0;
+                    $('#button_'+rowPos+'_'+colPos).removeClass("color1")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                } else {
+                    availability.get(calDays[radioCol])[radioRow] = 1;
+                    availability.get(calDays[colPos])[rowPos] = 3;
+                    $('#button_'+radioRow+'_'+radioCol).removeClass("color3")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color3")
+                    radioRow = rowPos
+                    radioCol = colPos
+                }
+                
                 break;
             case 2:
                 
                 break;
-        
+            case 3:
+                availability.get(calDays[colPos])[rowPos] = 1;
+                $('#button_'+rowPos+'_'+colPos).removeClass("color3")
+                break;
             default:
                 break;
         }

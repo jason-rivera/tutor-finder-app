@@ -74,7 +74,7 @@ function requestAppointment(inputString) {
 	
 	setCalendar(userid)
 
-	createCalendar()
+	
 	
 	
 }

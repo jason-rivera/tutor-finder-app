@@ -18,13 +18,13 @@ function navbarCommonAdd() {
 	// Login/logout link below
     firebase.auth().onAuthStateChanged(function (user) {
         if (user){
-			$("#loginNavButton").append('<a class="nav-link" href="index.html">Log Out</a>');
+			$("#homeNavButton").append('<a class="nav-link" href="index.html">Log Out</a>');
 			$("#loginNavButton").click(function() {
 				logout();
 			})
         }
         else {
-            $("#loginNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
+            $("#homeNavButton").append('<a class="nav-link" href="login.html">Log In</a>');
         }
     })
 				

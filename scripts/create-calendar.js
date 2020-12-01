@@ -30,14 +30,15 @@ let selectedTutor = ""
 
 let user = firebase.auth().currentUser;
 
-let radioRow = 0
-let radioCol = 0
+let radioRow = null
+let radioCol = null
 
-function setCalendar(userid) {
+function setCalendar(tutorID) {
+    console.log("getting calendar for: " + tutorID)
     
-    db.collection("Tutors").doc(userid)
+    db.collection("Tutors").doc(tutorID)
         .get().then(function(doc) {
-            console.log("load tutor")
+            console.log("loading tutor calendar")
             availability.set("Monday", doc.data().schedule.Monday)
             availability.set("Tuesday", doc.data().schedule.Tuesday)
             availability.set("Wednesday", doc.data().schedule.Wednesday)
@@ -46,8 +47,9 @@ function setCalendar(userid) {
             availability.set("Saturday", doc.data().schedule.Saturday)
             availability.set("Sunday", doc.data().schedule.Sunday)
 
-            selectedTutor = userid
+            selectedTutor = tutorID
             user = firebase.auth().currentUser;
+            console.log("Creating calendar")
             createCalendar()
 
         }).catch(function(error) {
@@ -61,9 +63,7 @@ function createCalendar() {
 
     document.getElementById("calendarContainer").innerHTML = "<h6 class='times text-center  align-middle'></h6>";
     $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");");
-    
-    //Looping through this was difficult so its hardcoded
-    
+        
 
     for (let index = 0; index < calDays.length; index++) {
         
@@ -78,7 +78,8 @@ function createCalendar() {
         
         for (let index2 = 0; index2 < calDays.length; index2++) {
             
-            console.log(availability.get(calDays[index2])[index])
+            //console.log("DEBUG: aval on"+ calDays[index2] +" at "+index+":30 is: "+availability.get(calDays[index2])[index])
+
             $('#calendarContainer').append(
                 '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
                 
@@ -98,7 +99,7 @@ function updateTime(inputString) {
     
     let aval = availability.get(calDays[colPos])[rowPos]
 
-    console.log("Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
+    //console.log("DEBUG: Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
 
     if (colPos > selectedDay){
 
@@ -109,6 +110,7 @@ function updateTime(inputString) {
     } else {
         switch (aval) {
             case 0:
+                console.log("Case 0: unavalible timeslot")
                 if (selectedTutor == user.uid) {
                     availability.get(calDays[colPos])[rowPos] = 1;
                     $('#button_'+rowPos+'_'+colPos).removeClass("color0")
@@ -117,12 +119,17 @@ function updateTime(inputString) {
                 break;
 
             case 1:
+                console.log("Case 1: avalible timeslot")
                 if (selectedTutor == user.uid) {
                     availability.get(calDays[colPos])[rowPos] = 0;
                     $('#button_'+rowPos+'_'+colPos).removeClass("color1")
                     $('#button_'+rowPos+'_'+colPos).addClass("color0")
                 } else {
-                    availability.get(calDays[radioCol])[radioRow] = 1;
+                    if (radioRow != null) {
+                        console.log("remove old selection")
+                        availability.get(calDays[radioCol])[radioRow] = 1;
+                    }
+                    console.log("new selection")
                     availability.get(calDays[colPos])[rowPos] = 3;
                     $('#button_'+radioRow+'_'+radioCol).removeClass("color3")
                     $('#button_'+rowPos+'_'+colPos).addClass("color3")
@@ -132,11 +139,15 @@ function updateTime(inputString) {
                 
                 break;
             case 2:
+                console.log("Case 2: unavalible timeslot -> already scheduled")
                 
                 break;
             case 3:
+                console.log("Case 3: remove selection")
                 availability.get(calDays[colPos])[rowPos] = 1;
                 $('#button_'+rowPos+'_'+colPos).removeClass("color3")
+                radioCol = null
+                radioRow = null
                 break;
             default:
                 break;
@@ -159,8 +170,8 @@ function changeRows(){
     }
 }
 
-function updateTable(userid) {
-    db.collection("Tutors").doc(userid).set({
+function updateTable() {
+    db.collection("Tutors").doc(selectedTutor).set({
         schedule: {
         // 0 never avalible, 1 avalible, 2 booked. array pos means hour
         //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
@@ -173,6 +184,33 @@ function updateTable(userid) {
         Sunday: 	availability.get(calDays[0])
     }
     }, {merge: true})
+
+}
+
+function createSession() {
+
+    if (radioRow != null) {
+        availability.get(calDays[radioCol])[radioRow] = 2;
+    }
+    console.log("Updating schedule for: " + selectedTutor)
+    
+
+    db.collection("Tutors").doc(selectedTutor).set({
+        schedule: {
+        // 0 never avalible, 1 avalible, 2 booked. 3 means selected,array pos means hour
+        // 3 should not show up in the database, if it does its an error
+        //Looping through this was difficult so its hardcoded 7 lines vs 1 loop ehhh
+        Monday: 	availability.get(calDays[1]),
+        Tuesday: 	availability.get(calDays[2]),
+        Wednesday: 	availability.get(calDays[3]),
+        Thursday: 	availability.get(calDays[4]),
+        Friday: 	availability.get(calDays[5]),
+        Saturday: 	availability.get(calDays[6]),
+        Sunday: 	availability.get(calDays[0])
+    }
+    }, {merge: true})
+
+    console.log("At this point a session must be created in the database, as of now it only updates the schedule for the tutor")
 
 }
         

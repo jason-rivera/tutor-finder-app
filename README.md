@@ -26,7 +26,6 @@ Content of the project folder:
 ├── profile.html             # personlized user profile page HTML file
 ├── reviews.html             # page for tutor reviews HTML file
 ├── searchV2.html            # search for a tutor page HTML file
-├── TEMPLATE.html            # delete ??
 ├── tutor-form.html          # sign up to become a tutor page HTML file
 └── README.md
 
@@ -51,20 +50,16 @@ It has the following subfolders and files:
     /populate-tutors.js      # module to populate tutors JS file
     /previous-sessions.js    # module for previous sessions JS file
     /reviews.js              # module to read reviews from database JS file
-    /search-tutor.js         # delete ??
     /update-profile.js       # module to update/write profile data in database JS file
-    /welcome-msg.js          # delete ??
     /write-review.js         # module to write reviews into the database JS file
     /write-tutor.js          # module to write a tutor into the database JS file
 ├── styles                   # Folder for styles
     /results.css             # stylesheet for results.html
-    /calendar-test.css       # delete ??
     /calendar.css            # stylesheet for calendars CSS file
     /index.css               # stylesheet for index.html CSS file
     /modals.css              # stylesheet for all modals CSS file
     /previous-sessions.cs    # stylesheet for previous-sessions.html CSS file
     /profile.css             # stylesheet for profile.html CSS file
-    /results.css             # stylesheet delete ??
     /review-tutor.css        # stylesheet for reviewing a tutor page CSS file
     /search.css              # stylesheet for searchV2.html CSS file
     /text-input-fields.css   # stylesheet for all text input fields CSS file

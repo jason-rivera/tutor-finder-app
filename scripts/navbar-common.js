@@ -16,6 +16,7 @@ function navbarCommonAdd() {
 	$("#homeNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="previous-sessions.html">Previous Sessions</a>');
 	$("#homeNavButton").append('<a class="nav-link" href="tutor-form.html">Tutor Form</a>');
+	$("#homeNavButton").append('<a class="nav-link" href="reviews.html">Reviews</a>');
 	// Login/logout link below
     firebase.auth().onAuthStateChanged(function (user) {
         if (user){

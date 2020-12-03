@@ -20,13 +20,11 @@ Content of the project folder:
 ```
  Top level of project folder: 
 ├── .gitignore               # Git ignore file
-├── become-a-tutor.html      # delete ??
 ├── index.html               # landing page HTML file
 ├── login.html               # login page HTML file
 ├── previous-sessions.html   # previous sessions a user had with a tutor page HTML file
 ├── profile.html             # personlized user profile page HTML file
-├── results.html             # delete ??
-├── reviews.html             # delete ??
+├── reviews.html             # page for tutor reviews HTML file
 ├── searchV2.html            # search for a tutor page HTML file
 ├── TEMPLATE.html            # delete ??
 ├── tutor-form.html          # sign up to become a tutor page HTML file

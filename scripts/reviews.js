@@ -5,7 +5,7 @@ $(document).ready(function () {
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                     // doc.data() is never undefined for query doc snapshots
-
+                  
                     $("#accordionExample").append(
                         '<div class="card">'+
                             '<div class="card-header" id="headingOne'+doc.id+'">'+
@@ -15,6 +15,7 @@ $(document).ready(function () {
                                 '</button>'+
                                 '</h2>'+
                             '</div>'+
+                        
                             '<div id="collapseOne'+doc.id+'" class="collapse" aria-labelledby="headingOne'+doc.id+'" data-parent="#accordionExample">'+
                                 '<div class="row no-gutters">'+
                                     '<div class="col-md-2">'+
@@ -32,9 +33,6 @@ $(document).ready(function () {
                             '</div>'+
                         '</div>'
                     );
-					$('#' + doc.data().tutorID).click(function () {
-						$(".submitReview").attr('id', doc.data().tutorID);
-					});
                     console.log(doc.id, " => ", doc.data());
                 });
             })

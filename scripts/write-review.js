@@ -1,13 +1,12 @@
-var tutorIDForReview = "yjkZGqsqF8cmCJziB05okSOYFj42"; //should be actual tutor id from session
-
 function writeReview() {  
     $('#reviewTutor').submit(function () { //makes it so page doesn't refresh on submit
 		return false;
 	});
     $(document).ready(function () {
-		$("#submitReview").click(function () {
+		$(".submitReview").click(function () {
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user){
+					let tutorIDForReview = $(".submitReview").attr('id');
 					let reviewID = user.uid + tutorIDForReview;
 					let reviewRef =  db.collection("Reviews").doc(reviewID);
 					let tutorUserRef = db.collection("Users").doc(tutorIDForReview);
@@ -22,7 +21,7 @@ function writeReview() {
 							});
 						} else {
 							updateTutorNewReview(tutorRef);
-							setReview(reviewRef);
+							setReview(reviewRef, tutorRef);
 						}
 						tutorRef.get()
 						.then(function(docSnapshot) {
@@ -47,14 +46,15 @@ function updateReview(reviewRef) {
 	})
 }
 
-function setReview(reviewRef) {
+function setReview(reviewRef, tutorIDForReview) {
 	reviewRef.set({
+		tutorID: tutorIDForReview,
 		onTime: parseInt(document.getElementById("rangeOnTime").value),
 		teachingSkill: parseInt(document.getElementById("teachingAbility").value),
 		knowledge: parseInt(document.getElementById("knowledge").value),
 		message: document.getElementById("reviewTextArea").value,
 		Date: new Date()
-	})
+	});
 }
 
 function updateTutorNewReview(tutorRef) {

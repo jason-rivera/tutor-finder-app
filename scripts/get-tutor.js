@@ -15,13 +15,13 @@ function getTutor() {
 		$('.price-bracket').each(function() {
 			if(this.checked) {
 				if (this.id == 0) {
-					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 10);
-				} else if (this.id == "any-price") {
-					tutorsRef = tutorsRef.where("rate", ">=", 0);
-				} else if (this.id == 61) {
+					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 5);
+				} else if (this.id == "free") {
+					tutorsRef = tutorsRef.where("rate", "==", 0);
+				} else if (this.id == 31) {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id));
 				} else {
-					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 9);
+					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 4);
 				}
 			}
 		})

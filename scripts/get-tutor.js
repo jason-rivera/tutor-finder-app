@@ -20,6 +20,8 @@ function getTutor() {
 					tutorsRef = tutorsRef.where("rate", "==", 0);
 				} else if (this.id == 31) {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id));
+				} else if (this.id == "any-price") {
+					tutorsRef = tutorsRef.where("rate", ">=", 0);
 				} else {
 					tutorsRef = tutorsRef.where("rate", ">=", parseInt(this.id)).where("rate", "<=", parseInt(this.id) + 4);
 				}

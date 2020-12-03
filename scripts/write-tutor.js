@@ -148,9 +148,7 @@ function makeCalendar() {
 	//makes time buttons for each cell on the grid
     for (let index = startTime; index < endTime; index++) {
                         
-        $('#calendarContainer').append( //put the hour at 30 mins (e.g. 6:30, 7:30, 8:30, etc)
-            '<p  class="text-center align-middle border times" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'
-        )
+        
         for (let index2 = 0; index2 < calDays.length; index2++) {
             console.log(availability.get(calDays[index2])[index]);
             $('#calendarContainer').append(

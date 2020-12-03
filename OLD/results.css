@@ -3,7 +3,6 @@
 	width: 200px;
 	border: solid black 2px;
 }
-
 .grid-2x1 {
 	display: grid;
 	grid-template-columns: 50% 50%; /* 2 column */
@@ -24,8 +23,4 @@
 }
 .rate-heading {
 	font-weight: bold;
-}
-
-.modal-content {
-	
 }

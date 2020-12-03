@@ -5,12 +5,9 @@
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/master/LICENSE)
  */
 
-
-  /* need this */
-
-  h4 {
-    background-color: rgb(235, 235, 235);
-  }
+h4 {
+  background-color: rgb(235, 235, 235);
+}
   
 :root {
   --blue: #007bff;

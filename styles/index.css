@@ -3,19 +3,13 @@
 body {
   background-color: #1B1C1D;
 }
-
 h3 {
   padding-top: 10px;
   text-align: center;
   font-size: 40px;
-  /* font-family: Arial Narrow; */
-  /* font-family: 'Architects Daughter', cursive; */
-  /* font-family: 'Anton', sans-serif; */
-  /* font-family: 'Archivo Black', sans-serif; */
   font-family: 'Secular One', sans-serif;
   -webkit-text-stroke: 2px rgba(131, 119, 235, 0.534);
 }
-
 h4 {
   padding-top: 10px;
   text-align: center;
@@ -23,11 +17,8 @@ h4 {
   font-size: 17px;
 }
 
-
 /* carousel text */
-
 p {
-  
   padding: 2px;
   background: rgba(15, 22, 122, 0.459);
   border: 0px solid rgb(255, 255, 255);
@@ -38,31 +29,13 @@ p {
   margin: 5px;
   width: 100px;
 }
-/* .form-group {
-  padding-top: 20px;
-  text-align: center;
-  font-weight: bold;
-} */
-/* .jumbotron {
-  background-color: rgb(255, 255, 255);
-  border-radius: 0px;
-  padding: 20px 0 0 0;
-  margin: 0px;
-  text-align: center;
-} */
-/* .find-button {
-  border-radius: 0px;
-  position: relative;
-  width: 100%;
-} */
-
 .homepage-text {
   font-size: 1.6em;
 }
-
 #update-profile-header {
   text-align: center;
 }
+
 @media screen and (min-width: 800px) {
 
   .homepage-button {
@@ -73,11 +46,9 @@ p {
   }
 }
 
-
 .carousel-indicators .active {
   background-color: rgb(8, 49, 231);
 }
-
 .carousel-indicators li {
   position: relative;
   -webkit-box-flex: 0;
@@ -90,5 +61,3 @@ p {
   text-indent: -999px;
   background-color: rgba(27, 70, 212, 0.63);
 }
-
-

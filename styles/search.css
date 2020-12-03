@@ -43,7 +43,6 @@ body {
 }
 h6 {
   text-align: center;
-  
 }
 span {
   cursor: pointer;
@@ -53,7 +52,6 @@ span {
 .keyword-search-bar {
   grid-column: 2;
 }
-
 .keyword-search-bar-container {
   display: grid;
   grid-template-columns: 10% 80% 10%;
@@ -69,14 +67,6 @@ span {
   padding: 0px;
   margin: 0px;
 }
-
-/*
-#ck-button-parent {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-*/
 .ck-button {
   margin: 5px;
   background-color:#EFEFEF;
@@ -84,19 +74,16 @@ span {
   overflow:auto;
   float:left;
 }
-
 .ck-button label {
   width: 100px;
   height: 25px;
 }
-
 .ck-button label span {
   text-align:center;
   display:block;
   padding-top:1px;
   color:#000000;
 }
-
 .ck-button label input {
   position:absolute;
   top:10px;
@@ -109,7 +96,6 @@ span {
 	from {background-color: #EFEFEF; }
 	to {background-color: #02ff88; }
 }
-
 .ck-button input:checked + span {
   height: 33px;
   background-color:#02ff88;

@@ -97,8 +97,9 @@ h5 {
 
 .edit-profile-text {
   padding-left: 40px;
-  font-size: 15px;
-  font-family: 'Glegoo', serif;
+  font-size: 18px;
+  /* font-family: 'Glegoo', serif; */
+  font-family: Roboto;
 }
 
 .edit-profile-head {

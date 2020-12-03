@@ -72,7 +72,7 @@ function writeToModal(tutorsRef) {
 
 function requestAppointment(inputString) {
 	let userid = inputString.split("_")[1]
-	console.log(userid)
+	console.log("requesting appointment for: " + userid)
 	
 	initializeCalendar(userid)
 

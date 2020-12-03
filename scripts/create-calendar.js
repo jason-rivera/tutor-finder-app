@@ -84,8 +84,8 @@ function initializeCalendar(tutorID) {
     weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate()
     longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()
 
-
-      setCalendar(tutorID)
+    console.log(availability)
+    setCalendar(tutorID)
 
 }
 // ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
@@ -94,7 +94,8 @@ function setCalendar(tutorID) {
     
     db.collection("Tutors").doc(tutorID)
         .get().then(function(doc) {
-            console.log("loading tutor calendar")
+            console.log(availability)
+            console.log("loading tutor calendar: " + doc.id)
             availability.set("Monday", doc.data().schedule.Monday)
             availability.set("Tuesday", doc.data().schedule.Tuesday)
             availability.set("Wednesday", doc.data().schedule.Wednesday)
@@ -102,10 +103,12 @@ function setCalendar(tutorID) {
             availability.set("Friday", doc.data().schedule.Friday)
             availability.set("Saturday", doc.data().schedule.Saturday)
             availability.set("Sunday", doc.data().schedule.Sunday)
-
+            console.log("test: " + availability)
+            overwriteTempAvalibility()
             selectedTutor = tutorID
+            console.log(availability) 
+            console.log(tempAvailability) 
             createCalendar()
-            updateAvalibility()
             updateCourseDropdown()
         }).catch(function(error) {
             console.log("Error getting documents: ", error)
@@ -115,8 +118,8 @@ function setCalendar(tutorID) {
     
 // ----------- THIS CREATES THE HTML ELEMENT FOR THE CALENDAR ----------
 function createCalendar() {
+
     console.log("recreating calendar")
-    tempAvailability = availability
     console.log(availability)
     console.log(tempAvailability)
     //clear old calendar
@@ -176,6 +179,7 @@ function createCalendar() {
         }
     }
     //update the col widths after everything loads in
+    updateAvalibility()
     changeRows()
 }
 
@@ -280,15 +284,26 @@ function changeWeek(move) {
     longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()  
     console.log(longWeekOf)
     
-    
-    updateAvalibility()
+    overwriteTempAvalibility()
+    createCalendar()
 }
 
+function overwriteTempAvalibility() {
+    tempAvailability.set("Monday", $.extend(true,[], availability.get("Monday")))
+    tempAvailability.set("Tuesday", $.extend(true,[], availability.get("Tuesday")))
+    tempAvailability.set("Wednesday", $.extend(true,[],availability.get("Wednesday")))
+    tempAvailability.set("Thursday", $.extend(true,[],availability.get("Thursday")))
+    tempAvailability.set("Friday", $.extend(true,[],availability.get("Friday")))
+    tempAvailability.set("Saturday", $.extend(true,[],availability.get("Saturday")))
+    tempAvailability.set("Sunday", $.extend(true,[],availability.get("Sunday")))
+}
 
 // ----------- THIS GETS THE TUTORS AVALIBILITY ----------
 function updateAvalibility() {
-    tempAvailability = availability
+    
+    console.log(tempAvailability)
     console.log("Trying to get new tutor schedule for this week")
+
     document.getElementById("currentWeekButton").innerHTML = weekOf
     db.collection("Sessions").where("tutorID", "==", selectedTutor).where("weekOf", "==", longWeekOf)
     .get()
@@ -300,14 +315,9 @@ function updateAvalibility() {
             tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
             $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
             
-
-
-
-
-
         }) 
     })
-    createCalendar()
+    
 }
 
 // ----------- THIS GETS THE TUTORS COURSES ----------
@@ -323,7 +333,7 @@ function updateCourseDropdown() {
     })
 }
 
-
+/*
 // ----------- THIS UPDATES THE TUTORS SCHEDULE ----------
 function updateTable() {
     db.collection("Tutors").doc(selectedTutor).set({
@@ -340,7 +350,7 @@ function updateTable() {
     }
     }, {merge: true})
 
-}
+}*/
 
 // ----------- THIS CREATES A SESSION ----------
 function createSession() {

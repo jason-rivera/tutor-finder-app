@@ -2,100 +2,48 @@
 <html lang="en">
     <head>
         <meta charset="utf-8">
-        <title>My BCIT Project</title>
-        <meta name="comp1800 boilerplate code" content="my bcit project">
-        <meta name="author" content="BCIT">
-        <!-- Bootstrap for Mobile-first, and JQuery -->
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
-
-        <!-- Optional styles and scripts of your own -->
-        
+        <title>My BCIT Project</title>
+        <!-- Bootstrap -->
         <link type="text/css" rel="stylesheet" href="styles/bootstrap-dark.css" />
+
+        <!-- Scripts -->
         <link type="text/css" rel="stylesheet" href="styles/profile.css" />
         <link type="text/css" rel="stylesheet" href="styles/modals.css" />
         <link type="text/css" rel="stylesheet" href="styles/text-input-fields.css" />
         <link type="text/css" rel="stylesheet" href="styles/all-main-button.css" />
-
-        <style>
-            .body-container {
-                position: relative;
-                max-width: 800px;
-                left: 50%;
-                transform: translate(-50%, 0);
-            }
-            #your-picture {
-                text-align: center;
-            }
-        </style>
     </head>
 
     <body>
-        <div class="jumbotron">
-            <!-- <h4>Your Profile</h4> -->
-        </div>
+        <br/>
         <div class="body-container">
             <div class="profile-text-container">
-                <h5></h5><h4 id="your-picture"></h4>
+                <h4 id="your-picture"></h4>
                 <h5 class="edit-profile-head">Name</h5><h4 class="edit-profile-text" id="your-name"></h4>
                 <h5 class="edit-profile-head">Email</h5><h4 class="edit-profile-text" id="your-email"></h4>
                 <h5 class="edit-profile-head">Birthdate</h5><h4 class="edit-profile-text" id="your-year"></h4>
                 <h5 class="edit-profile-head">Location</h5><h4 class="edit-profile-text" id="your-location"></h4>
                 <br>
                 <button type="button" class="btn btn-primary all-main-button" data-toggle="modal" data-target="#exampleModalCenter">Edit Profile</button>    
-             </div>
-             <br/>
-            
-
-
-
-            <!-- <form id="update-profile">   
-                <div class="form-group">
-                    <label for="name-text">Name:</label>
-                    <input type="text" id="name-text" name="name-text">
-                </div>
-                <div class="form-group">
-                    <label for="email-text">Email:</label>
-                    <input type="text" id="email-text" name="email-text">
-                </div> 
-                <div class="form-group">
-                    <label for="birth-year-text">Birth Year:</label>
-                    <input type="text" id="birth-year-text" name="birth-year-text">
-                </div> 
-                <div class="form-group">
-                    <label for="location-text">Location:</label>
-                    <input type="text" id="location-text" name="location-text">
-                </div> 
-                <br/>
-
-                <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
-            </form> -->
-            
+            </div>
             <br/>
             <br/>
-
+            <br/>
         </div>
-
-
 
         <!-- Modal -->
         <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered" role="document">
               <div class="modal-content">
                 <div class="modal-header">
-                  <h6 class="modal-title" id="exampleModalLongTitle">Edit Profile</h6>
-
+                    <h6 class="modal-title" id="exampleModalLongTitle">Edit Profile</h6>
                 </div>
                 <div class="modal-body">
-                  <form id="update-profile">
+                    <form id="update-profile">
                         <div class="form-group">
                             <label for="name-text">Full Name:</label>
                             <input type="text" class="form-control" id="name-text" name="name-text" autocomplete="off">
                         </div>
-                        <!-- <div class="form-group">
-                            <label for="password-text">Current Password:</label>
-                            <input type="text" class="form-control" id="password-text" name="password-text" autocomplete="off" required>
-                        </div> -->
                         <div class="form-group">
                             <label for="email-text">Email:</label>
                             <input type="text" class="form-control" id="email-text" name="email-text" autocomplete="off">
@@ -112,45 +60,39 @@
                             <label for="picture-text">Profile Picture URL:</label>
                             <input type="text" class="form-control" id="picture-text" name="picture-text">
                         </div> 
-                
                         <button type="submit" class="btn btn-block btn-primary" id="update-btn">Update</button>
-                  </form>
+                    </form>
                 </div>
-              </div>
             </div>
-          </div>
+        </div>
+          
+        <!-- Bootstrap libraries from CDN -->
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
+            integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
+        </script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+            integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
+        </script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+            integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
+        </script>
 
-      <!-- Bootstrap libraries from CDN -->
-      <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js"
-          integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous">
-      </script>
-      <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
-          integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous">
-      </script>
-      <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-          integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous">
-      </script>
+        <!-- Firebase libraries from CDN -->
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
+        <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
 
-      <!-- Firebase libraries from CDN -->
-      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-app.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-auth.js"></script>
-      <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
-      <script src="https://www.gstatic.com/firebasejs/8.0.0/firebase-firestore.js"></script>
+        <!-- Your own Firebase API key information -->
+        <script src="scripts/firebase_api_team24.js"> </script>
 
-      <!-- Your own Firebase API key information -->
-      <script src="scripts/firebase_api_team24.js"> </script>
+        <!-- Header Navigation Bar -->
+        <script> var navBarCommonName={name: "Profile" }; </script>
+        <script src="scripts/navbar-common.js"></script>
 
-
-
-      <!-- Header Navigation Bar -->
-      <script> var navBarCommonName={name: "Profile" }; </script>
-      <script src="scripts/navbar-common.js"></script>
-
-      <!-- Scripts for testing -->      
-      
-      <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-      <script src="scripts/update-profile.js"> </script>
-      <script src="scripts/get-profile.js"> </script>
-
+        <!-- Scripts -->      
+        <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <script src="scripts/update-profile.js"> </script>
+        <script src="scripts/get-profile.js"> </script>
     </body>
 </html>

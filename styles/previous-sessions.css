@@ -96,6 +96,11 @@ div.row.no-gutters {
   font-size: 15px;
 }
 
+#no-review-message {
+	font-size: 1.5em;
+	margin: 5%;
+	color: white;
+}
 
 /* media queries for tutor profile image */
 @media screen and (min-width: 801px) {

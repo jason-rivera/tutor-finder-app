@@ -20,7 +20,6 @@ function navbarCommonAdd() {
 	// Login/logout link below
     firebase.auth().onAuthStateChanged(function (user) {
         if (user){
-			console.log(user.uid);
 			$("#loginNavButton").append('<a class="nav-link">Log Out</a>');
 			$("#loginNavButton").click(function() {
 				logout();

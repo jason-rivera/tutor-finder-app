@@ -31,3 +31,13 @@ button.close {
 #calendarContainer {
   padding: 0px;
 }
+
+/* review submitted (in previous sessions) modal */
+#review-submitted-modal {
+  width: 95vw;
+  margin: 0px;
+}
+
+#review-submitted-close-button {
+  background-color: #2E479E;
+}

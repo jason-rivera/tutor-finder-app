@@ -62,8 +62,9 @@ span {
 .button-cont {
   position: relative;
   max-width: 550px;
+  /*
   left: 50%;
-  transform: translate(-50%, 0);
+  transform: translate(-50%, 0); */
   padding: 0px;
   margin: 0px;
 }
@@ -71,8 +72,8 @@ span {
   margin: 5px;
   background-color:#EFEFEF;
   border-radius: 5px;
-  overflow:auto;
-  float:left;
+  /*overflow:auto;
+  float:left;*/
 }
 .ck-button label {
   width: 100px;

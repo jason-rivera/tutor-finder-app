@@ -28,8 +28,7 @@
 
 .times {
     grid-column: 1;
-    visibility: hidden;
-                
+    visibility: hidden;       
 }
 .Sunday {
     grid-column: 2;

@@ -43,18 +43,21 @@ It has the following subfolders and files:
     /star.svg.png            # star image
     /test.png                # test profile image
 ├── scripts                  # Folder for scripts
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
-    /blah.js                 # 
+    /create-calendar.js      # module for creating a calendar JS file
+    /firebase_api_team24.js  # firebase api for our group JS file
+    /get-profile.js          # module to read profile data from database JS file
+    /get-tutor.js            # module to read tutor data from database JS file
+    /login.js                # module for login JS file
+    /logout.js               # module for logout JS file
+    /navbar-common.js        # module for navigation bar JS file
+    /populate-tutors.js      # module to populate tutors JS file
+    /previous-sessions.js    # module for previous sessions JS file
+    /reviews.js              # module to read reviews from database JS file
+    /search-tutor.js         # delete ??
+    /update-profile.js       # module to update/write profile data in database JS file
+    /welcome-msg.js          # delete ??
+    /write-review.js         # module to write reviews into the database JS file
+    /write-tutor.js          # module to write a tutor into the database JS file
 
     /firebase_api_team24.js  # firebase api script
 ├── styles                   # Folder for styles

@@ -44,7 +44,7 @@ It has the following subfolders and files:
     /test.png                # test profile image
 ├── scripts                  # Folder for scripts
     /create-calendar.js      # module for creating a calendar JS file
-    /firebase_api_team24.js  # firebase api for our group JS file
+    /firebase_api_team24.js  # firebase api script JS file
     /get-profile.js          # module to read profile data from database JS file
     /get-tutor.js            # module to read tutor data from database JS file
     /login.js                # module for login JS file
@@ -58,10 +58,20 @@ It has the following subfolders and files:
     /welcome-msg.js          # delete ??
     /write-review.js         # module to write reviews into the database JS file
     /write-tutor.js          # module to write a tutor into the database JS file
-
-    /firebase_api_team24.js  # firebase api script
 ├── styles                   # Folder for styles
-    /results.css             # css for results.html
+    /results.css             # stylesheet for results.html
+    /calendar-test.css       # delete ??
+    /calendar.css            # stylesheet for calendars CSS file
+    /index.css               # stylesheet for index.html CSS file
+    /modals.css              # stylesheet for all modals CSS file
+    /previous-sessions.cs    # stylesheet for previous-sessions.html CSS file
+    /profile.css             # stylesheet for profile.html CSS file
+    /results.css             # stylesheet delete ??
+    /review-tutor.css        # stylesheet for reviewing a tutor page CSS file
+    /search.css              # stylesheet for searchV2.html CSS file
+    /text-input-fields.css   # stylesheet for all text input fields CSS file
+    /tutor-form.css          # stylesheet for tutor-form.html CSS file
+
 
 Firebase hosting files: 
 ├── .firebaserc...

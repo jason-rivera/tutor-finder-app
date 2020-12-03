@@ -7,7 +7,7 @@
             
 #calendarContainer {
     display:grid;
-    grid-template-columns: 0px repeat(7, auto);
+    grid-template-columns: repeat(7, auto);
     /*placed grid-template-rows into js of each;*/
     row-gap: 0;
     margin:auto;

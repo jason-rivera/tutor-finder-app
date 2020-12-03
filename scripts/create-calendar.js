@@ -13,8 +13,8 @@ let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 
 //the local date, current weekday, and last sunday
 let localDate = new Date()
-let selectedDay = localDate.getDay()
 let lastSunday = new Date()
+let selectedDay = localDate.getDay()
 lastSunday.setDate(localDate.getDate() - selectedDay)
 
 //this is a default map in the same format as what is stored
@@ -39,12 +39,13 @@ let selectedTutor = null
 // ----------- MUST BE INSTANCE VARIABLES END -----------
 
 
-console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + "" + +" \nlast sunday date: " + lastSunday)
+console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + ""+calDays[selectedDay] +" \nlast sunday date: " + lastSunday)
 
 //settings for the size of the grid. 
-let rowHeight = "40px" //does not work
+let rowHeight = "25px" 
 let openWidth = "150px"
-let closedWidth ="20px"
+let closedWidth = "25px"
+
 
 //the first and last time to be displayed on the calendar
 let startTime = 6
@@ -53,7 +54,6 @@ let endTime = 21
 
 // ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
 function setCalendar(tutorID) {
-
     console.log("getting calendar for: " + tutorID)
     
     db.collection("Tutors").doc(tutorID)
@@ -86,7 +86,10 @@ function createCalendar() {
     document.getElementById("calendarContainer").innerHTML = ""
 
     //create grid for new calendar
+    //console.log((closedWidth * 6) + openWidth)
+    //$('#calendarContainer').css("width", "277px")
     $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");")
+    
         
     //Creates the weekday headings
     for (let weekday = 0; weekday < calDays.length; weekday++) {
@@ -262,6 +265,9 @@ function createSession() {
 
     let user = firebase.auth().currentUser;
 
+    let sessionDate = lastSunday
+    sessionDate.setDate(lastSunday.getDate() + radioCol)
+    console.log("Session date" + sessionDate)
     //user.uid + newTimestamp is a pretty safe bet that it will be unique
     db.collection("Sessions").doc(user.uid + Date.now()).set({
 
@@ -269,8 +275,8 @@ function createSession() {
         //calendar does not support creating a session thats not in the current week, this will need to be changed
         tempRow: radioRow,
         tempCol: radioCol,
-        sessionDate: "not implemented",
-        creationDate: newTimestamp,
+        sessionDate: sessionDate,
+        creationDate: Date.now(),
         tutorID: selectedTutor,
         userID: user.uid, 
         subject: "NOT IMPLEMENTED YET"

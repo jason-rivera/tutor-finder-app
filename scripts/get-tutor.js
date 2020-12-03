@@ -74,7 +74,9 @@ function requestAppointment(inputString) {
 	let userid = inputString.split("_")[1]
 	console.log(userid)
 	
-	setCalendar(userid)
+	initializeCalendar(userid)
+
+	//setCalendar()
 
 }
 function getSubjectString(doc) {

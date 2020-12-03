@@ -116,3 +116,21 @@ span {
   color:#000000;
   animation: colorAnim 0.5s forwards;
 }
+
+#courseSelectBtn {
+  width: 180px;
+}
+
+#courseSelectDropdown {
+  width: 180px;
+}
+
+#apptModal {
+  overflow-y: auto;
+}
+
+#weekSelectBar {
+  align-self: center;
+  width: 300px;
+}
+

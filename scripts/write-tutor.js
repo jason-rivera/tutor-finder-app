@@ -194,7 +194,13 @@ function updateTime(inputString) {
                 availability.get(calDays[colPos])[rowPos] = 0;
                 $('#button_'+rowPos+'_'+colPos).removeClass("color1")
                 $('#button_'+rowPos+'_'+colPos).addClass("color0")
-                break;
+				break;
+			case 2: 
+				availability.get(calDays[colPos])[rowPos] = 1;
+				$('#button_'+rowPos+'_'+colPos).removeClass("color2")
+				$('#button_'+rowPos+'_'+colPos).addClass("color1")
+				break;
+			
             default:
                 break;
         }

@@ -16,9 +16,32 @@ let localDate = new Date()
 let lastSunday = new Date()
 let selectedDay = localDate.getDay()
 lastSunday.setDate(localDate.getDate() - selectedDay)
+lastSunday.setHours(0, 0, 0)
+
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+let weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate() 
+let longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()  
+console.log(longWeekOf)
+console.log(weekOf)
+
+
+console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + ""+calDays[selectedDay] +" \nlast sunday date: " + lastSunday)
 
 //this is a default map in the same format as what is stored
 let availability = new Map([
+    // 0 never avalible, 1 avalible, 2 booked. array pos means hour
+    ['Monday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Tuesday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Wednesday',   [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Thursday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Friday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Saturday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
+    ['Sunday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
+    ])
+
+//this is a default map in the same format as what is stored
+let tempAvailability = new Map([
     // 0 never avalible, 1 avalible, 2 booked. array pos means hour
     ['Monday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
     ['Tuesday', 	[0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
@@ -39,7 +62,6 @@ let selectedTutor = null
 // ----------- MUST BE INSTANCE VARIABLES END -----------
 
 
-console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + ""+calDays[selectedDay] +" \nlast sunday date: " + lastSunday)
 
 //settings for the size of the grid. 
 let rowHeight = "25px" 
@@ -51,7 +73,21 @@ let closedWidth = "25px"
 let startTime = 6
 let endTime = 21
 
+// ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
+function initializeCalendar(tutorID) {
+    localDate = new Date()
+    lastSunday = new Date()
+    
+    selectedDay = localDate.getDay()
+    lastSunday.setDate(localDate.getDate() - selectedDay)
+    lastSunday.setHours(0, 0, 0)
+    weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate()
+    longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()
 
+
+      setCalendar(tutorID)
+
+}
 // ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
 function setCalendar(tutorID) {
     console.log("getting calendar for: " + tutorID)
@@ -68,11 +104,9 @@ function setCalendar(tutorID) {
             availability.set("Sunday", doc.data().schedule.Sunday)
 
             selectedTutor = tutorID
-            console.log("Creating calendar")
-
-            //automatically create the calendar after the tutors info is loaded in
             createCalendar()
-
+            updateAvalibility()
+            updateCourseDropdown()
         }).catch(function(error) {
             console.log("Error getting documents: ", error)
         
@@ -81,7 +115,10 @@ function setCalendar(tutorID) {
     
 // ----------- THIS CREATES THE HTML ELEMENT FOR THE CALENDAR ----------
 function createCalendar() {
-
+    console.log("recreating calendar")
+    tempAvailability = availability
+    console.log(availability)
+    console.log(tempAvailability)
     //clear old calendar
     document.getElementById("calendarContainer").innerHTML = ""
 
@@ -124,7 +161,7 @@ function createCalendar() {
             $('#button_'+hour+'_'+weekday).css("height", rowHeight)
 
             //sets the color
-            $('#button_'+hour+'_'+weekday).addClass("color"+availability.get(calDays[weekday])[hour])
+            $('#button_'+hour+'_'+weekday).addClass("color"+tempAvailability.get(calDays[weekday])[hour])
 
             //sets the column
             $('#button_'+hour+'_'+weekday).addClass(calDays[weekday])
@@ -150,7 +187,7 @@ function updateTime(inputString) {
     let rowPos = inputString.split("_")[1]
     let colPos = inputString.split("_")[2]
     
-    let aval = availability.get(calDays[colPos])[rowPos]
+    let aval = tempAvailability.get(calDays[colPos])[rowPos]
 
     let user = firebase.auth().currentUser;
 
@@ -169,7 +206,7 @@ function updateTime(inputString) {
             case 0:
                 console.log("Case 0: unavalible timeslot")
                 if (selectedTutor == user.uid) {
-                    availability.get(calDays[colPos])[rowPos] = 1;
+                    tempAvailability.get(calDays[colPos])[rowPos] = 1;
                     $('#button_'+rowPos+'_'+colPos).removeClass("color0")
                     $('#button_'+rowPos+'_'+colPos).addClass("color1")
                 }
@@ -178,16 +215,16 @@ function updateTime(inputString) {
             case 1:
                 console.log("Case 1: avalible timeslot")
                 if (selectedTutor == user.uid) {
-                    availability.get(calDays[colPos])[rowPos] = 0;
+                    tempAvailability.get(calDays[colPos])[rowPos] = 0;
                     $('#button_'+rowPos+'_'+colPos).removeClass("color1")
                     $('#button_'+rowPos+'_'+colPos).addClass("color0")
                 } else {
                     if (radioRow != null) {
                         console.log("remove old selection")
-                        availability.get(calDays[radioCol])[radioRow] = 1;
+                        tempAvailability.get(calDays[radioCol])[radioRow] = 1;
                     }
                     console.log("new selection")
-                    availability.get(calDays[colPos])[rowPos] = 3;
+                    tempAvailability.get(calDays[colPos])[rowPos] = 3;
                     $('#button_'+radioRow+'_'+radioCol).removeClass("color3")
                     $('#button_'+rowPos+'_'+colPos).addClass("color3")
                     radioRow = rowPos
@@ -201,7 +238,7 @@ function updateTime(inputString) {
                 break;
             case 3:
                 console.log("Case 3: remove selection")
-                availability.get(calDays[colPos])[rowPos] = 1;
+                tempAvailability.get(calDays[colPos])[rowPos] = 1;
                 $('#button_'+rowPos+'_'+colPos).removeClass("color3")
                 radioCol = null
                 radioRow = null
@@ -230,6 +267,63 @@ function changeRows(){
     }
 }
 
+function changeWeek(move) {
+    if (move == "previous") {
+        console.log("previous week: " + move)
+        lastSunday.setDate(lastSunday.getDate() - 7)
+
+    } else if (move == "future") {
+        console.log("future week: " + move)
+        lastSunday.setDate(lastSunday.getDate() + 7)
+    }
+    weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate()  
+    longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()  
+    console.log(longWeekOf)
+    
+    
+    updateAvalibility()
+}
+
+
+// ----------- THIS GETS THE TUTORS AVALIBILITY ----------
+function updateAvalibility() {
+    tempAvailability = availability
+    console.log("Trying to get new tutor schedule for this week")
+    document.getElementById("currentWeekButton").innerHTML = weekOf
+    db.collection("Sessions").where("tutorID", "==", selectedTutor).where("weekOf", "==", longWeekOf)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) { 
+            
+            console.log(doc.data())
+
+            tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
+            $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
+            
+
+
+
+
+
+        }) 
+    })
+    createCalendar()
+}
+
+// ----------- THIS GETS THE TUTORS COURSES ----------
+function updateCourseDropdown() {
+    db.collection("Tutors").doc(selectedTutor)
+    .onSnapshot(function(doc){ 
+        $('#courseSelectDropdown').append('<option>unspecified</option>' )
+        for (let index = 0; index < doc.data().subjects.length; index++) {
+            $('#courseSelectDropdown').append('<option>'+doc.data().subjects[index]+'</option>')
+            
+        }
+        
+    })
+}
+
+
 // ----------- THIS UPDATES THE TUTORS SCHEDULE ----------
 function updateTable() {
     db.collection("Tutors").doc(selectedTutor).set({
@@ -253,12 +347,12 @@ function createSession() {
 
     //CHANGE SELCTED TIMESLOT TO CONFIMRED (3 -> 2)
     if (radioRow != null) {
-        availability.get(calDays[radioCol])[radioRow] = 2;
+        tempAvailability.get(calDays[radioCol])[radioRow] = 2;
     }
 
     //UPDATE TUTOR SCHEDULE
     console.log("Updating schedule for: " + selectedTutor)
-    updateTable()
+    //updateTable()
 
     //CREATE NEW SESSION
     console.log("At this point a session must be created in the database, as of now it only updates the schedule for the tutor")
@@ -266,22 +360,30 @@ function createSession() {
     let user = firebase.auth().currentUser;
 
     let sessionDate = lastSunday
-    sessionDate.setDate(lastSunday.getDate() + radioCol)
+    console.log("Session date" + sessionDate)
+    console.log("radioCol" + radioCol)
+    console.log("newDate: "+ (lastSunday.getDate() + parseInt(radioCol)))
+    sessionDate.setDate(lastSunday.getDate() + parseInt(radioCol))
+    sessionDate.setHours(parseInt(radioRow), 30, 0)
     console.log("Session date" + sessionDate)
     //user.uid + newTimestamp is a pretty safe bet that it will be unique
     db.collection("Sessions").doc(user.uid + Date.now()).set({
 
         //just storing the row and col pos from the calendar currently, not as readable but its reliable. can be changed later
         //calendar does not support creating a session thats not in the current week, this will need to be changed
+        weekOf: longWeekOf,
+        lastSunday: lastSunday,
         tempRow: radioRow,
         tempCol: radioCol,
         sessionDate: sessionDate,
         creationDate: Date.now(),
         tutorID: selectedTutor,
         userID: user.uid, 
-        subject: "NOT IMPLEMENTED YET"
+        subject: document.getElementById("courseSelectDropdown").value
 
 
+    }).catch(function(error) {
+        console.log("Error getting documents: ", error)
     })
 }
         

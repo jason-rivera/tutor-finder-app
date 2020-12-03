@@ -10,7 +10,7 @@ $(document).ready(function () {
                         '<div class="card">'+
                             '<div class="card-header" id="headingOne'+doc.id+'">'+
                                 '<h2 class="mb-0">'+
-                                '<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.data().sessionID+'" aria-expanded="true" aria-controls="collapseOne'+doc.data().sessionID+'">'+
+                                '<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.id+'" aria-expanded="true" aria-controls="collapseOne'+doc.data().sessionID+'">'+
                                     doc.data().sessionDate.toDate()+
                                 '</button>'+
                                 '</h2>'+

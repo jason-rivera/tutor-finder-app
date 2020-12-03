@@ -11,9 +11,12 @@ body {
   transform: translate(-50%, 0);
 }
 
-.profile-text-container {
-  
+
+#your-picture {
+  text-align: center;
 }
+
+
 
 .modal-body {
   background-color: rgb(212, 212, 212);

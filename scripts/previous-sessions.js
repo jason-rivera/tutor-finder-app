@@ -3,7 +3,7 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("Sessions").where("userID", "==", user.uid)
+        db.collection("Sessions").where("userID", "==", user.uid).orderBy("sessionDate")
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {

@@ -19,6 +19,7 @@ function navbarCommonAdd() {
 			$("#homeNavButton").append('<a class="nav-link" href="searchV2.html">Search</a>');
 			$("#homeNavButton").append('<a class="nav-link" href="previous-sessions.html">Previous Sessions</a>');
 			$("#homeNavButton").append('<a class="nav-link" href="tutor-form.html">Tutor Form</a>');
+			$("#homeNavButton").append('<a class="nav-link" href="reviews.html">Reviews</a>');
 		    $("#loginNavButton").append('<a class="nav-link">Log Out</a>');
 			$("#loginNavButton").click(function() {
 				logout();

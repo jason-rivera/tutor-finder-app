@@ -3,10 +3,7 @@ body {
 }
 .body-container {
   background-color: #1B1C1D;
-  max-width: 800px;
-  position: relative;
-  left: 50%;
-  transform: translate(-50%, 0);
+
 }
 .btn-secondary {
   margin: 3px;
@@ -26,11 +23,11 @@ body {
 .find-button {
   border-radius: 0px;
   position: relative;
-  width: 100%;
+  width: 300px;
   height: 60px;
 }
 .homepage-button {
-  border-radius: 0px;
+  border-radius: 10px;
   position: relative;
   width: 100%;
   height: 60px;
@@ -60,15 +57,15 @@ span {
 
 /* For the subject checkboxes */
 .button-cont {
-  position: relative;
-  max-width: 550px;
+  max-width: 350px;
   /*
   left: 50%;
   transform: translate(-50%, 0); */
   padding: 0px;
-  margin: 0px;
+  margin-top: 20px;
 }
 .ck-button {
+  
   margin: 5px;
   background-color:#EFEFEF;
   border-radius: 5px;
@@ -90,6 +87,13 @@ span {
   top:10px;
   left:10px;
   z-index:-1;
+  visibility: hidden;
+}
+
+#priceSelectButtons {
+  margin-top: 20px;
+  max-width: 350px;
+  padding: 0;
 }
 
 /* animation for button */
@@ -109,7 +113,7 @@ span {
 }
 
 #courseSelectDropdown {
-  width: 180px;
+  width: 250px;
 }
 
 #apptModal {

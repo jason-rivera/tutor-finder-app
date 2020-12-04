@@ -292,9 +292,15 @@ function changeRows(){
             $("."+calDays[weekday]).css("width", closedWidth)
         }
     }
+    let tempDate = new Date(lastSunday)
+    tempDate.setDate(parseInt(lastSunday.getDate()) + parseInt(selectedDay))
+    weekOf = months[tempDate.getMonth()] + ", " + tempDate.getDate()  
+    document.getElementById("currentWeekButton").innerHTML = weekOf
+    
 }
 
 function changeWeek(move) {
+    
     if (move == "previous") {
         console.log("previous week: " + move)
         lastSunday.setDate(lastSunday.getDate() - 7)
@@ -328,7 +334,7 @@ function updateAvalibility() {
     console.log(tempAvailability)
     console.log("Trying to get new tutor schedule for this week")
 
-    document.getElementById("currentWeekButton").innerHTML = weekOf
+    
     db.collection("Sessions").where("tutorID", "==", selectedTutor).where("weekOf", "==", longWeekOf)
     .get()
     .then(function(querySnapshot) {
@@ -348,7 +354,7 @@ function updateCourseDropdown() {
     db.collection("Tutors").doc(selectedTutor)
     .onSnapshot(function(doc){ 
         $('#courseSelectDropdown').empty()
-        $('#courseSelectDropdown').append('<option>unspecified</option>' )
+        $('#courseSelectDropdown').append('<option>Choose a course</option>' )
         for (let index = 0; index < doc.data().subjects.length; index++) {
             $('#courseSelectDropdown').append('<option>'+doc.data().subjects[index]+'</option>')
             
@@ -414,7 +420,7 @@ function createSession() {
             tempRow: radioRow,
             tempCol: radioCol,
             sessionDate: sessionDate,
-            creationDate: Date.now(),
+            creationDate: new Date(),
             tutorID: selectedTutor,
             userID: user.uid, 
             rate: doc.data().rate,

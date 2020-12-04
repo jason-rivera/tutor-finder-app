@@ -26,16 +26,21 @@ function addNavbarCommon(currentPage) {
 		+	'	<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">'
 		+	'		<span class="navbar-toggler-icon"></span>'
 		+	'	</button>'
-		+	'	<div class="collapse navbar-collapse" id="navbarNavAltMarkup">'
-		+	'		<div class="navbar-nav">'
+		+	'	<div class="collapse navbar-collapse  " id="navbarNavAltMarkup">'
+		+	'		<div class="d-flex justify-content-between">'
+		+	'		<div class="navbar-nav d-inline-flex justifiy-content-start">'
 		+	'			<a id="navButton_Home" class="nav-item nav-link" href="index.html">Home</a>'
 		+	'			<a id="navButton_Search" class="nav-item nav-link" href="searchV2.html">Search</a>'
 		+	'			<a id="navButton_Sessions" class="nav-item nav-link" href="sessions.html">Sessions</a>'
-		+	'			<a id="navButton_Tutor" class="nav-item nav-link" href="tutor-form.html">Tutor Form</a>'
-		+	'			<a id="navButton_SessionsTutor" class="nav-item nav-link" href="sessions-tutor.html">Tutor Sessions</a>'
-		+	'			<a id="navButton_Reviews" class="nav-item nav-link" href="reviews.html">Reviews</a>'
 		+	'			<a id="navButton_Profile" class="nav-item nav-link" href="profile.html">Profile</a>'
-		+	'			<a id="navButton_Login"class="nav-item nav-link" href="login.html">Log In</a>'
+
+		+	'		</div>'
+		+	'		<div class="navbar-nav d-inline-flex">'
+		+	'			<a id="navButton_Tutor" class="ml-auto nav-item nav-link" href="tutor-form.html">Tutor Form</a>'
+		+	'			<a id="navButton_SessionsTutor" class="ml-auto nav-item nav-link" href="sessions-tutor.html">Tutor Sessions</a>'
+		+	'			<a id="navButton_Reviews" class="ml-auto nav-item nav-link" href="reviews.html">Reviews</a>'
+		+	'			<a id="navButton_Login"class="ml-auto nav-item nav-link" href="login.html">Log In</a>'
+		+	'		</div>'
 		+	'		</div>'
 		+	'	</div>'
 		+	'</nav>'
@@ -63,6 +68,15 @@ function addNavbarCommon(currentPage) {
 				});
 			}
 		})	
+		$("body").append(
+		'<footer class="navbar fa-2x fixed-bottom bg-dark  justify-content-around" style="height: 65px;">'
+		+'	<a href="index.html"><i class="fas fa-home "></i></a>'
+		+'	<a style="color: #0062cc;" onclick="history.back()"><i class="fas fa-reply"></i></a>'
+		+'	<a href="searchV2.html"><i class="fas fa-search "></i></a>'
+		+'	<a href="profile.html"><i class="fas fa-user-circle "></i></a>'
+		+'	<a href="sessions.html"><i class="fas fa-calendar-week "></i></a>'
+    	+'</footer>'
+		)
 }
 
 function logout(){ //needed for logout functionality on logout button

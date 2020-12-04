@@ -11,7 +11,7 @@
     /*placed grid-template-rows into js of each;*/
     row-gap: 0;
     margin:auto;
-    margin-bottom: 20px;      
+    margin-bottom: 10px;      
 }
 
 #calendarContainer > p {
@@ -53,7 +53,7 @@
 }
 
 .color0 {
-    background-color: rgba(150, 43, 52, 0.644);
+    background-color: rgba(150, 43, 52, 0.336);
 }
 .color1 {
     background-color: rgba(100, 237, 162, 0.589);
@@ -65,4 +65,8 @@
 
 .color3 {
     background-color: rgba(64, 150, 43, 0.603);
+}
+
+.color4 {
+    background-color: rgba(73, 37, 40, 0.445);
 }

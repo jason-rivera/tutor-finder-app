@@ -69,7 +69,7 @@ function populateSessions() {
         
 	})
 	.then(function() {
-		console.log("Previous sessions populated successfully!");
+		console.log("Sessions populated successfully!");
 	})
 	.catch(function(error) {
 		console.error("Error populating: ", error);

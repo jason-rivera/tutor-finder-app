@@ -22,7 +22,7 @@ Content of the project folder:
 ├── .gitignore               # Git ignore file
 ├── index.html               # landing page HTML file
 ├── login.html               # login page HTML file
-├── previous-sessions.html   # previous sessions a user had with a tutor page HTML file
+├── sessions.html   # Sessions a user had with a tutor page HTML file
 ├── profile.html             # personlized user profile page HTML file
 ├── reviews.html             # page for tutor reviews HTML file
 ├── searchV2.html            # search for a tutor page HTML file
@@ -48,7 +48,7 @@ It has the following subfolders and files:
     /logout.js               # module for logout JS file
     /navbar-common.js        # module for navigation bar JS file
     /populate-tutors.js      # module to populate tutors JS file
-    /previous-sessions.js    # module for previous sessions JS file
+    /sessions.js    # module for Sessions JS file
     /reviews.js              # module to read reviews from database JS file
     /update-profile.js       # module to update/write profile data in database JS file
     /write-review.js         # module to write reviews into the database JS file
@@ -58,7 +58,7 @@ It has the following subfolders and files:
     /calendar.css            # stylesheet for calendars CSS file
     /index.css               # stylesheet for index.html CSS file
     /modals.css              # stylesheet for all modals CSS file
-    /previous-sessions.cs    # stylesheet for previous-sessions.html CSS file
+    /sessions.cs    # stylesheet for sessions.html CSS file
     /profile.css             # stylesheet for profile.html CSS file
     /review-tutor.css        # stylesheet for reviewing a tutor page CSS file
     /search.css              # stylesheet for searchV2.html CSS file

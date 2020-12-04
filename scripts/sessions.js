@@ -93,16 +93,14 @@ $(document).ready(function () {
                                             '<p class="card-text">Rate: '+tutorsnap.data().rate+'</p>'+
                                             '<p class="card-text">Status: '+status +'</p>'+
                                             '<p class="card-text"><small class="text-muted">Tutor ID: '+doc.data().tutorID+'</small></p>'+
-                                            '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Leave Review</button>'+
+                                            '<button type="button" id="'+doc.id+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Leave Review</button>'+
                                         '</div>'+
                                       '</div>'+
                                   '</div>'+
                               '</div>'+
                           '</div>'
                       );
-                      $('#' + doc.data().tutorID).click(function () {
-                        $(".submitReview").attr('id', doc.data().tutorID);
-                      })
+                      
                     })
                   })
                 });
@@ -112,38 +110,37 @@ $(document).ready(function () {
         });
 });
 
-function updateModal(tutorid) {
+function updateModal(sessionId) {
 
-  document.getElementById("tutorName").innerText = tutorid;
+  db.collection("Sessions").doc(sessionId).onSnapshot(function(doc) {
+    db.collection("Tutors").doc(doc.data().tutorID).onSnapshot(function(tutorsnap){ 
+      db.collection("Users").doc(doc.data().tutorID).onSnapshot(function(snap){ 
+
+        let sessionDate = doc.data().sessionDate.toDate()
+        let dateFormatted = months[sessionDate.getMonth()]+ " " 
+        + sessionDate.getDate() + " " + sessionDate.getHours() + ":" 
+        + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() 
+
+        reviewDate = new Date()
+        let dateNowFormatted = months[reviewDate.getMonth()]+ " " 
+        + reviewDate.getDate() + " " + reviewDate.getHours() + ":" 
+        + reviewDate.getMinutes()+ ", " + reviewDate.getFullYear() 
+
+        $("#tutorName").text(snap.data().name)
+        $("#tutorProfilePic").attr("src", snap.data().photoURL)
+        $("#sessionDate").text("Session Date: " + dateFormatted)
+        $("#reviewDate").text("Review Date: " + dateNowFormatted)
+        $("#subjectTaught").text("Subject taught: " + snap.data().subject)
+        $("#rateApplied").text( "Rate: " + tutorsnap.data().rate)
+        $(".submitReview").attr('id', doc.data().tutorID);
+      })
+    })
+  })
+
+
+
+    
   
-}
-
-/*
-            <div class="card">
-              <div class="card-header" id="headingOne">
-                <h2 class="mb-0">
-                  <button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                    November, 15. 2020
-                  </button>
-                </h2>
-              </div>
-          
-              <div id="collapseOne" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
-                <div class="row no-gutters">
-                    <div class="col-md-2">
-                      <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="card-img" alt="small profile pic">
-                    </div>
-                    <div class="col-md-8">
-                      <div class="card-body">
-                        <h5 class="card-title">TUTOR NAME</h5>
-                        <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-                        <p class="card-text"><small class="text-muted">Session ID: 123412341243</small></p>
-                        <!-- Button trigger modal. -->
-                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">Leave Review</button>
-                      </div>
-                    </div>
-                  </div>
-              </div>
-            </div>
-
- */
+ 
+ }   
+  

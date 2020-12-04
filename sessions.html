@@ -30,11 +30,13 @@
             <div class="modal-body">
               <form id="reviewTutor">
                 <div class="media" >
-                  <img src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px;">
+                  <img id="tutorProfilePic" src="https://dummyimage.com/128x128/4d4d4d/ffffff&text=Tutor+profile+pic" class="mr-3" alt="Tutor profile pic" style="border: solid black 2px; border-radius: 10px; width: 150px;">
                   <div class="media-body">
                     <h5 class="mt-0" id="tutorName">$Tutor Name</h5>
-                    <p id="reviewDate">Date: date</p>
+                    <p id="sessionDate">Session Date: date</p>
+                    <p id="reviewDate">Review Date: date</p>
                     <p id="subjectTaught">Subject taught: subject</p>
+                    <p id="rateApplied">Rate: rate</p>
                   </div>
                 </div>
       
@@ -108,7 +110,6 @@
     <script src="scripts/firebase_api_team24.js"></script>
 
     <!-- Header Navigation Bar -->
-    <script> var navBarCommonName={name: "Sessions" }; </script>
     <script src="scripts/navbar-common.js"></script>
     <script>addNavbarCommon(window.location.pathname)</script>
     

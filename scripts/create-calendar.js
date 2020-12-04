@@ -159,7 +159,17 @@ function createCalendar() {
     //creates the calendar body
     for (let hour = startTime; hour < endTime; hour++) { 
         for (let weekday = 0; weekday < calDays.length; weekday++) {
-
+            //let tempDate = new Date(lastSunday.getFullYear(), lastSunday.getMonth, (lastSunday.getDate + parseInt(weekday)))
+            let tempDate = new Date(lastSunday)
+            console.log(weekday)
+            console.log(parseInt(lastSunday.getDate()) + parseInt(weekday))
+            tempDate.setDate(parseInt(lastSunday.getDate()) + parseInt(weekday))
+            tempDate.setHours(parseInt(lastSunday.getHours()) + parseInt(hour))
+            console.log(tempDate)
+             
+            if (tempDate <= localDate) {
+                tempAvailability.get(calDays[weekday])[hour] = 4
+            }
             //Creates an element of the calendar
             $('#calendarContainer').append('<p id="button_'+hour+'_'+weekday+'" onmousedown="updateTime(this.id)">'+hour+":30"+'</p>')
             //classes from bootstrap
@@ -252,6 +262,9 @@ function updateTime(inputString) {
                 radioCol = null
                 radioRow = null
                 break;
+            case 4:
+                console.log("Case 4: backwards in time")
+                break;
             default:
                 break;
         }
@@ -322,13 +335,12 @@ function updateAvalibility() {
         querySnapshot.forEach(function(doc) { 
             
             console.log(doc.data())
-
-            tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
-            $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
-            
+            if (tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] != 4) {
+                tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
+                $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
+            }
         }) 
     })
-    
 }
 
 // ----------- THIS GETS THE TUTORS COURSES ----------

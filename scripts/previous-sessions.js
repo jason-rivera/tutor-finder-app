@@ -3,7 +3,7 @@ let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oc
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("Sessions").where("userID", "==", user.uid).orderBy("sessionDate")
+        db.collection("Sessions").where("userID", "==", user.uid).orderBy("sessionDate", "desc")
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
@@ -28,11 +28,11 @@ $(document).ready(function () {
                         '<div class="card">'+
                             '<div class="card-header" id="headingOne'+doc.id+'">'+
                                 '<h2 class="mb-0">'+
-                                '<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.id+'" aria-expanded="true" aria-controls="collapseOne'+doc.id+'">'+
-                                months[sessionDate.getMonth()]+ " " + sessionDate.getDate()  + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() + 
-                                "\t ----- Tutor: " + snap.data().name +
-                                '</button>'+
-                                '</h2>'+
+                                  '<button class="btn btn-link btn-block text-left w-100" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.id+'" aria-expanded="true" aria-controls="collapseOne'+doc.id+'">'+
+                                    '<span class="float-left">' + months[sessionDate.getMonth()]+ " " + sessionDate.getDate()  + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() + '</span>' +
+                                    '<span class="float-right">' + snap.data().name + '</span>' +
+                                  '</button>'+
+                                 '</h2>'+
                             '</div>'+
                             '<div id="collapseOne'+doc.id+'" class="collapse" aria-labelledby="headingOne'+doc.id+'" data-parent="#accordionExample">'+
                                 '<div class="row no-gutters">'+

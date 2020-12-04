@@ -31,6 +31,7 @@ function addNavbarCommon(currentPage) {
 		+	'			<a id="navButton_Search" class="nav-item nav-link" href="searchV2.html">Search</a>'
 		+	'			<a id="navButton_Sessions" class="nav-item nav-link" href="sessions.html">Sessions</a>'
 		+	'			<a id="navButton_Tutor" class="nav-item nav-link" href="tutor-form.html">Tutor Form</a>'
+		+	'			<a id="navButton_Reviews" class="nav-item nav-link" href="reviews.html">Reviews</a>'
 		+	'			<a id="navButton_Profile" class="nav-item nav-link" href="profile.html">Profile</a>'
 		+	'			<a id="navButton_Login"class="nav-item nav-link" href="login.html">Log In</a>'
 		+	'		</div>'
@@ -43,6 +44,7 @@ function addNavbarCommon(currentPage) {
 		$('#navButton_Profile').hide()
 		$('#navButton_Sessions').hide()
 		$('#navButton_Sessions').hide()
+		$('#navButton_Reviews').hide()
 		$('#navButton_Tutor').hide()
 
 		firebase.auth().onAuthStateChanged(function (user) {
@@ -50,6 +52,7 @@ function addNavbarCommon(currentPage) {
 				$('#navButton_Profile').show()
 				$('#navButton_Sessions').show()
 				$('#navButton_Tutor').show()
+				$('#navButton_Reviews').show()
 				$("#navButton_Login").text("Log Out")
 				$("#navButton_Login").click(function() {
 					logout();

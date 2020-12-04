@@ -385,7 +385,11 @@ function createSession() {
             sessionDate.setHours(parseInt(radioRow), 30, 0)
             console.log("Session date" + sessionDate)
             //user.uid + newTimestamp is a pretty safe bet that it will be unique
-            db.collection("Sessions").doc(user.uid + Date.now()).set({
+            
+
+        db.collection("Tutors").doc(tutorID).get().then(function(doc) {
+
+             db.collection("Sessions").doc(user.uid + Date.now()).set({
 
             //just storing the row and col pos from the calendar currently, not as readable but its reliable. can be changed later
             //calendar does not support creating a session thats not in the current week, this will need to be changed
@@ -397,12 +401,16 @@ function createSession() {
             creationDate: Date.now(),
             tutorID: selectedTutor,
             userID: user.uid, 
+            rate: doc.data().rate,
             subject: document.getElementById("courseSelectDropdown").value
 
 
             }).catch(function(error) {
-                console.log("Error getting documents: ", error)
+                console.log("Error tutor documents: ", error)
             })
+        }).catch(function(error) {
+            console.log("Error session documents: ", error)
+        })
             
         }
     });

@@ -133,6 +133,7 @@ function updateModal(sessionId) {
         $("#subjectTaught").text("Subject taught: " + snap.data().subject)
         $("#rateApplied").text( "Rate: " + tutorsnap.data().rate)
         $(".submitReview").attr('id', doc.data().tutorID);
+        
       })
     })
   })
@@ -143,6 +144,7 @@ function updateModal(sessionId) {
       canceled: true
 
     }, {merge: true}) 
+    location.reload();
 }
 
 

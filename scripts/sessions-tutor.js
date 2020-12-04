@@ -119,6 +119,7 @@ function acceptSession(input) {
       accepted: true
 
     }, {merge: true}) 
+    location.reload();
 }
 
 function cancelSession(input) {
@@ -127,6 +128,7 @@ function cancelSession(input) {
       canceled: true
 
     }, {merge: true}) 
+    location.reload();
 }
 
 $(document).ready(function () { 

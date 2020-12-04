@@ -8,6 +8,7 @@ function addNavbarCommon(currentPage) {
 		['sessions.html', "Sessions"],
 		['tutor-form.html', "Tutor Form"],
 		['reviews.html', "Reviews"],
+		['sessions-tutor.html', "Accept Session"],
 		['login.html', "Login"]
 	])
 
@@ -31,6 +32,7 @@ function addNavbarCommon(currentPage) {
 		+	'			<a id="navButton_Search" class="nav-item nav-link" href="searchV2.html">Search</a>'
 		+	'			<a id="navButton_Sessions" class="nav-item nav-link" href="sessions.html">Sessions</a>'
 		+	'			<a id="navButton_Tutor" class="nav-item nav-link" href="tutor-form.html">Tutor Form</a>'
+		+	'			<a id="navButton_SessionsTutor" class="nav-item nav-link" href="sessions-tutor.html">Tutor Sessions</a>'
 		+	'			<a id="navButton_Reviews" class="nav-item nav-link" href="reviews.html">Reviews</a>'
 		+	'			<a id="navButton_Profile" class="nav-item nav-link" href="profile.html">Profile</a>'
 		+	'			<a id="navButton_Login"class="nav-item nav-link" href="login.html">Log In</a>'
@@ -44,6 +46,7 @@ function addNavbarCommon(currentPage) {
 		$('#navButton_Profile').hide()
 		$('#navButton_Sessions').hide()
 		$('#navButton_Sessions').hide()
+		$('#navButton_SessionsTutor').hide()
 		$('#navButton_Reviews').hide()
 		$('#navButton_Tutor').hide()
 
@@ -52,6 +55,7 @@ function addNavbarCommon(currentPage) {
 				$('#navButton_Profile').show()
 				$('#navButton_Sessions').show()
 				$('#navButton_Tutor').show()
+				$('#navButton_SessionsTutor').show()
 				$('#navButton_Reviews').show()
 				$("#navButton_Login").text("Log Out")
 				$("#navButton_Login").click(function() {

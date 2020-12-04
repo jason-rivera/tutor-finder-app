@@ -1,7 +1,3 @@
-let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
-
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
 		let userDocRef = db.collection("Tutors").doc(user.uid);
@@ -14,14 +10,16 @@ $(document).ready(function () {
 				}
 				else {
 					querySnapshot.forEach(function(doc) {
-                        let sessionDate = doc.data().Date.toDate()
+						let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+						let sessionDate = doc.data().Date.toDate()
+						let dateFormatted = months[sessionDate.getMonth()]+ " " + sessionDate.getDate() + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() 
 						// doc.data() is never undefined for query doc snapshots
 						$("#accordionExample").append(
 							'<div class="card">'+
 								'<div class="card-header" id="headingOne'+doc.id+'">'+
 									'<h2 class="mb-0">'+
 									'<button class="btn btn-link btn-block text-left" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.id+'" aria-expanded="true" aria-controls="collapseOne'+doc.id+'">'+
-                                        'Review recieved: ' +months[sessionDate.getMonth()]+ " " + sessionDate.getDate() + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() +
+                                        'Review recieved: ' + dateFormatted +
 									'</button>'+
 									'</h2>'+
 								'</div>'+

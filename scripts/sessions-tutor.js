@@ -1,21 +1,22 @@
-let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
 
 $(document).ready(function () {
     firebase.auth().onAuthStateChanged(function (user) {
-        db.collection("Sessions").where("userID", "==", user.uid).orderBy("sessionDate", "desc")
+        db.collection("Sessions").where("tutorID", "==", user.uid)
             .get()
             .then(function(querySnapshot) {
                 querySnapshot.forEach(function(doc) {
                   db.collection("Tutors").doc(doc.data().tutorID).onSnapshot(function(tutorsnap){ 
-                    db.collection("Users").doc(doc.data().tutorID).onSnapshot(function(snap){ 
+                    db.collection("Users").doc(doc.data().userID).onSnapshot(function(snap){ 
                       
+                      let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
                       console.log("session Data")
                       console.log(doc.id, " => ", doc.data());
                       console.log("tutor Data")
                       console.log(snap.id, " => ", snap.data());
                       // doc.data() is never undefined for query doc snapshots
                       let sessionDate = doc.data().sessionDate.toDate()
+                      let dateFormatted = months[sessionDate.getMonth()]+ " " + sessionDate.getDate() + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() 
                       let status;
                       let icon;
                       let disableButton;
@@ -42,6 +43,12 @@ $(document).ready(function () {
                       +'<path fill-rule="evenodd" d="M4.54.146A.5.5 0 0 1 4.893 0h6.214a.5.5 0 0 1 .353.146l4.394 4.394a.5.5 0 0 1 .146.353v6.214a.5.5 0 0 1-.146.353l-4.394 4.394a.5.5 0 0 1-.353.146H4.893a.5.5 0 0 1-.353-.146L.146 11.46A.5.5 0 0 1 0 11.107V4.893a.5.5 0 0 1 .146-.353L4.54.146zM5.1 1L1 5.1v5.8L5.1 15h5.8l4.1-4.1V5.1L10.9 1H5.1z"/>'
                       + '<path fill-rule="evenodd" d="M4.646 4.646a.5.5 0 0 1 .708 0L8 7.293l2.646-2.647a.5.5 0 0 1 .708.708L8.707 8l2.647 2.646a.5.5 0 0 1-.708.708L8 8.707l-2.646 2.647a.5.5 0 0 1-.708-.708L7.293 8 4.646 5.354a.5.5 0 0 1 0-.708z"/>'
                       +'</svg>'
+
+                      let canceledIcon = 
+                      '<svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-trash" fill="currentColor" xmlns="http://www.w3.org/2000/svg">'
+                      +'<path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>'
+                      +'<path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>'
+                      +'</svg>'
                       
                       let timestatus
 
@@ -52,23 +59,32 @@ $(document).ready(function () {
                       }
 
 
-                      if (doc.data().accepted && timestatus) {
+                      if (doc.data().canceled){
+                        status = "Canceled"
+                        disableButton = "disabled"
+                        disableCancelButton = "disabled"
+                        icon = canceledIcon
+                      } else if (doc.data().accepted && timestatus) {
                         status = "Accepted & Upcoming"
                         disableButton = "disabled"
+                        disableCancelButton = ""
                         icon = acceptedIcon
                       } else if (doc.data().accepted && !timestatus) {
                         status = "Happened"
-                        disableButton = ""
+                        disableButton = "disabled"
+                        disableCancelButton = "disabled"
                         icon = happenedIcon
                       } else if (!doc.data().accepted && timestatus) {
                         status = "Awaiting confirmation"
-                        disableButton = "disabled"
+                        disableButton = ""
+                        disableCancelButton = ""
                         icon = awaitingIcon
                       } else {
                         status = "Expired"
                         disableButton = "disabled"
+                        disableCancelButton = "disabled"
                         icon = expiredIcon
-                      }
+                      } 
 
                       console.log(sessionDate)
                       $("#accordionExample").append(
@@ -76,7 +92,7 @@ $(document).ready(function () {
                               '<div class="card-header" id="headingOne'+doc.id+'">'+
                                   '<h2 class="mb-0">'+
                                     '<button class="btn btn-link btn-block text-left w-100" type="button" data-toggle="collapse" data-target="#collapseOne'+doc.id+'" aria-expanded="true" aria-controls="collapseOne'+doc.id+'">'+
-                                      '<span class="float-left">' + icon + " " + months[sessionDate.getMonth()]+ " " + sessionDate.getDate()  + " " + sessionDate.getHours() + ":" + sessionDate.getMinutes()+ ", " + sessionDate.getFullYear() + '</span>' +
+                                      '<span class="float-left">' + icon + " " + dateFormatted + '</span>' +
                                       '<span class="float-right">' + snap.data().name + " " + tutoricon + '</span>' +
                                     '</button>'+
                                   '</h2>'+
@@ -91,9 +107,11 @@ $(document).ready(function () {
                                             '<h5 class="card-title">'+snap.data().name+'</h5>'+
                                             '<p class="card-text">Subject: '+doc.data().subject+'</p>'+
                                             '<p class="card-text">Rate: '+tutorsnap.data().rate+'</p>'+
-                                            '<p class="card-text">Status: '+status +'</p>'+
+                                            '<p class="card-text">Status: '+status+'</p>'+
                                             '<p class="card-text"><small class="text-muted">Tutor ID: '+doc.data().tutorID+'</small></p>'+
-                                            '<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Leave Review</button>'+
+                                            //'<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Accept Session</button>'+
+                                            '<button type="button" id="Accept_'+doc.id+'"class="btn btn-primary leave-review-button" onClick="acceptSession(this.id)" '+disableButton+'>Accept Session</button>'+
+                                            '<button type="button" id="Cancel_'+doc.id+'"class="btn btn-primary leave-review-button" onClick="cancelSession(this.id)" '+disableCancelButton+' style="float: right">Cancel Session</button>'+
                                         '</div>'+
                                       '</div>'+
                                   '</div>'+
@@ -112,10 +130,20 @@ $(document).ready(function () {
         });
 });
 
-function updateModal(tutorid) {
+function acceptSession(input) {
+  let sessionID = input.split("_")[1]
+  db.collection("Sessions").doc(sessionID).set({
+      accepted: true
 
-  document.getElementById("tutorName").innerText = tutorid;
-  
+    }, {merge: true}) 
+}
+
+function cancelSession(input) {
+  let sessionID = input.split("_")[1]
+  db.collection("Sessions").doc(sessionID).set({
+      canceled: true
+
+    }, {merge: true}) 
 }
 
 /*

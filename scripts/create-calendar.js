@@ -83,6 +83,11 @@ function initializeCalendar(tutorID) {
     lastSunday.setHours(0, 0, 0)
     weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate()
     longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()
+    
+    $("#submitApptReqBtn").prop("disabled", true);
+    
+    radioRow = null
+    radioCol = null
 
     console.log(availability)
     setCalendar(tutorID)
@@ -330,6 +335,7 @@ function updateAvalibility() {
 function updateCourseDropdown() {
     db.collection("Tutors").doc(selectedTutor)
     .onSnapshot(function(doc){ 
+        $('#courseSelectDropdown').empty()
         $('#courseSelectDropdown').append('<option>unspecified</option>' )
         for (let index = 0; index < doc.data().subjects.length; index++) {
             $('#courseSelectDropdown').append('<option>'+doc.data().subjects[index]+'</option>')
@@ -364,7 +370,7 @@ function createSession() {
     
     if (radioRow == null) {
         console.log("Nothing recorded")
-    
+        
         } else {
             //CHANGE SELCTED TIMESLOT TO CONFIMRED (3 -> 2)
             tempAvailability.get(calDays[radioCol])[radioRow] = 2;
@@ -386,15 +392,13 @@ function createSession() {
             console.log("Session date" + sessionDate)
             //user.uid + newTimestamp is a pretty safe bet that it will be unique
             
-
-        db.collection("Tutors").doc(tutorID).get().then(function(doc) {
+        db.collection("Tutors").doc(selectedTutor).get().then(function(doc) {
 
              db.collection("Sessions").doc(user.uid + Date.now()).set({
 
             //just storing the row and col pos from the calendar currently, not as readable but its reliable. can be changed later
             //calendar does not support creating a session thats not in the current week, this will need to be changed
             weekOf: longWeekOf,
-            lastSunday: lastSunday,
             tempRow: radioRow,
             tempCol: radioCol,
             sessionDate: sessionDate,
@@ -402,6 +406,7 @@ function createSession() {
             tutorID: selectedTutor,
             userID: user.uid, 
             rate: doc.data().rate,
+            accepted: false,
             subject: document.getElementById("courseSelectDropdown").value
 
 

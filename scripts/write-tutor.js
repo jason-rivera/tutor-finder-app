@@ -141,7 +141,7 @@ function makeCalendar() {
     for (let index = 0; index < calDays.length; index++) {
         $('#calendarContainer').append(
             //I have no idea why this code works while missing a " but it breaks when put in
-            '<h6  class=" text-center align-middle '+calDays[index]+' style=" grid-row: 1; width: 15em">'+calDays[index]+'</h6>'
+            '<h6  class=" text-center align-middle '+calDays[index]+' style=" grid-row: 1; color: #FFFFFF;   width: 15em">'+calDays[index]+'</h6>'
 		);                        
     }
 

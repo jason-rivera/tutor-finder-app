@@ -42,6 +42,7 @@ function addNavbarCommon(currentPage) {
 
 		$('#navButton_Profile').hide()
 		$('#navButton_Sessions').hide()
+		$('#navButton_Sessions').hide()
 		$('#navButton_Tutor').hide()
 
 		firebase.auth().onAuthStateChanged(function (user) {

@@ -55,8 +55,6 @@ function addNavbarCommon(currentPage) {
 				$('#navButton_Profile').show()
 				$('#navButton_Sessions').show()
 				$('#navButton_Tutor').show()
-				$('#navButton_SessionsTutor').show()
-				$('#navButton_Reviews').show()
 				$("#navButton_Login").text("Log Out")
 				$("body").append(
 					'<footer class="navbar fa-2x fixed-bottom bg-dark  justify-content-around" style="height: 65px;">'
@@ -69,6 +67,14 @@ function addNavbarCommon(currentPage) {
 					)
 				$("#navButton_Login").click(function() {
 					logout();
+				});
+				db.collection("Tutors").doc(user.uid).get()
+			    .then(function(docSnapshot) { 
+					if(docSnapshot.exists) { 
+						console.log("exists");
+						$('#navButton_SessionsTutor').show()
+						$('#navButton_Reviews').show()
+					}
 				});
 			}
 		}

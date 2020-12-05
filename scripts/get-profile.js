@@ -8,11 +8,6 @@ function getUser() {
           let birthYear = doc.data().birthYear;
           let location = doc.data().location;
           let pic = doc.data().photoURL;
-          console.log('Name: ' + name);
-          console.log('Email: ' + email);
-          console.log('Birthdate: ' + birthYear);
-          console.log('Location: ' + location);
-          console.log('Your photo is: ' + pic);
           document.getElementById("your-picture").innerHTML = '<center> <img id="profile-pic" src="' + pic + '"></center><br>';
           document.getElementById("your-name").innerText = name;
           document.getElementById("your-email").innerText = email;

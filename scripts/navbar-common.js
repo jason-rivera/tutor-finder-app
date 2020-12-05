@@ -14,11 +14,7 @@ function addNavbarCommon(currentPage) {
 
 	if (!pagenames.has(fileName)) {
 		fileName = 'index.html'
-		console.log("pagename does not exist, using default");
 	}
-
-	console.log("filename: " + fileName)
-	console.log(pagenames.get(fileName))
 
 	$("body").prepend(
 		'<nav id="navBarCommonBar" class="navbar navbar-expand-xl navbar-dark bg-dark">'
@@ -76,7 +72,8 @@ function addNavbarCommon(currentPage) {
 					logout();
 				});
 			}
-		})	
+		}
+	)	
 		
 }
 

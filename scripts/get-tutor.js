@@ -7,7 +7,6 @@ function getTutor() {
 				searchSubjects.push(this.id);
 			}
 		})
-		console.log(searchSubjects); 
 		if (!(searchSubjects === undefined || searchSubjects.length == 0)) {
 			tutorsRef = tutorsRef.where("subjects", "array-contains-any", searchSubjects);
 		}
@@ -38,9 +37,6 @@ function writeToModal(tutorsRef) { //dynamically generate tutor results onto res
 		querySnapshot.forEach(function(doc) {
 			db.collection("Users").doc(doc.id)
 			.onSnapshot(function(snap){
-				console.log(doc.id, " => ", doc.data());
-				console.log(snap.id, " => ", snap.data());
-
 				$("#search-results").append(
 					'<div class="card" style="width: 18rem;">'
 					+    '<img src="images/profile_pic0.png" class="card-img-top" alt="...">'
@@ -68,11 +64,8 @@ function writeToModal(tutorsRef) { //dynamically generate tutor results onto res
 	});
 }
 
-
-
 function requestAppointment(inputString) {
 	let userid = inputString.split("_")[1]
-	console.log("requesting appointment for: " + userid)
 	initializeCalendar(userid)
 }
 

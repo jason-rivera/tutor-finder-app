@@ -421,6 +421,7 @@ function createSession() {
             tempCol: radioCol,
             sessionDate: sessionDate,
             creationDate: new Date(),
+            //message: $('#messageBoxSession').value,
             tutorID: selectedTutor,
             userID: user.uid, 
             rate: doc.data().rate,

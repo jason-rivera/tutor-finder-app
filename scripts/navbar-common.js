@@ -65,8 +65,8 @@ function addNavbarCommon(currentPage) {
 				$("#navButton_Login").text("Log Out")
 				$("body").append(
 					'<footer class="navbar fa-2x fixed-bottom bg-dark  justify-content-around" style="height: 65px;">'
-					+'	<a href="index.html"><i class="fas fa-home "></i></a>'
 					+'	<a style="color: #0062cc;" onclick="history.back()"><i class="fas fa-reply"></i></a>'
+					+'	<a href="index.html"><i class="fas fa-home "></i></a>'
 					+'	<a href="searchV2.html"><i class="fas fa-search "></i></a>'
 					+'	<a href="profile.html"><i class="fas fa-user-circle "></i></a>'
 					+'	<a href="sessions.html"><i class="fas fa-calendar-week "></i></a>'

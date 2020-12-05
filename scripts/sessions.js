@@ -90,6 +90,7 @@ $(document).ready(function () {
                                             '<p class="card-text">Subject: '+doc.data().subject+'</p>'+
                                             '<p class="card-text">Rate: '+tutorsnap.data().rate+'</p>'+
                                             '<p class="card-text">Status: '+status +'</p>'+
+                                            '<p class="card-text">Message: '+doc.data().message+'</p>'+
                                             '<p class="card-text"><small class="text-muted">Creation Date: '+doc.data().creationDate.toDate()  +'</small></p>'+
                                             '<p class="card-text"><small class="text-muted">Tutor ID: '+doc.data().tutorID+'</small></p>'+
                                             '<button type="button" id="'+doc.id+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Leave Review</button>'+
@@ -132,6 +133,7 @@ function updateModal(sessionId) {
         $("#reviewDate").text("Review Date: " + dateNowFormatted)
         $("#subjectTaught").text("Subject taught: " + snap.data().subject)
         $("#rateApplied").text( "Rate: " + tutorsnap.data().rate)
+        $("#sessionMessage").text( "Message: " + doc.data().message)
         $(".submitReview").attr('id', doc.data().tutorID);
         
       })
@@ -144,7 +146,7 @@ function updateModal(sessionId) {
       canceled: true
 
     }, {merge: true}) 
-    location.reload();
+    
 }
 
 

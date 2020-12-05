@@ -91,6 +91,7 @@ $(document).ready(function () {
                                             '<p class="card-text">Subject: '+doc.data().subject+'</p>'+
                                             '<p class="card-text">Rate: '+tutorsnap.data().rate+'</p>'+
                                             '<p class="card-text">Status: '+status+'</p>'+
+                                            '<p class="card-text">Message: '+doc.data().message+'</p>'+
                                             '<p class="card-text"><small class="text-muted">Tutor ID: '+doc.data().tutorID+'</small></p>'+
                                             //'<button type="button" id="'+doc.data().tutorID+'"class="btn btn-primary leave-review-button" data-toggle="modal" onClick="updateModal(this.id)" data-target="#exampleModalCenter" '+disableButton+'>Accept Session</button>'+
                                             '<button type="button" id="Accept_'+doc.id+'"class="btn btn-primary leave-review-button" onClick="acceptSession(this.id)" '+disableButton+'>Accept Session</button>'+
@@ -119,7 +120,6 @@ function acceptSession(input) {
       accepted: true
 
     }, {merge: true}) 
-    location.reload();
 }
 
 function cancelSession(input) {
@@ -128,7 +128,6 @@ function cancelSession(input) {
       canceled: true
 
     }, {merge: true}) 
-    location.reload();
 }
 
 $(document).ready(function () { 

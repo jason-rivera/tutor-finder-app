@@ -29,7 +29,6 @@ function addNavbarCommon(currentPage) {
 		+	'			<a id="navButton_Search" class="nav-item nav-link" href="search.html">Search</a>'
 		+	'			<a id="navButton_Sessions" class="nav-item nav-link" href="sessions.html">Sessions</a>'
 		+	'			<a id="navButton_Profile" class="nav-item nav-link" href="profile.html">Profile</a>'
-
 		+	'		</div>'
 		+	'		<div class="navbar-nav d-inline-flex">'
 		+	'			<a id="navButton_Tutor" class="ml-auto nav-item nav-link" href="tutor-form.html">Tutor Form</a>'

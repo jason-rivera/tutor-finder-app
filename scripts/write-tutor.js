@@ -123,7 +123,6 @@ function setCalendar(tutorRef) {
 		availability.set('Saturday', doc.data().schedule.Saturday);
 		availability.set('Sunday', doc.data().schedule.Sunday);
 	});
-	
 }   
    
 function makeCalendar() {

@@ -9,7 +9,6 @@ function writeReview() {
 					let tutorIDForReview = $(".submitReview").attr('id'); //the respective tutorid is attached to every "Submit Review" button
 					let reviewID = user.uid + tutorIDForReview; //a reviewID is defined as the concatenation of the studentID then tutorID
 					let reviewRef =  db.collection("Reviews").doc(reviewID);
-					let tutorUserRef = db.collection("Users").doc(tutorIDForReview);
 					let tutorRef = db.collection("Tutors").doc(tutorIDForReview);
 					reviewRef.get()
 					.then(function(docSnapshot) { 

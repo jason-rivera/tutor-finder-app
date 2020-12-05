@@ -1,32 +1,27 @@
 // ----------- CALENDAR ----------
-//creates the html for a calendar and handles the user interaction
-//USAGE
-//setCalendar(tutorID) -> gets the calendar from the selected tutor, automatically calls createCalendar()
-
+//creates a calendar used by the search page to select a session
 
 // ----------- MUST BE INSTANCE VARIABLES BEGINNING -----------
 
 //instance array of the week days, could be replaced by methods already in the Date object
 let calDays = ['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']
+
 //shorter week day names
 let calDaysShort = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat']
 
-//the local date, current weekday, and last sunday
+//months
+let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
+
+//the local date, day of last sunday, current date, 
 let localDate = new Date()
 let lastSunday = new Date()
 let selectedDay = localDate.getDay()
 lastSunday.setDate(localDate.getDate() - selectedDay)
 lastSunday.setHours(0, 0, 0)
 
-let months = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"];
-
+//weekOf as a string for display, long week of for searching
 let weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate() 
 let longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()  
-console.log(longWeekOf)
-console.log(weekOf)
-
-
-console.log("DEBUG: \nlocal date" + localDate +"\n selected day's date: " + selectedDay + ""+calDays[selectedDay] +" \nlast sunday date: " + lastSunday)
 
 //this is a default map in the same format as what is stored
 let availability = new Map([
@@ -40,7 +35,7 @@ let availability = new Map([
     ['Sunday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]]
     ])
 
-//this is a default map in the same format as what is stored
+    //this is a default map in the same format as what is stored
 let tempAvailability = new Map([
     // 0 never avalible, 1 avalible, 2 booked. array pos means hour
     ['Monday', 	    [0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0]],
@@ -73,7 +68,8 @@ let closedWidth = "25px"
 let startTime = 6
 let endTime = 21
 
-// ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
+
+// ----------- START POINT FOR CREATING/RELOADING CALENDAR ----------
 function initializeCalendar(tutorID) {
     localDate = new Date()
     lastSunday = new Date()
@@ -88,54 +84,62 @@ function initializeCalendar(tutorID) {
     
     radioRow = null
     radioCol = null
-
-    console.log(availability)
-    setCalendar(tutorID)
-
+    setCalendar(tutorID )
 }
+
 // ----------- THIS GETS THE CALENDAR FOR THE SELECTED TUTOR ----------
-function setCalendar(tutorID) {
-    console.log("getting calendar for: " + tutorID)
-    
+function setCalendar(tutorID) {    
     db.collection("Tutors").doc(tutorID)
-        .get().then(function(doc) {
-            console.log(availability)
-            console.log("loading tutor calendar: " + doc.id)
-            availability.set("Monday", doc.data().schedule.Monday)
-            availability.set("Tuesday", doc.data().schedule.Tuesday)
-            availability.set("Wednesday", doc.data().schedule.Wednesday)
-            availability.set("Thursday", doc.data().schedule.Thursday)
-            availability.set("Friday", doc.data().schedule.Friday)
-            availability.set("Saturday", doc.data().schedule.Saturday)
-            availability.set("Sunday", doc.data().schedule.Sunday)
-            console.log("test: " + availability)
-            overwriteTempAvalibility()
-            selectedTutor = tutorID
-            console.log(availability) 
-            console.log(tempAvailability) 
-            createCalendar()
-            updateCourseDropdown()
-        }).catch(function(error) {
-            console.log("Error getting documents: ", error)
+    .get().then(function(doc) {
+
+        availability.set("Monday", doc.data().schedule.Monday)
+        availability.set("Tuesday", doc.data().schedule.Tuesday)
+        availability.set("Wednesday", doc.data().schedule.Wednesday)
+        availability.set("Thursday", doc.data().schedule.Thursday)
+        availability.set("Friday", doc.data().schedule.Friday)
+        availability.set("Saturday", doc.data().schedule.Saturday)
+        availability.set("Sunday", doc.data().schedule.Sunday)
+
+        overwriteTempAvalibility()
+        selectedTutor = tutorID
+        createCalendar()
+        updateCourseDropdown()
+
+    }).catch(function(error) {
+        console.log("Error getting documents: ", error)
+    })
+}
+
+//overwrites tempavalibilty without copying it as a reference
+function overwriteTempAvalibility() {
+    tempAvailability.set("Monday", $.extend(true,[], availability.get("Monday")))
+    tempAvailability.set("Tuesday", $.extend(true,[], availability.get("Tuesday")))
+    tempAvailability.set("Wednesday", $.extend(true,[],availability.get("Wednesday")))
+    tempAvailability.set("Thursday", $.extend(true,[],availability.get("Thursday")))
+    tempAvailability.set("Friday", $.extend(true,[],availability.get("Friday")))
+    tempAvailability.set("Saturday", $.extend(true,[],availability.get("Saturday")))
+    tempAvailability.set("Sunday", $.extend(true,[],availability.get("Sunday")))
+}
+
+// ----------- THIS GETS THE TUTORS COURSES ----------
+function updateCourseDropdown() {
+    db.collection("Tutors").doc(selectedTutor)
+    .onSnapshot(function(doc){ 
+        $('#courseSelectDropdown').empty()
+        $('#courseSelectDropdown').append('<option>Choose a course</option>' )
+        for (let index = 0; index < doc.data().subjects.length; index++) {
+            $('#courseSelectDropdown').append('<option>'+doc.data().subjects[index]+'</option>')
+            
+        }
         
     })
 }
     
 // ----------- THIS CREATES THE HTML ELEMENT FOR THE CALENDAR ----------
 function createCalendar() {
-
-    console.log("recreating calendar")
-    console.log(availability)
-    console.log(tempAvailability)
-    //clear old calendar
     document.getElementById("calendarContainer").innerHTML = ""
-
-    //create grid for new calendar
-    //console.log((closedWidth * 6) + openWidth)
-    //$('#calendarContainer').css("width", "277px")
     $('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");")
     
-        
     //Creates the weekday headings
     for (let weekday = 0; weekday < calDays.length; weekday++) {
 
@@ -159,17 +163,16 @@ function createCalendar() {
     //creates the calendar body
     for (let hour = startTime; hour < endTime; hour++) { 
         for (let weekday = 0; weekday < calDays.length; weekday++) {
-            //let tempDate = new Date(lastSunday.getFullYear(), lastSunday.getMonth, (lastSunday.getDate + parseInt(weekday)))
+            
             let tempDate = new Date(lastSunday)
-            console.log(weekday)
-            console.log(parseInt(lastSunday.getDate()) + parseInt(weekday))
             tempDate.setDate(parseInt(lastSunday.getDate()) + parseInt(weekday))
             tempDate.setHours(parseInt(lastSunday.getHours()) + parseInt(hour))
-            console.log(tempDate)
              
+            //if date is in the past, color it gray (4)
             if (tempDate <= localDate) {
                 tempAvailability.get(calDays[weekday])[hour] = 4
             }
+
             //Creates an element of the calendar
             $('#calendarContainer').append('<p id="button_'+hour+'_'+weekday+'" onmousedown="updateTime(this.id)">'+hour+":30"+'</p>')
             //classes from bootstrap
@@ -186,11 +189,6 @@ function createCalendar() {
 
             //sets the row
             $('#button_'+hour+'_'+weekday).css("grid-row", (hour - startTime + 2))
-
-            
-
-            //console.log("DEBUG: aval on"+ calDays[weekday] +" at "+index+":30 is: "+availability.get(calDays[weekday])[index])
-            
         }
     }
     //update the col widths after everything loads in
@@ -198,86 +196,19 @@ function createCalendar() {
     changeRows()
 }
 
-        
-
-// ----------- THIS HANDLES THE INTERACTION BETWEEN THE USER AND THE CALENDAR ----------
-function updateTime(inputString) {
-    //breaks up an input string into the values after _
-    let rowPos = inputString.split("_")[1]
-    let colPos = inputString.split("_")[2]
-    
-    let aval = tempAvailability.get(calDays[colPos])[rowPos]
-
-    let user = firebase.auth().currentUser;
-
-    //console.log("DEBUG: Column: "+ colPos+" Row: "+rowPos+"Aval: "+aval)
-
-    if (colPos > selectedDay){
-        
-        selectedDay++
-
-    } else if (colPos < selectedDay) {
-
-        selectedDay--
-
-    } else {
-        switch (aval) {
-            case 0:
-                console.log("Case 0: unavalible timeslot")
-                if (selectedTutor == user.uid) {
-                    tempAvailability.get(calDays[colPos])[rowPos] = 1;
-                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
-                }
-                break;
-
-            case 1:
-                console.log("Case 1: avalible timeslot")
-                if (selectedTutor == user.uid) {
-                    tempAvailability.get(calDays[colPos])[rowPos] = 0;
-                    $('#button_'+rowPos+'_'+colPos).removeClass("color1")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color0")
-                } else {
-                    if (radioRow != null) {
-                        console.log("remove old selection")
-                        tempAvailability.get(calDays[radioCol])[radioRow] = 1;
-                    }
-                    console.log("new selection")
-                    tempAvailability.get(calDays[colPos])[rowPos] = 3;
-                    $('#button_'+radioRow+'_'+radioCol).removeClass("color3")
-                    $('#button_'+rowPos+'_'+colPos).addClass("color3")
-                    radioRow = rowPos
-                    radioCol = colPos
-                }
-                
-                break;
-            case 2:
-                console.log("Case 2: unavalible timeslot -> already scheduled")
-                
-                break;
-            case 3:
-                console.log("Case 3: remove selection")
-                tempAvailability.get(calDays[colPos])[rowPos] = 1;
-                $('#button_'+rowPos+'_'+colPos).removeClass("color3")
-                radioCol = null
-                radioRow = null
-                break;
-            case 4:
-                console.log("Case 4: backwards in time")
-                break;
-            default:
-                break;
-        }
-    }
-    if (radioCol == null) {
-        $("#submitApptReqBtn").prop("disabled", true);
-    } else {
-        $("#submitApptReqBtn").prop("disabled", false);
-    }
-    //update the col widths
-    changeRows()
+// ----------- THIS GETS THE TUTORS AVALIBILITY FOR THE CALENDAR ----------
+function updateAvalibility() {
+    db.collection("Sessions").where("tutorID", "==", selectedTutor).where("weekOf", "==", longWeekOf)
+    .get()
+    .then(function(querySnapshot) {
+        querySnapshot.forEach(function(doc) { 
+            if (tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] != 4) {
+                tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
+                $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
+            }
+        }) 
+    })
 }
-
 
 // ----------- THIS CHANGES WHICH DAY IS SELECTED AND THE CHANGING OF WIDTHS ----------
 function changeRows(){
@@ -296,150 +227,125 @@ function changeRows(){
     tempDate.setDate(parseInt(lastSunday.getDate()) + parseInt(selectedDay))
     weekOf = months[tempDate.getMonth()] + ", " + tempDate.getDate()  
     document.getElementById("currentWeekButton").innerHTML = weekOf
-    
 }
 
-function changeWeek(move) {
+// ----------- THIS HANDLES THE INTERACTION BETWEEN THE USER AND THE CALENDAR ----------
+function updateTime(inputString) {
+    //breaks up an input string into the values after _
+    let rowPos = inputString.split("_")[1]
+    let colPos = inputString.split("_")[2]
     
-    if (move == "previous") {
-        console.log("previous week: " + move)
-        lastSunday.setDate(lastSunday.getDate() - 7)
+    let aval = tempAvailability.get(calDays[colPos])[rowPos]
+    let user = firebase.auth().currentUser;
 
+    if (colPos > selectedDay){
+        selectedDay++
+    } else if (colPos < selectedDay) {
+        selectedDay--
+    } else {
+        switch (aval) {
+            case 0:
+                if (selectedTutor == user.uid) {
+                    tempAvailability.get(calDays[colPos])[rowPos] = 1;
+                    $('#button_'+rowPos+'_'+colPos).removeClass("color0")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color1")
+                }
+                break;
+            case 1:
+                if (selectedTutor == user.uid) {
+                    tempAvailability.get(calDays[colPos])[rowPos] = 0;
+                    $('#button_'+rowPos+'_'+colPos).removeClass("color1")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color0")
+                } else {
+                    if (radioRow != null) {
+                        tempAvailability.get(calDays[radioCol])[radioRow] = 1;
+                    }
+                    tempAvailability.get(calDays[colPos])[rowPos] = 3;
+                    $('#button_'+radioRow+'_'+radioCol).removeClass("color3")
+                    $('#button_'+rowPos+'_'+colPos).addClass("color3")
+                    radioRow = rowPos
+                    radioCol = colPos
+                }
+                break;
+            case 2:
+                //do nothing
+                break;
+            case 3:
+                tempAvailability.get(calDays[colPos])[rowPos] = 1;
+                $('#button_'+rowPos+'_'+colPos).removeClass("color3")
+                radioCol = null
+                radioRow = null
+                break;
+            case 4:
+                break;
+            default:
+                break;
+        }
+    }
+    if (radioCol == null) {
+        $("#submitApptReqBtn").prop("disabled", true)
+    } else {
+        $("#submitApptReqBtn").prop("disabled", false)
+    }
+    //update the col widths
+    changeRows()
+}
+
+// ----------- SHIFTS WEEK FORWARDS AND BACKWARDS ----------
+function changeWeek(move) {
+
+    if (move == "previous") {
+        lastSunday.setDate(lastSunday.getDate() - 7)
     } else if (move == "future") {
-        console.log("future week: " + move)
         lastSunday.setDate(lastSunday.getDate() + 7)
     }
+
     weekOf = months[lastSunday.getMonth()] + ", " + lastSunday.getDate()  
     longWeekOf = lastSunday.getFullYear() + "_" + months[lastSunday.getMonth()] + "_" + lastSunday.getDate()  
-    console.log(longWeekOf)
     radioRow = null
     radioCol = null
     overwriteTempAvalibility()
     createCalendar()
 }
 
-function overwriteTempAvalibility() {
-    tempAvailability.set("Monday", $.extend(true,[], availability.get("Monday")))
-    tempAvailability.set("Tuesday", $.extend(true,[], availability.get("Tuesday")))
-    tempAvailability.set("Wednesday", $.extend(true,[],availability.get("Wednesday")))
-    tempAvailability.set("Thursday", $.extend(true,[],availability.get("Thursday")))
-    tempAvailability.set("Friday", $.extend(true,[],availability.get("Friday")))
-    tempAvailability.set("Saturday", $.extend(true,[],availability.get("Saturday")))
-    tempAvailability.set("Sunday", $.extend(true,[],availability.get("Sunday")))
-}
-
-// ----------- THIS GETS THE TUTORS AVALIBILITY ----------
-function updateAvalibility() {
-    
-    console.log(tempAvailability)
-    console.log("Trying to get new tutor schedule for this week")
-
-    
-    db.collection("Sessions").where("tutorID", "==", selectedTutor).where("weekOf", "==", longWeekOf)
-    .get()
-    .then(function(querySnapshot) {
-        querySnapshot.forEach(function(doc) { 
-            
-            console.log(doc.data())
-            if (tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] != 4) {
-                tempAvailability.get(calDays[doc.data().tempCol])[doc.data().tempRow] = 2;
-                $('#button_'+doc.data().tempRow+'_'+doc.data().tempCol).addClass("color2")
-            }
-        }) 
-    })
-}
-
-// ----------- THIS GETS THE TUTORS COURSES ----------
-function updateCourseDropdown() {
-    db.collection("Tutors").doc(selectedTutor)
-    .onSnapshot(function(doc){ 
-        $('#courseSelectDropdown').empty()
-        $('#courseSelectDropdown').append('<option>Choose a course</option>' )
-        for (let index = 0; index < doc.data().subjects.length; index++) {
-            $('#courseSelectDropdown').append('<option>'+doc.data().subjects[index]+'</option>')
-            
-        }
-        
-    })
-}
-
-/*
-// ----------- THIS UPDATES THE TUTORS SCHEDULE ----------
-function updateTable() {
-    db.collection("Tutors").doc(selectedTutor).set({
-        schedule: {
-        // 0 never avalible, 1 avalible, 2 booked. 3 means selected,array pos means hour
-        // 3 should not show up in the database, if it does its an error
-        Monday: 	availability.get(calDays[1]),
-        Tuesday: 	availability.get(calDays[2]),
-        Wednesday: 	availability.get(calDays[3]),
-        Thursday: 	availability.get(calDays[4]),
-        Friday: 	availability.get(calDays[5]),
-        Saturday: 	availability.get(calDays[6]),
-        Sunday: 	availability.get(calDays[0])
-    }
-    }, {merge: true})
-
-}*/
-
 // ----------- THIS CREATES A SESSION ----------
 function createSession() {
     firebase.auth().onAuthStateChanged(function(user) {
     
-    if (radioRow == null) {
-        console.log("Nothing recorded")
-        
-        } else {
+        if (radioRow != null) {
+
             //CHANGE SELCTED TIMESLOT TO CONFIMRED (3 -> 2)
             tempAvailability.get(calDays[radioCol])[radioRow] = 2;
-            //UPDATE TUTOR SCHEDULE
-            console.log("Updating schedule for: " + selectedTutor)
-            //updateTable()
-
-            //CREATE NEW SESSION
-            console.log("At this point a session must be created in the database, as of now it only updates the schedule for the tutor")
-
-            let user = firebase.auth().currentUser;
 
             let sessionDate = lastSunday
-            console.log("Session date" + sessionDate)
-            console.log("radioCol" + radioCol)
-            console.log("newDate: "+ (lastSunday.getDate() + parseInt(radioCol)))
             sessionDate.setDate(lastSunday.getDate() + parseInt(radioCol))
             sessionDate.setHours(parseInt(radioRow), 30, 0)
-            console.log("Session date" + sessionDate)
-            //user.uid + newTimestamp is a pretty safe bet that it will be unique
-            
-        db.collection("Tutors").doc(selectedTutor).get().then(function(doc) {
 
-             db.collection("Sessions").doc(user.uid + Date.now()).set({
+            let message = $('#messageBoxSession').value
+                
+            db.collection("Tutors").doc(selectedTutor).get().then(function(doc) {
+                db.collection("Sessions").doc(user.uid + Date.now()).set({
 
-            //just storing the row and col pos from the calendar currently, not as readable but its reliable. can be changed later
-            //calendar does not support creating a session thats not in the current week, this will need to be changed
-            weekOf: longWeekOf,
-            tempRow: radioRow,
-            tempCol: radioCol,
-            sessionDate: sessionDate,
-            creationDate: new Date(),
-            //message: $('#messageBoxSession').value,
-            tutorID: selectedTutor,
-            userID: user.uid, 
-            rate: doc.data().rate,
-            accepted: false,
-            subject: document.getElementById("courseSelectDropdown").value
+                    weekOf: longWeekOf,
+                    tempRow: radioRow,
+                    tempCol: radioCol,
+                    sessionDate: sessionDate,
+                    creationDate: new Date(),
+                    message: message,
+                    tutorID: selectedTutor,
+                    userID: user.uid, 
+                    rate: doc.data().rate,
+                    accepted: false,
+                    subject: document.getElementById("courseSelectDropdown").value
 
-
+                }).catch(function(error) {
+                    console.log("Error tutor documents: ", error)
+                })
             }).catch(function(error) {
-                console.log("Error tutor documents: ", error)
+                console.log("Error session documents: ", error)
             })
-        }).catch(function(error) {
-            console.log("Error session documents: ", error)
-        })
-            
         }
-    });
-
-    
+    })
 }
         
     

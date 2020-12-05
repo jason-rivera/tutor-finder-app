@@ -321,7 +321,7 @@ function createSession() {
             sessionDate.setDate(lastSunday.getDate() + parseInt(radioCol))
             sessionDate.setHours(parseInt(radioRow), 30, 0)
 
-            let message = $('#messageBoxSession').value
+            let message = document.getElementById("messageBoxSession").value
                 
             db.collection("Tutors").doc(selectedTutor).get().then(function(doc) {
                 db.collection("Sessions").doc(user.uid + Date.now()).set({

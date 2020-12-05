@@ -46,13 +46,7 @@ $(document).ready(function () {
         .catch(function(error) {
             console.log("Error getting documents: ", error);
 		});
-		db.collection("Tutors").doc(user.uid).onSnapshot(function(tutorsnap) {
-			$('#knowledgeReviews').text("Knowledge: " + tutorsnap.data().knowledge)
-			$('#timeReviews').text("On time: " + tutorsnap.data().onTime)
-			$('#teachingReviews').text("Teaching skill: " + tutorsnap.data().teachingSkill)
-			$('#avgReviews').text("Average rating: " + tutorsnap.data().rating)
-			$('#numReviews').text("Number of reviews: " + tutorsnap.data().reviews)
-		});
+		getReviewScores(user.uid);
 	});
 });
 

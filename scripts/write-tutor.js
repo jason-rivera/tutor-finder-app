@@ -1,12 +1,11 @@
-function submitButtonEvent() {  
-	$('#tutor-form').submit(function () { //makes it so page doesn't refresh on submit
+function submitButtonEvent() { //add writeTutor() functionality to submit-button
+	$('#tutor-form').submit(function () { 
 		return false;
 	});
 	$(document).ready(function () {
 		$("#submit-button").click(function (){
 			writeTutor();
 		});
-		//
 	});
 }
 
@@ -30,7 +29,7 @@ function writeTutor() {
 	})
 }
 
-function fillForm() {
+function fillForm() { //if the user's already a tutor, fill out their existing profile
 	firebase.auth().onAuthStateChanged(function (user) {
 		if (user){
 			let tutorRef = db.collection("Tutors").doc(user.uid);
@@ -66,7 +65,6 @@ function setCheckedSubjects(user, tutorRef) {
 }
 
 function updateTutorFields(user, tutorRef) {
-	console.log(user.uid + " has been updated.");
 	tutorRef.update({
 		description: document.getElementById("tutor-description").value,
 		rate: parseFloat(document.getElementById("rate").value),
@@ -76,7 +74,6 @@ function updateTutorFields(user, tutorRef) {
 }
 
 function setTutorFields(user, tutorRef) {
-	console.log(user.uid + "is now a tutor.");
 	tutorRef
 	.set({
 		description: document.getElementById("tutor-description").value,
@@ -131,9 +128,6 @@ function setCalendar(tutorRef) {
    
 function makeCalendar() {
 
-	console.log(availability);
-	console.log(availability.get("Wednesday"));
-
 	//create grid for new calendar
 	$('#calendarContainer').css("grid-template-rows", "2em repeat("+(endTime-startTime)+", "+rowHeight+");")
 	
@@ -150,7 +144,6 @@ function makeCalendar() {
                         
         
         for (let index2 = 0; index2 < calDays.length; index2++) {
-            console.log(availability.get(calDays[index2])[index]);
             $('#calendarContainer').append(
                 '<p id="button_'+index+'_'+index2+'" onmousedown="updateTime(this.id)" class=" text-center align-middle border '+calDays[index2]+' color'+availability.get(calDays[index2])[index]+'" style=" grid-row:'+(index - startTime + 2)+';">'+index+":30"+'</p>'      
             )
@@ -174,7 +167,6 @@ function updateTime(inputString) {
     let rowPos = inputString.split("_")[1]
     let colPos = inputString.split("_")[2]
     let aval = availability.get(calDays[colPos])[rowPos]
-    console.log("Column: "+ colPos+" Row: "+ rowPos + "Aval: " + aval)
 
     if (colPos > selectedDay){
         selectedDay++;
@@ -208,13 +200,10 @@ function updateTime(inputString) {
         if (index == selectedDay){   
             $("."+calDays[index]).css("color", "#000000FF")
             $("."+calDays[index]).css("width", "100px")
-            console.log(index + " is " + calDays[index] + " and is selected")
-            console.log($("."+calDays[index]))
 
         } else {
             $("."+calDays[index]).css("color", "#00000000")
             $("."+calDays[index]).css("width", "20px")
-            console.log(index + " is " + calDays[index] + " and is notselected") 
         }           
     }             
 }

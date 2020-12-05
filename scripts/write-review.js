@@ -4,16 +4,16 @@ function writeReview() {
 	});
     $(document).ready(function () {
 		$(".submitReview").click(function () {
-			firebase.auth().onAuthStateChanged(function (user) {
+			firebase.auth().onAuthStateChanged(function (user) { 
 				if (user){
-					let tutorIDForReview = $(".submitReview").attr('id');
-					let reviewID = user.uid + tutorIDForReview;
+					let tutorIDForReview = $(".submitReview").attr('id'); //the respective tutorid is attached to every "Submit Review" button
+					let reviewID = user.uid + tutorIDForReview; //a reviewID is defined as the concatenation of the studentID then tutorID
 					let reviewRef =  db.collection("Reviews").doc(reviewID);
 					let tutorUserRef = db.collection("Users").doc(tutorIDForReview);
 					let tutorRef = db.collection("Tutors").doc(tutorIDForReview);
 					reviewRef.get()
-					.then(function(docSnapshot) {
-						if(docSnapshot.exists) {
+					.then(function(docSnapshot) { 
+						if(docSnapshot.exists) { //if a student + tutor review exists
 							updateTutorUpdatedReview(tutorRef, reviewRef);
 							reviewRef.get()
 							.then(function(docSnapshot) {
@@ -23,7 +23,7 @@ function writeReview() {
 							updateTutorNewReview(tutorRef);
 							setReview(reviewRef, tutorRef);
 						}
-						tutorRef.get()
+						tutorRef.get() //always update tutor rating, whether a review is old or new
 						.then(function(docSnapshot) {
 							updateTutorRating(tutorRef);
 						});
@@ -74,9 +74,6 @@ function updateTutorUpdatedReview(tutorRef, reviewRef) {
 	.then(function(tutorSnapshot) {
 		reviewRef.get()
 		.then(function(reviewSnapshot) {
-			console.log(reviewSnapshot.data().onTime);
-			console.log(updateOldScore(tutorSnapshot.data().onTime, parseInt(document.getElementById("rangeOnTime").value), 
-				reviewSnapshot.data().onTime, tutorSnapshot.data().reviews));
 			tutorRef.update({
 				onTime: updateOldScore(tutorSnapshot.data().onTime, parseInt(document.getElementById("rangeOnTime").value), 
 					reviewSnapshot.data().onTime, tutorSnapshot.data().reviews),

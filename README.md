@@ -23,7 +23,7 @@ Content of the project folder:
 ├── index.html               # landing page HTML file
 ├── login.html               # login page HTML file
 ├── sessions.html			 # Sessions a user had with a tutor page HTML file
-├── sessions-tutor.html			 # Sessions a user had with a tutor page HTML file
+├── sessions-tutor.html		 # Sessions a user had with a tutor page HTML file
 ├── profile.html             # personlized user profile page HTML file
 ├── reviews.html             # page for tutor reviews HTML file
 ├── search.html              # search for a tutor page HTML file
@@ -43,7 +43,7 @@ It has the following subfolders and files:
     /login.js                # module for login JS file
     /navbar-common.js        # module for navigation bar JS file
     /populate-tutors.js      # module to populate tutors JS file
-    /sessions.js    # module for Sessions JS file
+    /sessions.js             # module for Sessions JS file
     /reviews.js              # module to read reviews from database JS file
     /update-profile.js       # module to update/write profile data in database JS file
     /write-review.js         # module to write reviews into the database JS file

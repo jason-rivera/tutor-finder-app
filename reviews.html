@@ -20,22 +20,20 @@
   </head>
   <body>
 
-    <div class="body-container1">
-      <div class="jumbotron jumbotron-fluid bg-warning ">
-        <div class="container">
-          <h1 class="display-6 pt-0">Your Reviews</h1>
-          <p id="knowledgeReviews" class="my-1"></p>
-          <p id="timeReviews"class="my-1"></p>
-          <p id="teachingReviews"class="my-1"></p>
-          <p id="avgReviews"class="my-1"></p>
-          <p id="numReviews"class="my-1"></p>
-        </div>
-      </div>
-
-
-      <div class="accordion" id="accordionExample"></div>
-
-    </div>
+	<div class="body-container1">
+		<div class="jumbotron jumbotron-fluid bg-warning ">
+			<div class="container">
+				<h1 class="display-6 pt-0">Your Reviews</h1>
+				<p id="knowledgeReviews" class="my-1"></p>
+				<p id="timeReviews"class="my-1"></p>
+				<p id="teachingReviews"class="my-1"></p>
+				<p id="avgReviews"class="my-1"></p>
+				<p id="numReviews"class="my-1"></p>
+			</div>
+		</div>
+		<!-- Reviews get dynamically generated in here -->
+		<div class="accordion" id="accordionExample"></div>
+	</div>
 
 
     <!-- Bootstrap libraries from CDN -->
@@ -55,7 +53,7 @@
     <!-- Header Navigation Bar -->
     <script src="scripts/navbar-common.js"></script>
     <script>addNavbarCommon(window.location.pathname)</script>
-	  <script src="scripts/get-reviews.js"></script>
+	<script src="scripts/get-reviews.js"></script>
     
   </body>
 </html>

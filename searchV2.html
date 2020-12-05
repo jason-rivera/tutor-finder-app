@@ -20,6 +20,7 @@
   </head>
 
   <body>
+	<!-- Results Modal -->
     <div class="modal fade" id="resultsModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
 		  <div class="modal-dialog" role="document">
 			<div class="modal-content ">
@@ -139,75 +140,43 @@
           </label>
         </div>
       </div>
-
-
-      <!-- SECOND VERSION OF THE ABOVE BUTTONS -->
-
-      <!-- <h6>Choose Course(s):</h6>
-        <div class="btn-group-toggle" data-toggle="buttons">
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1100"> COMP 1100
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1113"> COMP 1113
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1116"> COMM 1116
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1510"> COMP 1510
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1537"> COMP 1537
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1712"> COMP 1712
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="1800"> COMP 1800
-          </label>
-          <label class="btn btn-secondary">
-            <input type="checkbox" name="subject-name" class="subject-class" id="9999"> COMP 9999
-          </label>
-        </div> -->
-
       
-			<div id="priceSelectButtons"class="btn-group-toggle container" data-toggle="buttons">
-        <h6 class="w-100">Preferred Price:</h6>
-			  <label class="btn btn-secondary active">
-				  <input type="radio" name="options" class="price-bracket" id="free" > Free
-			  </label>
-			  <label class="btn btn-secondary active">
-				  <input type="radio" name="options" class="price-bracket" id="0"> $0 - $5
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="6"> $6 - $10
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="11"> $11 - $15
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="16"> $16 - $20
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="21"> $21 - $25
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="26"> $26 - $30
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="31"> $31+
-			  </label>
-			  <label class="btn btn-secondary">
-				  <input type="radio" name="options" class="price-bracket" id="any-price" checked> Any price
-			  </label>
-			</div>
+	<div id="priceSelectButtons"class="btn-group-toggle container" data-toggle="buttons">
+		<h6 class="w-100">Preferred Price:</h6>
+		<label class="btn btn-secondary active">
+			<input type="radio" name="options" class="price-bracket" id="free" > Free
+		</label>
+		<label class="btn btn-secondary active">
+			<input type="radio" name="options" class="price-bracket" id="0"> $0 - $5
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="6"> $6 - $10
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="11"> $11 - $15
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="16"> $16 - $20
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="21"> $21 - $25
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="26"> $26 - $30
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="31"> $31+
+		</label>
+		<label class="btn btn-secondary">
+			<input type="radio" name="options" class="price-bracket" id="any-price" checked> Any price
+		</label>
+	</div>
 
-      <br>
-      <button class="rounded btn btn-primary my-2 my-sm-0 find-button" role="button" id="submit" data-toggle="modal" data-target="#resultsModal">Find Tutor <i class="fas fa-search"></i></button>
-      <br/>
-      <br/>
-      <br/>
+    <br>
+    <button class="rounded btn btn-primary my-2 my-sm-0 find-button" role="button" id="submit" data-toggle="modal" data-target="#resultsModal">Find Tutor <i class="fas fa-search"></i></button>
+    <br/>
+    <br/>
+    <br/>
       
     </div>
 
@@ -233,20 +202,11 @@
     <!-- Header Navigation Bar -->
     <script src="scripts/navbar-common.js"></script>
     <script>addNavbarCommon(window.location.pathname)</script>
-    <!-- <script src="scripts/getStuff.js"></script> -->
 
     <!-- Additional Script -->
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+	<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
     <script src="scripts/get-tutor.js"></script>
     <script src="scripts/create-calendar.js"></script>
-		<!--
-        <script>
-            $(document).ready(function() {
-                $('#submit').click(function() {
-                    window.location.href='results.html';
-                });
-            });
-        </script>
-		-->
+
   </body>
 </html>

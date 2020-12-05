@@ -1,5 +1,5 @@
 function writeReview() {  
-    $('#reviewTutor').submit(function () { //makes it so page doesn't refresh on submit
+    $('#reviewTutor').submit(function () {
 		return false;
 	});
     $(document).ready(function () {

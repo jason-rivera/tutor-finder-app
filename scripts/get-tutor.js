@@ -31,7 +31,7 @@ function getTutor() {
 	});
 }
 
-function writeToModal(tutorsRef) {
+function writeToModal(tutorsRef) { //dynamically generate tutor results onto results modal from search.html
 	tutorsRef.get()
 	.then(function(querySnapshot) {
 		$(".modal-body").empty();
@@ -73,12 +73,9 @@ function writeToModal(tutorsRef) {
 function requestAppointment(inputString) {
 	let userid = inputString.split("_")[1]
 	console.log("requesting appointment for: " + userid)
-	
 	initializeCalendar(userid)
-
-	//setCalendar()
-
 }
+
 function getSubjectString(doc) {
 	let subjectString = " ";
 	let size = doc.data().subjects.length;

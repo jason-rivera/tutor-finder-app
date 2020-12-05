@@ -1,7 +1,5 @@
-function updateProfile() {  
-
+function updateProfile() { //update User fields based on input from profile.html
 	$(document).ready(function () {
-
 		$("#update-btn").click(function (){
 			firebase.auth().onAuthStateChanged(function (user) {
 				if (user){

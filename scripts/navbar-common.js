@@ -4,7 +4,7 @@ function addNavbarCommon(currentPage) {
 	let pagenames = new Map([
 		['index.html', "Home"],
 		['profile.html', "Profile"],
-		['searchV2.html', "Search"],
+		['search.html', "Search"],
 		['sessions.html', "Sessions"],
 		['tutor-form.html', "Tutor Form"],
 		['reviews.html', "Reviews"],
@@ -30,7 +30,7 @@ function addNavbarCommon(currentPage) {
 		+	'		<div class="d-flex justify-content-between">'
 		+	'		<div class="navbar-nav d-inline-flex justifiy-content-start">'
 		+	'			<a id="navButton_Home" class="nav-item nav-link" href="index.html">Home</a>'
-		+	'			<a id="navButton_Search" class="nav-item nav-link" href="searchV2.html">Search</a>'
+		+	'			<a id="navButton_Search" class="nav-item nav-link" href="search.html">Search</a>'
 		+	'			<a id="navButton_Sessions" class="nav-item nav-link" href="sessions.html">Sessions</a>'
 		+	'			<a id="navButton_Profile" class="nav-item nav-link" href="profile.html">Profile</a>'
 
@@ -67,7 +67,7 @@ function addNavbarCommon(currentPage) {
 					'<footer class="navbar fa-2x fixed-bottom bg-dark  justify-content-around" style="height: 65px;">'
 					+'	<a style="color: #0062cc;" onclick="history.back()"><i class="fas fa-reply"></i></a>'
 					+'	<a href="index.html"><i class="fas fa-home "></i></a>'
-					+'	<a href="searchV2.html"><i class="fas fa-search "></i></a>'
+					+'	<a href="search.html"><i class="fas fa-search "></i></a>'
 					+'	<a href="profile.html"><i class="fas fa-user-circle "></i></a>'
 					+'	<a href="sessions.html"><i class="fas fa-calendar-week "></i></a>'
 					+'</footer>'

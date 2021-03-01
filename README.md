@@ -6,7 +6,11 @@
 
 ## General Info
 This browser based web application to find tutoring services.
-Authors: Connor Young, Stirling Anderson, Jason Rivera
+
+Authors
+- Connor Young
+- Stirling Anderson
+- Jason Rivera
 	
 ## Technologies
 Technologies used for this project:

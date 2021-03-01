@@ -7,7 +7,7 @@
 ## General Info
 This browser based web application to find tutoring services.
 
-Authors
+Authors:
 - Connor Young
 - Stirling Anderson
 - Jason Rivera
